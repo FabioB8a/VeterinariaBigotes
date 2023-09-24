@@ -39,4 +39,11 @@ export class PetService {
   findById(id:number):Pet{
     return <Pet>this.petList.find(o => o.id === id)
   }
+
+  deleteById(id: number) {
+    const index = this.petList.findIndex(pet => pet.id === id);
+    if (index !== -1) {
+      this.petList.splice(index, 1);
+    }
+  }
 }

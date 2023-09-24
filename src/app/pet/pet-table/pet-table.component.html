@@ -50,7 +50,7 @@
         <td text="${pet.weight} + ' gr.'"> {{ pet.weight }}</td>
         <td text="${pet.disease}">{{ pet.disease }}</td>
         <td id="more">
-          <a href="">
+          <a (click)="deleteById(pet.id)">
             <img src="assets/images/vet/deleteIcon.png">
           </a>
           <a href=""> <img src="assets/images/vet/editIcon.png"> </a>

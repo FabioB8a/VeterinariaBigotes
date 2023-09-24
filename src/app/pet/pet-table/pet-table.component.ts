@@ -17,5 +17,10 @@ export class PetTableComponent {
 
   ngOnInit(): void {
     this.petList = this.petService.findAll();
+
+  }
+
+  deleteById(id:number):void{
+    this.petService.deleteById(id);
   }
 }
