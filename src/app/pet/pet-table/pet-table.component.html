@@ -1,1 +1,63 @@
-<p>pet-table works!</p>
+<div class="d-flex">
+  <div class="sidebar">
+    <img class="icon" src="assets/images/vet/Bigotes-2.png">
+    <h4>Filtros</h4>
+    <div class="filters">
+
+      <div>
+        <input type="checkbox" id="filterNamePet">
+        <label for="filterNamePet">Nombre mascota</label>
+      </div>
+      <div class="search-input">
+        <input type="text" id="searchPet" placeholder="Inserte el nombre de la mascota">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+      </div>
+
+    </div>
+    <h4>Adicionales</h4>
+    <div class="addSection">
+      <a href="">Agregar mascota</a>
+      <a href="">Mostrar dueños</a>
+    </div>
+    <p>Cerrar Sesión</p>
+
+  </div>
+  <div class="content">
+    <div class="head">
+      <h1>Nuestras Mascotas</h1>
+      <h2>Nombre usuario</h2>
+      <img class="icon" src="assets/images/users/FotoUser.png">
+    </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Nombre mascota</th>
+        <th scope="col">Raza</th>
+        <th scope="col">Edad</th>
+        <th scope="col">Peso</th>
+        <th scope="col">Enfermedad</th>
+        <th scope="col">Adicionales</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let pet of petList">
+        <td>
+          <img src={{pet.imgUrl}} alt="Imagen de la mascota" id="petImg" width="50" height="50">
+          <span>{{ pet.name }}</span>
+        </td>
+        <td>{{ pet.breed }}</td>
+        <td>{{ pet.calculateAge() }}</td>
+        <td text="${pet.weight} + ' gr.'"> {{ pet.weight }}</td>
+        <td text="${pet.disease}">{{ pet.disease }}</td>
+        <td id="more">
+          <a href="">
+            <img src="assets/images/vet/deleteIcon.png">
+          </a>
+          <a href=""> <img src="assets/images/vet/editIcon.png"> </a>
+          <a href=""> ... </a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
