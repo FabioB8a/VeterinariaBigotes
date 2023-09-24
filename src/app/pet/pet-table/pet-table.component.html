@@ -46,9 +46,9 @@
           <span>{{ pet.name }}</span>
         </td>
         <td>{{ pet.breed }}</td>
-        <td>{{ pet.calculateAge() }}</td>
-        <td text="${pet.weight} + ' gr.'"> {{ pet.weight }}</td>
-        <td text="${pet.disease}">{{ pet.disease }}</td>
+        <td>{{ pet.calculateAge() }} años</td>
+        <td> {{ pet.weight }} gr</td>
+        <td>{{ pet.disease }}</td>
         <td id="more">
           <a (click)="deleteById(pet.id)">
             <img src="assets/images/vet/deleteIcon.png">
