@@ -1,1 +1,71 @@
-<p>pet-detail works!</p>
+<nav>
+  <div id="logo-container">
+    <a href="">
+      <img id="logo" src="assets/images/showPet/logo.png">
+    </a>
+  </div>
+  <div id="user">
+    <h2>Nombre de usuario</h2>
+    <img id="user-img" src="assets/images/showPet/user.png">
+  </div>
+</nav>
+
+<main>
+
+
+  <section id="pet">
+    <div>
+      <img id="pet-img" src={{pet.imgUrl}}>
+    </div>
+    <div id="pet-info">
+      <div id="pet-data-container">
+        <div id="pet-name">
+          <h1><span>{{ pet.name }}</span></h1>
+          <a href="">
+            <img src="assets/images/showPet/edit1.svg">
+          </a>
+        </div>
+        <div id="pet-data">
+          <div>
+            <p><strong>Dueño: </strong><span>{{ pet.owner }}</span></p>
+            <p><strong>Raza: </strong><span>{{ pet.breed}}</span></p>
+          </div>
+          <div class>
+            <p><strong>Edad: </strong><span>{{ pet.calculateAge() }}</span></p>
+            <p><strong>Peso: </strong><span>{{ pet.weight }}</span></p>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+  </section>
+</main>
+
+<section id="history">
+  <div id="history-title">
+    <h1>Historial médico</h1>
+    <img src="assets/images/showPet/add.svg">
+  </div>
+
+  <table>
+    <thead>
+    <tr>
+      <th scope="col">idHistoria</th>
+      <th scope="col">Enfermedad</th>
+      <th scope="col">Tratamientos médicos</th>
+      <th scope="col">Fecha</th>
+      <th scope="col">Droga Sumnistrada</th>
+      <th scope="col">Precio asociado</th>
+    </tr>
+    </thead>
+    <tbody>
+    <td>0001 <img src="assets/images/showPet/edit2.svg"></td>
+    <td>{{ pet.disease }}</td>
+
+
+    </tbody>
+  </table>
+
+</section>

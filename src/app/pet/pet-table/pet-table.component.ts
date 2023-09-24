@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {Pet} from "../../model/pet/pet";
+import {PetService} from "../../services/pet/pet.service";
 
 @Component({
   selector: 'app-pet-table',
@@ -8,17 +9,13 @@ import {Pet} from "../../model/pet/pet";
 })
 export class PetTableComponent {
 
+  constructor(private petService: PetService) {
+  }
 
-  petList: Pet[] = [
-    new Pet(
-      1,
-      'Firulais',
-      'Chihuahua',
-      new Date('2019-01-01'),
-      5,
-      'Parvovirus',
-      'https://images.pexels.com/photos/160722/cat-tiger-getiegert-feel-at-home-160722.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2',
-      'Juan Perez'
-    )
-  ];
+
+  petList!: Pet[];
+
+  ngOnInit(): void {
+    this.petList = this.petService.findAll();
+  }
 }
