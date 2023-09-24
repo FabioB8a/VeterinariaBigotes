@@ -1,0 +1,284 @@
+/* styles.css */
+.sidebar {
+  position: fixed;
+  height: 100vh;
+  background-color: #1C697D;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+
+.filters {
+  color: #FFFFFF;
+}
+
+.sidebar h4 {
+  font-size: 1.3rem;
+  margin-left: 5%;
+  color: #FFFFFF;
+}
+
+.sidebar .filters {
+  margin-left: 10%;
+  margin-right: 7%;
+  margin-top: 5%;
+  margin-bottom: 30%;
+  font-size: 0.9rem;
+  font-weight: 400;
+
+}
+
+/* Estilos para los campos de búsqueda */
+.search-input {
+  position: relative;
+  margin-bottom: 10%;
+}
+
+.search-input input[type="text"] {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 0.5rem;
+  border: 1px solid rgba(0, 0, 0, 0.30);
+  background: #FFF;
+}
+
+/* Estilos para el ícono de búsqueda */
+.search-icon {
+  position: absolute;
+  left: 5%; /* Ajustar la posición a la izquierda */
+  top: 17%;
+  height: 10%;
+  transform: translateY(-50%);
+  color: #737373; /* Ajustar el color del ícono */
+  cursor: pointer;
+}
+
+/* Estilos para los checkboxes personalizados */
+.sidebar input[type="checkbox"] {
+  display: none; /* Oculta el checkbox nativo */
+}
+
+/* Estilos para los labels personalizados (simulando los checkboxes) */
+.sidebar label[for="filterNamePet"] {
+  position: relative;
+  padding-left: 15%;
+  cursor: pointer;
+  color: #FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+/* Estilos para el icono de minicuadrado */
+.sidebar label[for="filterNamePet"]::before{
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10%;
+  height: 65%;
+  background-color: #FFFFFF;
+  transition: background-color 0.3s, border-color 0.3s;
+  border-radius: 0.2rem;
+  border: 3px solid transparent;
+}
+
+/* Estilos para el minicuadrado cuando el checkbox esté seleccionado */
+.sidebar input[type="checkbox"]:checked + label[for="filterNamePet"]::before {
+  background-color: #1C697D;
+  border-color: #FFFFFF;
+}
+
+/* Ajusta el margen superior de la imagen */
+.icon {
+  /*Establecer tamaño de la foto*/
+  width: 60%;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.content {
+  margin-left: 17%;
+  width: 80%;
+}
+
+.head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.head img {
+  width: 5%;
+  margin-right: 2%;
+}
+
+.head h1 {
+  margin-bottom: 1%;
+  font-size: 1rem;
+  color: #34344C;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 900;
+
+}
+
+.head h2 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 35%;
+  font-family: 'Raleway', sans-serif;
+  color: #1C697D;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+
+/* Estilos para el título h1 */
+.content h1 {
+  text-align: right;
+  /* Alinea el texto a la derecha */
+  margin-right: 10%;
+  /* Agrega margen derecho para separación */
+  font-size: 1.5rem;
+  /* Tamaño de fuente del título */
+  color: #34344C;
+  /* Color del título */
+  font-family: 'Raleway', sans-serif;
+  /* Peso de la fuente */
+  margin-top: 2%;
+  margin-bottom: 3%;
+  color: #1C697D;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.23rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+
+}
+
+#searchPet {
+  font-size: 0.53rem;
+  padding-left: 17%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+}
+
+#filterName {
+  color: #34344C;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 400;
+}
+
+/* Estilo para la tabla */
+.content table {
+  width: 100%;
+  border-collapse: collapse;
+  /* Colapsar los bordes de la tabla */
+}
+
+/* Estilo para los encabezados de columna */
+.content th {
+  /* Color de fondo de los encabezados */
+  padding: 1%;
+  /* Espaciado interno */
+  font-weight: 400;
+  /* Peso de la fuente */
+  text-align: left;
+  background: rgba(217, 217, 217, 0.20);
+  font-family: 'Raleway', sans-serif;
+  font-size: 1rem;
+  font-style: normal;
+  line-height: normal;
+  color: rgba(52, 52, 76, 0.70);
+  border-top: rgba(217, 217, 217, 0.20) !important;
+  border-bottom: rgba(217, 217, 217, 0.20) !important;
+}
+
+
+/* Estilos para las filas, usando !important para asegurar prioridad */
+.content table tbody tr {
+  background-color: white !important;
+  border-bottom: 0.13rem solid #D9D9D9 !important;
+  font-size: 1rem;
+  text-align: left;
+  justify-content: center;
+}
+
+/* Estilos para las celdas de la tabla */
+.content table tbody tr td {
+  padding-top: 2%;
+  padding-bottom: 2%;
+  text-align: left;
+  vertical-align: middle;
+}
+/* Estilos para el contenedor de los botones */
+.addSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #1C697D;
+  /* Color de fondo del sidebar */
+  color: #FFFFFF;
+  /* Color del texto */
+}
+
+.addSection a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 5%;
+  margin-top: 5%;
+}
+
+.addSection a:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #1C697D 0.2rem solid;
+  border-top: #1C697D 0.2rem solid;
+  /* Cambia el color del texto al hacer hover */
+}
+/* Estilo para el botón "Cerrar Sesión" */
+.sidebar p {
+  text-align: center;
+  color: #FFFFFF;
+  margin-top: 65%;
+  color: #FFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+/* Aplica estilos a la última columna */
+td#more {
+  padding: 0;
+  margin: 0;
+}
+
+/* Estilos para el enlace dentro de la última columna */
+td#more a {
+  font-size: 2.5rem;
+  padding: 0;
+
+  color: #D9D9D9;
+  text-decoration: none;
+}
+
+td img {
+  border-radius: 50%;
+  margin-right: 10%;
+}
+
+#more a img {
+  width: 2.5rem;
+  margin: 0;
+  border-radius: 0%;
+}
+
+
