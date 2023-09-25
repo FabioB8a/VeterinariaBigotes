@@ -9,6 +9,7 @@ import { PetFormComponent } from './pet/pet-form/pet-form.component';
 import {NgOptimizedImage} from "@angular/common";
 import { LogInComponent } from './log-in/log-in.component';
 import { LandingComponent } from './landing/landing.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LandingComponent } from './landing/landing.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgOptimizedImage
+    NgOptimizedImage,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

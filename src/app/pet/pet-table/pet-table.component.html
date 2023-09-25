@@ -16,7 +16,7 @@
     </div>
     <h4>Adicionales</h4>
     <div class="addSection">
-      <a href="">Agregar mascota</a>
+      <a [routerLink]="['/pet/save']">Agregar mascota</a>
       <a href="">Mostrar dueños</a>
     </div>
     <p>Cerrar Sesión</p>
@@ -53,7 +53,8 @@
           <a (click)="deleteById(pet.id)">
             <img src="assets/images/vet/deleteIcon.png">
           </a>
-          <a href=""> <img src="assets/images/vet/editIcon.png"> </a>
+          <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
+        
           <a [routerLink]="['/pet/detail', pet.id]"> ... </a>
         </td>
       </tr>
