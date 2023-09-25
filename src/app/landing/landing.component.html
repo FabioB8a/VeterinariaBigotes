@@ -137,8 +137,8 @@
             </div>
             <div class="vet-cont">
                 <div class="vet-info">
-                    <h2 class="vet-name">{{ vetInfo[currentVetIndex]?.name }}</h2>
-                    <p class="vet-description">{{ vetInfo[currentVetIndex]?.description }}</p>
+                    <h2 class="vet-name">{{ vetInfo[currentVetIndex].name }}</h2>
+                    <p class="vet-description">{{ vetInfo[currentVetIndex].description }}</p>
                     <h3 class="vet-interests-title">Intereses</h3>
                     <ul class="vet-interests-list">
                         <li *ngFor="let interest of vetInfo[currentVetIndex]?.interests">{{ interest }}</li>
@@ -148,7 +148,7 @@
         </div>
         <div class="right">
             <div class="vet-image">
-            <img [src]="vetInfo[currentVetIndex]?.imageSrc" alt="Veterinarian Image" >
+            <img [src]="vetInfo[currentVetIndex].imageSrc" alt="Veterinarian Image" >
             </div>
         </div>
         <div class="navigation-buttons">
