@@ -40,10 +40,16 @@ export class PetService {
     return <Pet>this.petList.find(o => o.id === id)
   }
 
+  addPet(newPet: Pet) {
+    newPet.id = this.petList.length + 1;
+    this.petList.push(newPet);
+  }
+
   deleteById(id: number) {
     const index = this.petList.findIndex(pet => pet.id === id);
     if (index !== -1) {
       this.petList.splice(index, 1);
     }
   }
+  
 }
