@@ -40,9 +40,18 @@ export class PetService {
     return <Pet>this.petList.find(o => o.id === id)
   }
 
-  addPet(newPet: Pet) {
-    newPet.id = this.petList.length + 1;
-    this.petList.push(newPet);
+  savePet(newPet: Pet) {
+    if (newPet.id !== 0) {
+      // Si el id no es 0, actualizamos la mascota existente
+      const index = this.petList.findIndex(pet => pet.id === newPet.id);
+      if (index !== -1) {
+        this.petList[index] = newPet;
+      }
+    } else {
+      // Si el id es 0, agregamos una nueva mascota
+      newPet.id = this.petList.length + 1;
+      this.petList.push(newPet);
+    }
   }
 
   deleteById(id: number) {

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pet } from 'src/app/model/pet/pet';
 import {PetService} from "../../services/pet/pet.service";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-pet-form',
@@ -9,8 +10,7 @@ import {PetService} from "../../services/pet/pet.service";
 })
 export class PetFormComponent {
 
-  constructor(private petService: PetService) {
-  }
+  constructor(private petService: PetService, private route: ActivatedRoute) { }
 
   sendPet!: Pet;
 
@@ -25,12 +25,21 @@ export class PetFormComponent {
     ''
   )
 
-  addPet() {
-    
+  ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      if ('petId' in params) {
+        const petId = Number(params['petId']);
+        this.formPet = this.petService.findById(petId);
+      }
+    });
+  }
+
+
+  savePet() {
     this.formPet.birthdate = new Date(this.formPet.birthdate)
     this.sendPet = Object.assign({}, this.formPet);
     this.formPet.owner = "Luisa Parra"
 
-    this.petService.addPet(this.formPet);
+    this.petService.savePet(this.formPet);
   }
 }

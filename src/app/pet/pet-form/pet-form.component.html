@@ -1,4 +1,4 @@
-<form id="formPet" object="${pet}" action="@{/pet/save}" method="post">
+<form id="formPet">
     <!-- Hidden input field for ID -->
     <input type="hidden" field="*{id}" />
     <div class="form-content">
@@ -108,7 +108,7 @@
     </div>
     <div class="buttons-container">
         <a [routerLink]="['/pet/all']">Cancelar</a>
-        <button type="submit" (click)="addPet()" [routerLink]="['/pet/all']">Guardar</button>
+        <button type="submit" (click)="savePet()" [routerLink]="['/pet/all']">Guardar</button>
     </div>
 
 
