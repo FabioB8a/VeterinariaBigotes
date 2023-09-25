@@ -1,0 +1,724 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+html,
+body {
+    height: 100%;
+    font-size: 1rem;
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+}
+
+nav {
+    top: 0;
+    position: fixed;
+    height: 17%;
+    width: 100%;
+    padding-top: 1%;
+    padding-bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFFFFF;
+    z-index: 2;
+}
+
+.icon {
+    height: 100%;
+    margin-left: 1rem;
+    margin-right: 2rem;
+}
+
+.menu {
+    height: 60%;
+    width: 55%;
+    padding-left: 2.5%;
+    padding-right: 2.5%;
+    background-color: #F2F1F1;
+    border-radius: 3rem;
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.button1 {
+    padding: 0.75rem;
+    border-radius: 3rem;
+}
+
+.button1 a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 1.1rem;
+    font-family: 'Monsterrat', sans-serif;
+}
+
+.button1:hover {
+    cursor: pointer;
+    transition: 0.5s;
+    background-color: #5DB3DB;
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+.button:hover a {
+    transition: 0.5s;
+    color: #FFFFFF;
+}
+
+.page {
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+    width: 100vw;
+}
+
+.content {
+    margin-top: 10%;
+    height: 80%;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.info {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    display: flex;
+    box-sizing: border-box;
+}
+
+.information {
+    padding-top: 1rem;
+    height: 100%;
+    width: 35%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+
+.information h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+}
+
+.information p {
+    font-size: 1.2rem;
+}
+
+.button2 {
+    padding: 2rem;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #5DB3DB;
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+    margin-top: 5%;
+}
+
+.button2 a {
+    text-decoration: none;
+    color: #FFFFFF;
+    font-size: 1.5rem;
+}
+
+.button2:hover {
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    background: #B1D4E0;
+}
+
+#cat1 {
+    width: 65%;
+    aspect-ratio: 1/1;
+}
+
+#aboutUs {
+    scroll-margin: 5rem;
+    width: auto;
+    height: 35rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("/assets/images/background/catWallpaper.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    /* Agregado para que los elementos posicionados sean relativos a esta sección */
+    z-index: 0;
+    /* Asegura que la sección no cubra los elementos */
+}
+
+.aboutUs .description {
+    width: 20%;
+    height: 40%;
+    text-align: center;
+    border-radius: 3rem;
+    background: rgba(255, 255, 255, 0.60);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    position: relative;
+    /* Agregado para que la imagen se posicione respecto a este contenedor */
+    z-index: 1;
+    /* Asegura que el cuadro esté sobre el fondo */
+    overflow: visible;
+}
+/*
+.aboutUs .description .icon {
+    position: absolute;
+    top: 0;
+    left: calc(45% - 2.8125rem);
+
+    width: 20%;
+    height: auto;
+    padding: 1rem;
+    border-radius: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.671);
+    border-radius: 1rem;
+}*/
+
+.aboutUs p {
+    color: #000;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    margin: 0;
+}
+
+.flip-card {
+    perspective: 1000px;
+    cursor: pointer;
+}
+
+.flip-card-inner {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front {
+    width: 140%;
+    height: 140%;
+    position: absolute;
+    backface-visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+    background: rgba(255, 255, 255, 0.60);
+    padding: 2rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+}
+
+.flip-card-back {
+    width: 140%;
+    height: 140%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: 3rem;
+    background: rgba(255, 255, 255, 0.671);
+    padding: 0.5rem;
+    padding-bottom: 3rem;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transform-origin: center;
+    transform: rotateY(180deg);
+}
+
+/* Estilos para el contenido en la parte trasera */
+.flip-card-back h1 {
+    /* Agrega tus estilos específicos para el h2 en la parte trasera */
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+
+}
+
+.flip-card-back p {
+    /* Agrega tus estilos específicos para el párrafo en la parte trasera */
+    color: #000;
+    font-size: 0.8rem;
+    margin: 0;
+    margin-top: 10%;
+    padding: 0;
+}
+.description.flip-card {
+    margin-right: 5rem; /* Ajusta este valor según tus preferencias */
+}
+
+#reviews {
+    scroll-margin-top: 6rem;
+    width: 100%;
+    height: 80%;
+    padding: 5%;
+    padding-left: 15%;
+    padding-right: 15%;
+    display: flex;
+    flex: flex-start;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(177, 212, 224, 0.2);
+    box-sizing: border-box;
+}
+
+#reviewsCat {
+    width: 20%;
+    margin-right: 0%;
+    padding: 0%;
+}
+
+.reviewsOuterContainer {
+    width: 100%;
+    height: 120%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-bottom: 5%;
+    margin-left: 0%;
+    background-color: white;
+    border-radius: 1rem;
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.reviewsTitle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.8rem;
+    font-weight: bolder;
+    color: #27265B;
+    margin: 0%;
+    padding: 0%;
+}
+
+.reviewsTitle h1 {
+    margin: 10%;
+    padding: 0%;
+}
+
+
+#reviewsInnerContainer {
+    width: 100%;
+    height: 100%;
+    padding: 2%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 1rem;
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.5);
+}
+
+#reviewsHeader {
+    width: 100%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    margin: 0%;
+    padding: 0%;
+}
+
+#reviewsCatImg {
+    width: 15%;
+    margin: 5%;
+    margin-left: 0%;
+    padding: 0%;
+    border-radius: 5rem;
+    aspect-ratio: 1/1;
+}
+
+#reviewsData {
+    width: 60%;
+    display: flex;
+    justify-content: center;
+    align-items: left;
+    flex-direction: column;
+}
+
+#reviewsData h2 {
+    color: #27265B;
+    font-size: 2rem;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+}
+
+#reviewsData p {
+    color: #27265B;
+    font-size: 1rem;
+    font-weight: thiner;
+}
+
+#reviewsContent {
+    border-top-style: solid;
+    border-top-width: 0.1rem;
+    border-top-color: #27265B;
+    color: #27265B;
+}
+
+
+#vet-section {
+    scroll-margin-top: 15rem;
+    margin-top: 20%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    background-color: #5EB3DB;
+    border-radius: 0 15rem 15rem 0;
+    /* Adjusted border radius */
+    width: 80%;
+    height: 20%;
+}
+
+#vet-section>.left {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    margin-left: 2rem;
+    height: 100%;
+}
+
+#vet-section .title {
+    margin-top: -13rem;
+    height: 100%;
+}
+
+#vet-section .title h1 {
+    color: #27265B;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3rem;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+
+.vet-cont {
+    width: 120%;
+    height: 100%;
+    margin-top: 3rem;
+}
+
+.vet-info.hidden {
+    opacity: 0;
+}
+
+.vet-info {
+    position: relative;
+    transition: opacity 0.5s ease-in-out;
+    opacity: 1;
+    width: 100%;
+}
+
+.vet-name {
+    margin-left: 5%;
+    color: #FFF;
+    text-align: left;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2rem;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.vet-description {
+    margin-top: 0;
+    margin-left: 5%;
+    width: 70%;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.vet-interests-title {
+    margin-top: 0;
+    margin-left: 5%;
+    color: #FFF;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.7rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
+
+.vet-interests-list {
+    margin: 1rem 0;
+    padding-left: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    /* Agregado para eliminar las viñetas */
+}
+
+.vet-interests-list li {
+    margin-bottom: 10px;
+    margin-right: 5%;
+    padding: 0.5rem 1rem;
+    color: #FFF;
+    border: #FFF solid 0.2rem;
+    border-radius: 20px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.right {
+    height: 100%;
+    width: 100%;
+}
+
+.vet-image {
+    text-align: center;
+    z-index: 1;
+    position: relative;
+    margin-left: -8rem;
+    /* Adjusted to overlap with the left side */
+    height: 100%;
+    bottom: 0;
+}
+
+.vet-image img {
+    bottom: 0;
+    width: auto;
+    height: 20rem;
+    /* Changed to auto for maintaining aspect ratio */
+}
+.navigation-buttons {
+    transform: translateX(300%);
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin-left: 1rem;
+    height: 40%;
+}
+
+button {
+    font-size: 2rem;
+    padding: 0.1rem 1rem;
+    background-color: #27265B;
+    color: #FFF;
+    margin: 5%;
+    border-radius: 10rem;
+    border: none;
+    /* Remove the border */
+    cursor: pointer;
+    /* Change cursor on hover */
+    transition: background-color 0.3s ease;
+    /* Smooth transition */
+
+    /* Add a box shadow for depth */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Style on hover */
+button:hover {
+    background-color: #47468f;
+    /* You can add additional hover effects here */
+}
+
+#footer-basic {
+    margin-top: 2rem;
+    padding: 3rem;
+    background-color: #34344C;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: #ffffff;
+}
+
+
+#footer-basic .footer-cont {
+    font-size: 1rem;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#footer-basic .logo {
+    font-size: 2rem;
+}
+
+#footer-basic .logo img {
+    width: 35%;
+    height: auto;
+    opacity: 0.9;
+}
+
+#footer-basic .logo p {
+    margin-top: -1rem;
+    opacity: 0.4;
+    font-size: 0.7rem;
+}
+
+#footer-basic .link {
+    padding-left: 3rem;
+}
+
+#footer-basic .link img {
+    width: 9%;
+    height: auto;
+    opacity: 0.9;
+}
+
+#footer-basic .link p {
+    padding-left: 1rem;
+    padding-top: 0.3rem;
+    font-size: 0.7rem;
+}
+
+#footer-basic .media {
+    width: 100%;
+    height: 10rem;
+    height: auto;
+    opacity: 0.9;
+    padding-left: 1rem;
+    border-left: 0.2rem solid #ffffff;
+    font-size: 0.7rem;
+}
+
+#footer-basic .media img {
+    width: 1rem;
+    height: auto;
+    opacity: 0.9;
+}
+
+#footer-basic .social-media {
+    display: flex;
+    /* This will create a row layout */
+    align-items: center;
+    /* Align items vertically in the center */
+    gap: 2rem;
+    /* Add some spacing between the icons */
+    width: 3rem;
+    height: 3rem;
+    cursor: pointer;
+    background-color: #33383b;
+    border-radius: 2px;
+    font-size: 20px;
+    color: #ffffff;
+    text-align: center;
+    line-height: 3rem;
+}
+
+#footer-basic .footer-item {
+    display: flex;
+    align-items: center;
+    /* Align items vertically */
+    padding: 0.7rem;
+}
+
+#footer-basic .subscribe-form {
+    margin-top: 1rem;
+    text-align: left;
+    padding-right: 1rem;
+}
+
+#footer-basic .subscribe-form h2 {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#footer-basic .subscribe-form p {
+    font-size: 0.7rem;
+    margin-bottom: 1.5rem;
+}
+
+#footer-basic .subscribe-form form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+}
+
+#footer-basic .subscribe-form input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-right: 0.5rem;
+    font-size: 0.7rem;
+}
+
+#footer-basic .subscribe-form button {
+    background-color: #33383b;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 0.5rem;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: background-color 0.3s;
+}
+
+#footer-basic .subscribe-form button:hover {
+    background-color: #1a1c20;
+}
+#footer-basic .media{
+    display: flex;
+    flex-direction: column;
+
+}
+.media h1{
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+}
+
+
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    #footer-basic {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    #footer-basic .footer-item {
+        margin: 1rem auto;
+    }
+}
+
+.progress-1 {
+    width:100%;
+    height:2%;
+    border-radius: 20px;
+    background:
+     linear-gradient(#33383b 0 0) 0/0% no-repeat
+     white;
+    animation:p1 21s infinite linear;
+  }
+  @keyframes p1 {
+      100% {background-size:110%}
+  }

@@ -7,13 +7,17 @@ import { PetTableComponent } from './pet/pet-table/pet-table.component';
 import { PetDetailComponent } from './pet/pet-detail/pet-detail.component';
 import { PetFormComponent } from './pet/pet-form/pet-form.component';
 import {NgOptimizedImage} from "@angular/common";
+import { LogInComponent } from './log-in/log-in.component';
+import { LandingComponent } from './landing/landing.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PetTableComponent,
     PetDetailComponent,
-    PetFormComponent
+    PetFormComponent,
+    LogInComponent,
+    LandingComponent
   ],
   imports: [
     BrowserModule,
