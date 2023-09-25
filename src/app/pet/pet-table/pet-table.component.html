@@ -3,16 +3,14 @@
     <img class="icon" src="assets/images/vet/Bigotes-2.png">
     <h4>Filtros</h4>
     <div class="filters">
-
       <div>
-        <input type="checkbox" id="filterNamePet">
+        <input type="checkbox" id="filterNamePet" [(ngModel)]="isNameFilterActive" (change)="filterPetsByName()">
         <label for="filterNamePet">Nombre mascota</label>
       </div>
       <div class="search-input">
-        <input type="text" id="searchPet" placeholder="Inserte el nombre de la mascota">
+        <input type="text" id="searchPet" placeholder="Inserte el nombre de la mascota" [(ngModel)]="filterText" (input)="filterPetsByName()">
         <span class="search-icon"><i class="fas fa-search"></i></span>
       </div>
-
     </div>
     <h4>Adicionales</h4>
     <div class="addSection">
@@ -20,7 +18,6 @@
       <a href="">Mostrar dueños</a>
     </div>
     <p>Cerrar Sesión</p>
-
   </div>
   <div class="content">
     <div class="head">
@@ -40,21 +37,21 @@
       </tr>
       </thead>
       <tbody>
-      <tr *ngFor="let pet of petList">
+      <tr *ngFor="let pet of filterPetsByName() || petList">
         <td>
-          <img src={{pet.imgUrl}} alt="Imagen de la mascota" id="petImg" width="50" height="50">
+          <img src="{{ pet.imgUrl }}" alt="Imagen de la mascota" id="petImg" width="50" height="50">
           <span>{{ pet.name }}</span>
         </td>
         <td>{{ pet.breed }}</td>
         <td>{{ pet.calculateAge() }} años</td>
-        <td> {{ pet.weight }} gr</td>
+        <td>{{ pet.weight }} gr</td>
         <td>{{ pet.disease }}</td>
         <td id="more">
           <a (click)="deleteById(pet.id)">
             <img src="assets/images/vet/deleteIcon.png">
           </a>
           <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
-        
+
           <a [routerLink]="['/pet/detail', pet.id]"> ... </a>
         </td>
       </tr>

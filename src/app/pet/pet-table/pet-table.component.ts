@@ -14,9 +14,21 @@ export class PetTableComponent {
 
 
   petList!: Pet[];
+  filterText: string = '';
+  isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
     this.petList = this.petService.findAll();
+  }
+
+  filterPetsByName() {
+    if (this.isNameFilterActive) {
+      return this.petList.filter(pet =>
+        pet.name.toLowerCase().includes(this.filterText.toLowerCase())
+      );
+    } else {
+      return this.petList; // If the checkbox is not active, return the full list
+    }
   }
 
   deleteById(id:number):void{
