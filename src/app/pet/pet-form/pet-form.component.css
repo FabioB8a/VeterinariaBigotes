@@ -59,21 +59,22 @@ form {
 
 .form-content > .form-cont > .form-group > .container{
     width: 120%;
-    height: 2rem;
+    height: 2.2rem;
     border: 0.1rem solid #D9D9D9;
     border-radius: 0.5rem;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: row;
+    padding-right: 0;
 }
 .form-content > .form-cont > .form-group > .container i {
-    margin-left: 4%;
-    margin-top: 3%;
+    margin-left: 1%;
+    margin-top: 4%;
 
 }
 .form-content > .form-cont > .form-group > .container > input {
-    width: calc(100% - 2.7rem);
-    height: calc(100% - 0.12rem);
+    width: calc(100% - 0.8rem);
+    height: calc(100% - 0.03rem);
     border: none;
     display: flex;
     align-items: center;
@@ -119,23 +120,24 @@ form {
 }
 .form-content> .form-cont >.form-container >.form-group  > .container {
     width: 90%;
-    height: 1.9rem;
+    height: 2.2rem;
     border: 0.1rem solid #D9D9D9;
     border-radius: 0.5rem;
     background-color: #FFFFFF;
     display: flex;
     flex-direction: row;
+    padding-right: 0;
 
 }
 
 .form-content> .form-cont>.form-container> .form-group>.container i{
-    margin-left: 4%;
-    margin-top: 3%;
+    margin-left: 1%;
+    margin-top: 4%;
 }
 
 .form-content> .form-cont>.form-container> .form-group>.container > input {
-    width: calc(100% - 2.7rem);
-    height: calc(100% - 0.12rem);
+    width: calc(100% - 0.8rem);
+    height: calc(100% - 0.03rem);
     border: none;
     display: flex;
     align-items: center;
@@ -147,6 +149,7 @@ form {
     font-size: 0.8rem;
     padding-left: 5%;
     margin-left: 5%;
+
     
 }
 
@@ -206,4 +209,8 @@ button {
     padding-bottom: 0.5rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+}
+
+.fa-paw:before {
+    content:unset;
 }
