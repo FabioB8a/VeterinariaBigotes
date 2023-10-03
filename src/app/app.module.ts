@@ -10,6 +10,9 @@ import {NgOptimizedImage} from "@angular/common";
 import { LogInComponent } from './log-in/log-in.component';
 import { LandingComponent } from './landing/landing.component';
 import { FormsModule } from '@angular/forms';
+import { OwnerDetailComponent } from './owner/owner-detail/owner-detail.component';
+import { OwnerFormComponent } from './owner/owner-form/owner-form.component';
+import { OwnerTableComponent } from './owner/owner-table/owner-table.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +21,10 @@ import { FormsModule } from '@angular/forms';
     PetDetailComponent,
     PetFormComponent,
     LogInComponent,
-    LandingComponent
+    LandingComponent,
+    OwnerDetailComponent,
+    OwnerFormComponent,
+    OwnerTableComponent
   ],
   imports: [
     BrowserModule,

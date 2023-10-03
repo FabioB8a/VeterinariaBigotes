@@ -39,7 +39,6 @@ export class PetFormComponent {
     this.formPet.birthdate = new Date(this.formPet.birthdate)
     this.sendPet = Object.assign({}, this.formPet);
     this.formPet.owner = "Luisa Parra"
-
     this.petService.savePet(this.formPet);
   }
 }
