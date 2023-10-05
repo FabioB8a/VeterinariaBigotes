@@ -37,6 +37,7 @@ export class PetFormComponent {
 
 
   savePet() {
+    // Change logic from owner
     this.formPet.birthdate = new Date(this.formPet.birthdate)
     this.sendPet = Object.assign({}, this.formPet);
     this.formPet.owner = "Luisa Parra"

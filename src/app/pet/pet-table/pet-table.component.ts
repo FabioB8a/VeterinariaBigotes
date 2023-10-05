@@ -38,7 +38,9 @@ export class PetTableComponent {
     }
   }
 
-  deleteById(id:number):void{
-    this.petService.deleteById(id);
+  deleteById(pet:Pet):void{
+    var index = this.petList.indexOf(pet);
+    this,this.petList.splice(index,1);
+    this.petService.deleteById(pet.id);
   }
 }

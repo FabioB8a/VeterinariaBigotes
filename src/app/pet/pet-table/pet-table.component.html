@@ -47,7 +47,7 @@
         <td>{{ pet.weight }} gr</td>
         <td>{{ pet.disease }}</td>
         <td id="more">
-          <a (click)="deleteById(pet.id)">
+          <a (click)="deleteById(pet)">
             <img src="assets/images/vet/deleteIcon.png">
           </a>
           <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
