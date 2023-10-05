@@ -13,6 +13,7 @@ import { FormsModule } from '@angular/forms';
 import { OwnerDetailComponent } from './owner/owner-detail/owner-detail.component';
 import { OwnerFormComponent } from './owner/owner-form/owner-form.component';
 import { OwnerTableComponent } from './owner/owner-table/owner-table.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { OwnerTableComponent } from './owner/owner-table/owner-table.component';
     BrowserModule,
     AppRoutingModule,
     NgOptimizedImage,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

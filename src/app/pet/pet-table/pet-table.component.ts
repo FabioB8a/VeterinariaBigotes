@@ -9,18 +9,25 @@ import {PetService} from "../../services/pet/pet.service";
 })
 export class PetTableComponent {
 
-  constructor(private petService: PetService) {
-  }
-
+  selectedPet!: Pet;
 
   petList!: Pet[];
+
+  constructor(
+    private petService: PetService
+  ) {
+  }
+
   filterText: string = '';
   isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
-    this.petList = this.petService.findAll();
+    this.petService.findAll().subscribe(
+      data => this.petList = data
+    )
   }
 
+  // Correcciones posteriores
   filterPetsByName() {
     if (this.isNameFilterActive) {
       return this.petList.filter(pet =>

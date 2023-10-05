@@ -20,6 +20,6 @@ export class PetDetailComponent {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    this.pet = this.petService.findById(id);
+    this.petService.findById(id);
   }
 }

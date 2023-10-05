@@ -29,7 +29,8 @@ export class PetFormComponent {
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
         const petId = Number(params['petId']);
-        this.formPet = this.petService.findById(petId);
+        // Change logic here to find the owner and then the pet of the owner :))
+        this.petService.findById(petId);
       }
     });
   }
@@ -39,6 +40,6 @@ export class PetFormComponent {
     this.formPet.birthdate = new Date(this.formPet.birthdate)
     this.sendPet = Object.assign({}, this.formPet);
     this.formPet.owner = "Luisa Parra"
-    this.petService.savePet(this.formPet);
+    this.petService.addPet(this.formPet);
   }
 }
