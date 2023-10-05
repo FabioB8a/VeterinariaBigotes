@@ -32,13 +32,11 @@ export class Pet {
 
 
   calculateAge(): number {
-    // Assuming this.birthdate is in the format "YYYY-MM-DD"
-    const birthDateParts = this.birthdate.split('-'); // Split the string into an array of parts
+    const birthDateParts = this.birthdate.split('-');
     const year = parseInt(birthDateParts[0], 10);
-    const month = parseInt(birthDateParts[1], 10) - 1; // Months are 0-indexed in JavaScript
+    const month = parseInt(birthDateParts[1], 10) - 1; 
     const day = parseInt(birthDateParts[2], 10);
   
-    // Create a Date object using the parsed parts
     const birthDate = new Date(year, month, day);
   
     const currentDate = new Date();
