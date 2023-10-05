@@ -23,8 +23,9 @@ export class PetTableComponent {
 
   ngOnInit(): void {
     this.petService.findAll().subscribe(
-      data => this.petList = data
+      data => this.petList = data.map(x => Object.assign(new Pet(x.id,x.name,x.breed,x.birthdate,x.weight,x.disease,x.imgUrl), x))
     )
+    
   }
 
   // Correcciones posteriores
