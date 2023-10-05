@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Pet } from 'src/app/model/pet/pet';
 import {PetService} from "../../services/pet/pet.service";
 import { ActivatedRoute } from '@angular/router';
+import { Owner } from 'src/app/model/owner/owner';
 
 @Component({
   selector: 'app-pet-form',
@@ -21,7 +22,6 @@ export class PetFormComponent {
     new Date(),
     0,
     '',
-    '',
     ''
   )
 
@@ -40,7 +40,6 @@ export class PetFormComponent {
     // Change logic from owner
     this.formPet.birthdate = new Date(this.formPet.birthdate)
     this.sendPet = Object.assign({}, this.formPet);
-    this.formPet.owner = "Luisa Parra"
     this.petService.addPet(this.formPet);
   }
 }

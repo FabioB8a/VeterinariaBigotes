@@ -1,3 +1,5 @@
+import { Owner } from "../owner/owner";
+
 export class Pet {
 
   id: number;
@@ -8,7 +10,6 @@ export class Pet {
   disease: string;
   imgUrl: string;
   status: string;
-  owner: string;
 
   constructor(
     id: number,
@@ -17,8 +18,7 @@ export class Pet {
     birthdate: Date,
     weight: number,
     disease: string,
-    imgUrl: string,
-    owner: string
+    imgUrl: string
   ) {
     this.id = id;
     this.name = name;
@@ -28,7 +28,6 @@ export class Pet {
     this.disease = disease;
     this.imgUrl = imgUrl;
     this.status = 'En tratamiento';
-    this.owner = owner;
   }
 
 
