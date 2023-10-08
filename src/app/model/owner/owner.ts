@@ -9,7 +9,7 @@ export class Owner {
     phone: string;
     email: string;
     pets!: Pet[];
-  
+
     constructor(
       id: number,
       idCard: number,
@@ -27,4 +27,5 @@ export class Owner {
       this.phone = phone;
       this.email = email;
     }
+
   }

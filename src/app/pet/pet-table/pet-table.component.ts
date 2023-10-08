@@ -25,7 +25,7 @@ export class PetTableComponent {
     this.petService.findAll().subscribe(
       data => this.petList = data.map(x => Object.assign(new Pet(x.id,x.name,x.breed,x.birthdate,x.weight,x.disease,x.imgUrl), x))
     )
-    
+
   }
 
   // Correcciones posteriores
@@ -40,8 +40,8 @@ export class PetTableComponent {
   }
 
   deleteById(pet:Pet):void{
-    var index = this.petList.indexOf(pet);
-    this,this.petList.splice(index,1);
+    const index = this.petList.indexOf(pet);
+    this.petList.splice(index,1);
     this.petService.deleteById(pet.id);
   }
 }
