@@ -1,10 +1,20 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;900&display=swap');
 
 /* styles.css */
-.sidebar {
+
+.vetStyles .sidebar {
   position: fixed;
   height: 100vh;
   background-color: #1C697D;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+.userStyles .sidebar {
+  position: fixed;
+  height: 100vh;
+  background-color: #5DB3DB;
   align-content: center;
   display: flex;
   flex-direction: column;
@@ -87,8 +97,12 @@
 }
 
 /* Estilos para el minicuadrado cuando el checkbox esté seleccionado */
-.sidebar input[type="checkbox"]:checked + label[for="filterNamePet"]::before {
+.vetStyles .sidebar input[type="checkbox"]:checked + label[for="filterNamePet"]::before {
   background-color: #1C697D;
+  border-color: #FFFFFF;
+}
+.userStyles .sidebar input[type="checkbox"]:checked + label[for="filterNamePet"]::before {
+  background-color: #5DB3DB;
   border-color: #FFFFFF;
 }
 
@@ -125,7 +139,7 @@
 
 }
 
-.head h2 {
+.vetStyles .head h2 {
   margin-top: 1%;
   margin-bottom: 1%;
   margin-left: 35%;
@@ -136,9 +150,40 @@
   font-weight: 500;
   line-height: normal;
 }
+.userStyles .head h2{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 35%;
+  font-family: 'Raleway', sans-serif;
+  color: #5DB3DB;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
 
 /* Estilos para el título h1 */
-.content h1 {
+.userStyles .content h1 {
+  text-align: right;
+  /* Alinea el texto a la derecha */
+  margin-right: 10%;
+  /* Agrega margen derecho para separación */
+  font-size: 1.5rem;
+  /* Tamaño de fuente del título */
+  color: #34344C;
+  /* Color del título */
+  font-family: 'Raleway', sans-serif;
+  /* Peso de la fuente */
+  margin-top: 2%;
+  margin-bottom: 3%;
+  color: #5DB3DB;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.23rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+.vetStyles .content h1 {
   text-align: right;
   /* Alinea el texto a la derecha */
   margin-right: 10%;
@@ -157,8 +202,8 @@
   font-style: normal;
   font-weight: 900;
   line-height: normal;
-
 }
+
 
 #searchPet {
   font-size: 0.53rem;
@@ -281,5 +326,6 @@ td img {
   margin: 0;
   border-radius: 0%;
 }
+
 
 

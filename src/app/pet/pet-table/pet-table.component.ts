@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Pet} from "../../model/pet/pet";
 import {PetService} from "../../services/pet/pet.service";
+import {UserService} from "../../services/user/UserService";
 
 @Component({
   selector: 'app-pet-table',
@@ -9,14 +10,20 @@ import {PetService} from "../../services/pet/pet.service";
 })
 export class PetTableComponent {
 
+  @Input() userType: string ='';
+
   selectedPet!: Pet;
 
   petList!: Pet[];
 
+
   constructor(
     private petService: PetService
+    ,private userService: UserService
   ) {
+      this.userType = this.userService.getUserType();
   }
+
 
   filterText: string = '';
   isNameFilterActive: boolean = false;

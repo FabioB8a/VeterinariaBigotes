@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { OwnerService } from '../services/owner/owner.service';
+import { UserService } from '../services/user/UserService';
+
 
 @Component({
   selector: 'app-log-in',
@@ -10,8 +13,13 @@ export class LogInComponent {
   private formActive: HTMLElement | null = null;
   private loginVet: HTMLElement | null = null;
   private loginOwner: HTMLElement | null = null;
+  userType: string='';  // Variable para almacenar el tipo de usuario
 
-  constructor(private router:Router) {}  
+  constructor(
+    private router: Router,
+    private ownerService: OwnerService ,
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
     this.formActive = document.querySelector('.container-forms');
@@ -53,13 +61,25 @@ export class LogInComponent {
 
   onSubmit(type: string): void {
     if (type === 'owner') {
+      this.userType = 'owner';
       const idCardOwner = document.getElementById('idCardOwner') as HTMLInputElement;
-      const idOwner = idCardOwner.value;
-
-      if (idOwner === '') {
+      const idOwner = +idCardOwner.value;
+      console.log("El usuario es", idOwner);
+      if (!idOwner) {
         alert('Por favor ingrese su cédula');
+      } else {
+        const owner = this.ownerService.login(idOwner);
+        if (owner) {
+            // Suponiendo que tienes acceso al UserService
+            this.userService.setUserType('user');  // O 'vet' dependiendo del tipo
+            this.router.navigate(['/pet/all']);
+        }
+        else {
+          alert("El usuario no existe");
+        }
       }
     } else if (type === 'vet') {
+        this.userType = 'vet';
       const idCardVet = document.getElementById('idCardVet') as HTMLInputElement;
       const passwordVet = document.getElementById('passwordVet') as HTMLInputElement;
 

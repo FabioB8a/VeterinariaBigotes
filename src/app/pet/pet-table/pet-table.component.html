@@ -1,4 +1,4 @@
-<div class="d-flex">
+<div class="sidebar" [ngClass]="userType === 'user' ? 'userStyles' : 'vetStyles'">
   <div class="sidebar">
     <img class="icon" src="assets/images/vet/Bigotes-2.png">
     <h4>Filtros</h4>
@@ -12,18 +12,25 @@
         <span class="search-icon"><i class="fas fa-search"></i></span>
       </div>
     </div>
-    <h4>Adicionales</h4>
-    <div class="addSection">
-      <a [routerLink]="['/pet/save']">Agregar mascota</a>
-      <a href="">Mostrar dueños</a>
+    <div *ngIf="userType === 'vet'">
+      <h4>Adicionales</h4>
+      <div class="addSection">
+        <a [routerLink]="['/pet/save']">Agregar mascota</a>
+        <a href="">Mostrar dueños</a>
+      </div>
     </div>
     <p>Cerrar Sesión</p>
   </div>
   <div class="content">
-    <div class="head">
+    <div class="head" *ngIf="userType === 'vet'" >
       <h1>Nuestras Mascotas</h1>
       <h2>Nombre usuario</h2>
       <img class="icon" src="assets/images/users/FotoUser.png">
+    </div>
+    <div class="head" *ngIf="userType === 'user'" >
+      <h1>Mis Mascotas</h1>
+      <h2>Nombre usuario</h2>
+      <img class="icon" src="assets/images/users/FotoOwner.png">
     </div>
     <table class="table table-striped">
       <thead>
