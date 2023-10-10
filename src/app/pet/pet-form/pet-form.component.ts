@@ -16,12 +16,12 @@ export class PetFormComponent {
   sendPet!: Pet;
 
   formPet!: Pet
-  
+
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
         const petId = Number(params['petId']);
-        
+
         this.petService.findById(petId).subscribe(data => this.formPet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.owner));
       }
     });

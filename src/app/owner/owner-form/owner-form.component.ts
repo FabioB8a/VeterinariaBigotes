@@ -14,14 +14,14 @@ export class OwnerFormComponent {
 
     sendOwner!: Owner;
 
-    formOwner!: Owner;
+  formOwner: any = {};  // Initialize formOwner as an empty object or with default values
 
     ngOnInit() {
       this.route.queryParams.subscribe(params => {
         if ('ownerId' in params) {
           const ownerId = Number(params['ownerId']);
           this.ownerService.findById(ownerId).subscribe(
-            data => this.formOwner = data
+            data => this.formOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email)
           );
         }
       });
