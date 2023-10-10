@@ -33,6 +33,6 @@ export class OwnerService {
   }
 
   login(idCard: number): Observable<Owner> {
-    return this.http.post<Owner>("http://localhost:8090/login/owner", idCard);
+    return this.http.get<Owner>("http://localhost:8090/login/owner/" + idCard);
   }
 }
