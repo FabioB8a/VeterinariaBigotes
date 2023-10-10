@@ -21,7 +21,7 @@ export class PetDetailComponent {
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.petService.findById(id).subscribe((data) => {
-      this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl);
+      this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.owner);
     });
   }
 }

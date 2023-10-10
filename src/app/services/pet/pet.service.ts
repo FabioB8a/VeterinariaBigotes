@@ -20,6 +20,11 @@ export class PetService {
   }
 
   // Finalizar la dirección URL
+  findByOwner(id:number): Observable<Pet[]>{
+    return this.http.get<Pet[]>('http://localhost:8090/pet/owner/' + id);
+  }
+
+  // Finalizar la dirección URL
   findById(id:number): Observable<Pet>{
     const pet = this.http.get<Pet>("http://localhost:8090/pet/" + id);
     return pet;

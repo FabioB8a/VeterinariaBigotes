@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Pet} from "../../model/pet/pet";
 import {PetService} from "../../services/pet/pet.service";
 import {UserService} from "../../services/user/UserService";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-pet-table',
@@ -20,6 +21,7 @@ export class PetTableComponent {
     constructor(
         private petService: PetService
         ,private userService: UserService
+        ,private route: ActivatedRoute
     ) {
 
     }
@@ -38,22 +40,29 @@ export class PetTableComponent {
         this.userType = this.userService.getUserType();
         //localStorage == coockies
         let type =  localStorage.getItem('userType');
+        
 
-        console.log("antes",this.userType);
 
-
-        if(type == 'vet'){
+        if (type == 'vet') {
             this.userType = 'vet';
-        }else if (type == 'user'){
+            this.petService.findAll().subscribe(
+                data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+            );
+        } else if (type == 'user') {
             this.userType = 'user';
-        }else {
+            this.route.queryParams.subscribe(params => {
+                const userId = params['id'].toString();
+                
+                this.petService.findByOwner(userId).subscribe(
+                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+                );
+            });
+        }
+        else {
             localStorage.setItem('userType',this.userType);
         }
-        console.log("despues",this.userType);
 
-        this.petService.findAll().subscribe(
-            data => this.petList = data.map(x => Object.assign(new Pet(x.id,x.name,x.breed,x.birthdate,x.weight,x.disease,x.imgUrl), x))
-        )
+        
 
     }
 
