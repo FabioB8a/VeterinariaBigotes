@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Pet } from 'src/app/model/pet/pet';
 import {PetService} from "../../services/pet/pet.service";
+import {OwnerService} from "../../services/owner/owner.service";
 import { ActivatedRoute } from '@angular/router';
 import { Owner } from 'src/app/model/owner/owner';
 
@@ -11,7 +12,7 @@ import { Owner } from 'src/app/model/owner/owner';
 })
 export class PetFormComponent {
 
-  constructor(private petService: PetService, private route: ActivatedRoute) { }
+  constructor(private petService: PetService, private ownerService: OwnerService, private route: ActivatedRoute) { }
 
   sendPet!: Pet;
 
@@ -20,11 +21,21 @@ export class PetFormComponent {
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
-        const petId = Number(params['petId']);
-        
-        this.petService.findById(petId).subscribe(data => this.formPet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.owner));
+          const petId = Number(params['petId']);
+          
+          this.petService.findById(petId).subscribe(data => {
+              this.formPet = new Pet(data.id, data.name, data.breed, data.birthdate, data.weight, data.disease, data.imgUrl, data.owner);
+  
+              // Luego, obtén el propietario usando findOwnerByPets_Id
+              this.ownerService.findOwnerByPets_Id(petId).subscribe(owner => {
+                  // Asigna el propietario a la mascota
+                  this.formPet.owner = owner;
+              });
+          });
       }
-    });
+  });
+  console.log(this.formPet.owner);
+  
   }
 
 
