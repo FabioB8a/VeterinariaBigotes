@@ -17,7 +17,7 @@ export class PetFormComponent {
   sendPet!: Pet;
 
   formPet!: Pet
-  
+
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
