@@ -327,5 +327,14 @@ td img {
   border-radius: 0%;
 }
 
+.firstLine{
+  display: flex;
+  align-items: center;
+  justify-items: center;
+}
 
+
+.petImage{
+  margin-left: 50px;
+}
 

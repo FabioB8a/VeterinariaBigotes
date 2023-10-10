@@ -45,9 +45,9 @@
       </thead>
       <tbody>
       <tr *ngFor="let pet of filterPetsByName() || petList">
-        <td>
-          <img src="{{ pet.imgUrl }}" alt="Imagen de la mascota" id="petImg" width="50" height="50">
-          <span>{{ pet.name }}</span>
+        <td class="firstLine">
+          <img class="petImage" src="{{ pet.imgUrl }}" alt="Imagen de la mascota" id="petImg" width="50" height="50">
+          <span class= "imagenPerro">{{ pet.name }}</span>
         </td>
         <td>{{ pet.breed }}</td>
         <td>{{ pet.calculateAge() }} años</td>

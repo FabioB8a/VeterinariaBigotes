@@ -36,37 +36,29 @@ export class PetTableComponent {
 
     ngOnInit(): void {
 
-        //
-        this.userType = this.userService.getUserType();
-        //localStorage == coockies
-        let type =  localStorage.getItem('userType');
-        
+        this.route.queryParams.subscribe(params => {
+            this.userType = params['type'].toString();
+            //let type =  localStorage.getItem('userType');
 
-
-        if (type == 'vet') {
-            this.userType = 'vet';
-            this.petService.findAll().subscribe(
-                data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
-            );
-        } else if (type == 'user') {
-            this.userType = 'user';
-            this.route.queryParams.subscribe(params => {
+            if (this.userType == 'vet') {
+                //this.userType = 'vet';
+                this.petService.findAll().subscribe(
+                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+                );
+            } else if (this.userType == 'user') {
+                //this.userType = 'user';
                 const userId = params['id'].toString();
-                
+
                 this.petService.findByOwner(userId).subscribe(
                     data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
                 );
-            });
-        }
-        else {
-            localStorage.setItem('userType',this.userType);
-        }
-
-        
-
+            }
+            else {
+                localStorage.setItem('userType',this.userType);
+            }
+        });
     }
 
-    // Correcciones posteriores
     filterPetsByName() {
         if (this.isNameFilterActive) {
             return this.petList.filter(pet =>
