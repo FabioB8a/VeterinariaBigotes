@@ -43,6 +43,7 @@ export class PetService {
   deleteById(id: number) {
     this.http.delete("http://localhost:8090/pet" + id).subscribe();
   }
+  // Finalizar la dirección URL
   ownerPets(id:number){
     this.http.get("http://localhost:8090/owner/pet"+id).subscribe();
   }

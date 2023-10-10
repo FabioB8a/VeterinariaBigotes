@@ -20,6 +20,11 @@ export class OwnerService {
     return this.http.get<Owner>("http://localhost:8090/owner/" + id);
   }
 
+  
+  findOwnerByPets_Id(id:number ): Observable<Owner>{
+    return this.http.get<Owner>("http://localhost:8090/owner/pet/" + id);
+  }
+
   addOwner(newOwner: Owner) {
     this.http.post("http://localhost:8090/owner", newOwner).subscribe();
   }
