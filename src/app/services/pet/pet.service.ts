@@ -13,7 +13,7 @@ export class PetService {
   ) { }
 
   petList: Pet[] = [];
-  
+
   // Finalizar la dirección URL
   findAll(): Observable<Pet[]>{
     return this.http.get<Pet[]>('http://localhost:8090/pet');
@@ -38,5 +38,8 @@ export class PetService {
   deleteById(id: number) {
     this.http.delete("http://localhost:8090/pet" + id).subscribe();
   }
-  
+  ownerPets(id:number){
+    this.http.get("http://localhost:8090/owner/pet"+id).subscribe();
+  }
+
 }
