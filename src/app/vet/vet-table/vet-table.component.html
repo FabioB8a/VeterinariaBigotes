@@ -8,11 +8,11 @@
 
             <div>
                 <input type="checkbox" id="filterNameOwner">
-                <label for="filterNameOwner">Nombre dueño</label>
+                <label for="filterNameOwner">Nombre veterinario</label>
             </div>
             <!-- Dentro de tu barra lateral en el archivo HTML -->
             <div class="search-input">
-                <input type="text" id="searchPet" placeholder="Inserte el nombre del dueño">
+                <input type="text" id="searchVet" placeholder="Inserte el nombre del veterinario">
                 <span class="search-icon"><i class="fas fa-search"></i></span>
             </div>
 
@@ -20,8 +20,7 @@
         </div>
         <h4>Adicionales</h4>
         <div class="addSection">
-            <a [routerLink]="['/owner/save']">Agregar dueño</a>
-            <a [routerLink]="['/pet/all']">Mostrar mascotas</a>
+            <a [routerLink]="['/owner/save']">Agregar veterinario</a>
         </div>
         <p>Cerrar Sesión</p>
 
@@ -29,8 +28,8 @@
 
     <div class="content">
         <div class="head">
-            <h1>Nuestros Dueños</h1>
-            <h2>Nombre usuario</h2>
+            <h1>Nuestros Veterinarios</h1>
+            <h2>Administrador</h2>
             <img class="icon" src="assets/images/users/FotoUser.png">
         </div>
         <table class="table table-striped">
