@@ -35,11 +35,10 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th scope="col">Veterinario</th>
                 <th scope="col">Cédula</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Celular</th>
-                <th scope="col">Correo</th>
+                <th scope="col">Contraseña</th>
+                <th scope="col">Especialidad</th>
                 <th>Adicionales</th>
             </tr>
             </thead>
@@ -47,11 +46,10 @@
             <tr *ngFor="let vet of filterVetsByName() || vetList">
                 <td class="firstLine">
                     <img class="petImage" src="{{ vet.imgUrl }}" alt="Imagen deL médico" id="vetImg" width="50" height="50">
-                    <span class= "imagenPerro">{{ vet.firstName }}</span>
+                    <span class= "imagenPerro">{{ vet.firstName + ' ' + vet.firstLastName }}</span>
                   </td>
                 <td>{{vet.idCard}}</td>
-                <td >{{vet.firstName}}</td>
-                <td> {{vet.firstLastName}}</td>
+                <td >{{vet.password}}</td>
                 <td>{{vet.speciality}}</td>
                 <td id="more">
                     <!--add pet to owner we need the path-->
