@@ -20,7 +20,7 @@
         </div>
         <h4>Adicionales</h4>
         <div class="addSection">
-            <a [routerLink]="['/owner/save']">Agregar veterinario</a>
+            <a [routerLink]="['/vet/save']">Agregar veterinario</a>
         </div>
         <p>Cerrar Sesión</p>
 
@@ -52,7 +52,7 @@
                 <td >{{vet.password}}</td>
                 <td>{{vet.speciality}}</td>
                 <td id="more">
-                    <!--add pet to owner we need the path-->
+                    <!--add pet to vet we need the path-->
                     <a (click)="deleteById(vet)">
                         <img src="assets/images/vet/deleteIcon.png">
                     </a>
