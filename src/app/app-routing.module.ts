@@ -10,6 +10,8 @@ import {Owner} from "./model/owner/owner";
 import {OwnerFormComponent} from "./owner/owner-form/owner-form.component";
 import {OwnerDetailComponent} from "./owner/owner-detail/owner-detail.component";
 import { VetTableComponent } from './vet/vet-table/vet-table.component';
+import { VetFormComponent } from './vet/vet-form/vet-form.component';
+import { VetDetailComponent } from './vet/vet-detail/vet-detail.component';
 
 const routes: Routes = [
   {path: 'home', component: LandingComponent},
@@ -19,8 +21,10 @@ const routes: Routes = [
   {path: 'vet/all', component: VetTableComponent},
   { path : 'pet/detail/:id', component : PetDetailComponent},
   { path : 'owner/detail/:id', component : OwnerDetailComponent},
+  { path : 'vet/detail/:id', component : VetDetailComponent},
   { path: 'pet/save', component: PetFormComponent},
   { path: 'owner/save', component: OwnerFormComponent},
+  { path: 'vet/save', component: VetFormComponent},
   { path: 'login/show', component: LogInComponent}
   
 ];
