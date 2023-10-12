@@ -22,10 +22,10 @@ export class PetFormComponent {
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
           const petId = Number(params['petId']);
-          
+
           this.petService.findById(petId).subscribe(data => {
               this.formPet = new Pet(data.id, data.name, data.breed, data.birthdate, data.weight, data.disease, data.imgUrl, data.owner);
-  
+
               // Luego, obtén el propietario usando findOwnerByPets_Id
               this.ownerService.findOwnerByPets_Id(petId).subscribe(owner => {
                   // Asigna el propietario a la mascota
@@ -34,8 +34,6 @@ export class PetFormComponent {
           });
       }
   });
-  console.log(this.formPet.owner);
-  
   }
 
 
