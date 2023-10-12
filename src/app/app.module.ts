@@ -14,6 +14,9 @@ import { OwnerDetailComponent } from './owner/owner-detail/owner-detail.componen
 import { OwnerFormComponent } from './owner/owner-form/owner-form.component';
 import { OwnerTableComponent } from './owner/owner-table/owner-table.component';
 import { HttpClientModule } from '@angular/common/http';
+import { VetFormComponent } from './vet/vet-form/vet-form.component';
+import { VetDetailComponent } from './vet/vet-detail/vet-detail.component';
+import { VetTableComponent } from './vet/vet-table/vet-table.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,10 @@ import { HttpClientModule } from '@angular/common/http';
     LandingComponent,
     OwnerDetailComponent,
     OwnerFormComponent,
-    OwnerTableComponent
+    OwnerTableComponent,
+    VetFormComponent,
+    VetDetailComponent,
+    VetTableComponent
   ],
   imports: [
     BrowserModule,
