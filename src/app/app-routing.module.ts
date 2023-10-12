@@ -9,17 +9,20 @@ import {OwnerTableComponent} from "./owner/owner-table/owner-table.component";
 import {Owner} from "./model/owner/owner";
 import {OwnerFormComponent} from "./owner/owner-form/owner-form.component";
 import {OwnerDetailComponent} from "./owner/owner-detail/owner-detail.component";
+import { VetTableComponent } from './vet/vet-table/vet-table.component';
 
 const routes: Routes = [
   {path: 'home', component: LandingComponent},
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   { path: 'pet/all', component: PetTableComponent },
   {path: 'owner/all', component: OwnerTableComponent},
+  {path: 'vet/all', component: VetTableComponent},
   { path : 'pet/detail/:id', component : PetDetailComponent},
   { path : 'owner/detail/:id', component : OwnerDetailComponent},
   { path: 'pet/save', component: PetFormComponent},
   { path: 'owner/save', component: OwnerFormComponent},
   { path: 'login/show', component: LogInComponent}
+  
 ];
 
 @NgModule({
