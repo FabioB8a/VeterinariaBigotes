@@ -13,7 +13,7 @@ export class VetService {
   vetList: Veterinarian[] = [];
 
   findAll(): Observable<Veterinarian[]>{
-    return this.http.get<Veterinarian[]>('http://localhost:8090/owner');
+    return this.http.get<Veterinarian[]>('http://localhost:8090/vet');
   }
 
   findById(id:number ): Observable<Veterinarian>{
