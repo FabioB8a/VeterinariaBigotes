@@ -3,6 +3,7 @@ import {Pet} from "../../model/pet/pet";
 import {PetService} from "../../services/pet/pet.service";
 import {UserService} from "../../services/user/UserService";
 import { ActivatedRoute } from '@angular/router';
+import {query} from "@angular/animations";
 
 @Component({
     selector: 'app-pet-table',
@@ -74,4 +75,7 @@ export class PetTableComponent {
         this.petList.splice(index,1);
         this.petService.deleteById(pet.id);
     }
+
+  protected readonly query = query;
+  protected readonly String = String;
 }

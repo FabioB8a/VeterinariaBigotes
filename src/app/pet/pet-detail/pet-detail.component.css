@@ -21,7 +21,7 @@ nav {
   box-sizing: border-box;
 }
 
-#logo-container {
+.logo-container {
   padding-left: 1%;
   padding-right: 1%;
   padding-top: 1%;
@@ -32,11 +32,11 @@ nav {
   align-items: center;
 }
 
-#logo {
+.logo {
   height: 5rem;
 }
 
-#user {
+.user {
   width: 50%;
   padding-right: 1%;
   padding-top: 2.5%;
@@ -46,14 +46,15 @@ nav {
   gap: 1rem;
 }
 
-#user h2 {
+.user h2 {
   font-size: 1em;
   color: #1C697D;
   margin: 0;
   padding: 0;
 }
 
-#user img {
+
+.user img {
   width: 3rem;
 }
 
@@ -248,3 +249,16 @@ tr, td {
 td img{
   width: 1rem;
 }
+
+.type.userStyles h2 {
+  color: #5DB3DB;
+}
+
+.type.userStyles #pet-info {
+  background-color: #5DB3DB;
+}
+
+.type.userStyles #history-title h1 {
+  color: #5DB3DB;
+}
+

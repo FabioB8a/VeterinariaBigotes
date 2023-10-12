@@ -54,12 +54,13 @@
         <td>{{ pet.weight }} gr</td>
         <td>{{ pet.disease }}</td>
         <td id="more">
-          <a (click)="deleteById(pet)">
-            <img src="assets/images/vet/deleteIcon.png">
-          </a>
-          <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
-
-          <a [routerLink]="['/pet/detail', pet.id]"> ... </a>
+          <div *ngIf="userType ==='vet'">
+            <a (click)="deleteById(pet)">
+              <img src="assets/images/vet/deleteIcon.png">
+            </a>
+            <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
+          </div>
+          <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{userType: userType}"> ... </a>
         </td>
       </tr>
       </tbody>
