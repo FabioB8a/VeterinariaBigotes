@@ -1,1 +1,43 @@
-<p>vet-detail works!</p>
+
+<nav>
+    <div id="logo-container">
+        <a href="">
+            <img id="logo" src="../../../assets/images/showPet/logoVet.png">
+        </a>
+    </div>
+    <div id="user">
+        <h2>Administrador</h2>
+        <img id="user-img" src="assets/images/users/FotoUser.png">
+    </div>
+</nav>
+
+<main>
+    <section id="vet">
+        <div>
+            <img id="vet-img" src="{{ vet.imgUrl }}">
+        </div>
+        <div id="vet-info">
+            <div id="vet-data-container">
+                <div id="vet-name">
+                    <h1>Datos Veterinario</h1>
+                </div>
+                <div id="vet-data">
+                    <div>
+                        <p><strong>Cédula: </strong><span>{{vet.idCard}}</span></p>
+                        <p><strong>Apellido1: </strong><span>{{vet.firstLastName}}</span></p>
+                        <p><strong>Contraseña: </strong><span>{{vet.password}}</span></p>
+                    </div>
+                    <div class>
+                        <p><strong>Nombre: </strong><span>{{vet.firstName}}</span></p>
+                        <p><strong>Apellido2: </strong><span>{{vet.secondLastName}}</span></p>
+                        <p><strong>Especialidad: </strong><span>{{ vet.speciality}}</span></p>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+
+    </section>
+
+</main>
