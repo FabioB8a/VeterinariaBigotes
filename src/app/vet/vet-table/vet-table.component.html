@@ -27,7 +27,7 @@
         <div class="head">
             <h1>Nuestros Veterinarios</h1>
             <h2>Administrador</h2>
-            <img class="icon" src="assets/images/users/FotoUser.png">
+            <img class="icon" src="assets/images/users/FotoAdmin.png">
         </div>
         <table class="table table-striped">
             <thead>
@@ -43,7 +43,7 @@
             <tr *ngFor="let vet of filterVetsByName() || vetList">
                 <td class="firstLine">
                     <img class="petImage" src="{{ vet.imgUrl }}" alt="Imagen deL médico" id="vetImg" width="50" height="50">
-                    <span class= "imagenPerro">{{ vet.firstName + ' ' + vet.firstLastName }}</span>
+                    <span class= "imagenPerro">{{ vet.firstName + ' ' + vet.firstLastName + ' ' + vet.secondLastName }}</span>
                   </td>
                 <td>{{vet.idCard}}</td>
                 <td >{{vet.password}}</td>
