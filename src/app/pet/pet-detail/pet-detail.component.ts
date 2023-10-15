@@ -23,12 +23,11 @@ export class PetDetailComponent {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
-    console.log("AAAAA");
+    
     
     this.petService.findById(id).subscribe((data) => {
       this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.owner);
     });
-    console.log("BBB");
     this.route.queryParams.subscribe(params => {
       this.userType = params['userType'].toString();
     });
