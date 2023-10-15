@@ -40,6 +40,11 @@ export class PetFormComponent {
 
     this.petService.addPet(this.formPet);
 
+    this.leave();
+    
+  }
+
+  leave(){
     this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});
   }
 }

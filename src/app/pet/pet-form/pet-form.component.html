@@ -107,7 +107,7 @@
         </div>
     </div>
     <div class="buttons-container">
-        <a [routerLink]="['/pet/all']">Cancelar</a>
+        <a (click)="leave()">Cancelar</a>
         <button type="submit" (click)="savePet()">Guardar</button>
     </div>
 
