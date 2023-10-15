@@ -41,7 +41,17 @@ export class OwnerService {
     return this.http.get<Owner>("http://localhost:8090/login/owner/" + idCard);
   }
 
-  ownerExists(idCard: number): Observable<boolean> {
-    return this.http.get<boolean>("http://localhost:8090/owner/exists/" + idCard);
+  ownerExistsByIdCard(idCard: number): Observable<boolean> {
+    return this.http.get<boolean>("http://localhost:8090/owner/exists/idCard/" + idCard);
   }
+
+  ownerExistsByEmail(email: string): Observable<boolean> {
+    return this.http.get<boolean>("http://localhost:8090/owner/exists/email/" + email);
+  }
+
+  ownerExistsByPhone(phone: string): Observable<boolean> {
+    return this.http.get<boolean>("http://localhost:8090/owner/exists/phone/" + phone);
+  }
+
+
 }

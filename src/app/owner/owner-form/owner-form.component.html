@@ -11,28 +11,34 @@
                 <div class="form-group">
                     <label for="idCard">Cédula</label>
                     <div class="container">
+                      <div class="paw-container">
                         <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
                         </i>
+                      </div>
                         <input name="idCard" [(ngModel)]="formOwner.idCard" type="text" class="form-control" id="idCard" placeholder="0">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="secondLastName">Apellido 2</label>
+                    <label for="firstLastName">Apellido 1</label>
                     <div class="container">
+                      <div class="paw-container">
                         <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
                         </i>
-                        <input name="secondLastName"  [(ngModel)]="formOwner.secondLastName" type="text" class="form-control" id="secondLastName"
-                               placeholder="Apellido 2">
+                      </div>
+                        <input name="firstLastName"  [(ngModel)]="formOwner.firstLastName" type="text" class="form-control" id="firstLastName"
+                               placeholder="Apellido 1">
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="phone">Celular</label>
                     <div class="container">
+                      <div class="paw-container">
                         <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
                         </i>
+                      </div>
                         <input name="phone" [(ngModel)]="formOwner.phone" type="tel" class="form-control" id="phone"
                                placeholder="Telefono">
 
@@ -41,35 +47,41 @@
                 <div class="form-group">
                     <label for="firstName">Nombre</label>
                     <div class="container">
+                      <div class="paw-container">
                         <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
                         </i>
+                      </div>
                         <input name="firstName" [(ngModel)]="formOwner.firstName" type="text" class="form-control"  id="firstName" placeholder="Nombre">
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="firstLastName">Apellido 1</label>
+                    <label for="secondLastName">Apellido 2</label>
                     <div class="container">
+                      <div class="paw-container">
                         <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
                         </i>
-                        <input name="firstLastName" [(ngModel)]="formOwner.firstLastName" type="text" class="form-control"  id="firstLastName" placeholder="Apellido 1">
+                      </div>
+                        <input name="secondLastName" [(ngModel)]="formOwner.secondLastName" type="text" class="form-control"  id="secondLastName" placeholder="Apellido 2">
 
                     </div>
                 </div>
                 <div class="form-group">
                     <label for="email">Correo</label>
                     <div class="container">
+                      <div class="paw-container">
                         <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
+                          <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"></svg>
                         </i>
+                      </div>
                         <input name="email" [(ngModel)]="formOwner.email" type="email" class="form-control" id="email"
                                placeholder="Correo">
                     </div>
                 </div>
                 <div class="buttons-container">
                     <a [routerLink]="['/owner/all']" class="btn btn-secondary">Cancelar</a>
-                    <button type="submit" (click)="saveOwner()" [routerLink]="['/owner/all']">Guardar</button>
+                    <button type="submit" (click)="saveOwner()">Guardar</button>
                 </div>
             </form>
         </div>

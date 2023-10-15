@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Pet } from 'src/app/model/pet/pet';
 import {PetService} from "../../services/pet/pet.service";
 import {OwnerService} from "../../services/owner/owner.service";
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { Owner } from 'src/app/model/owner/owner';
 
 @Component({
@@ -12,7 +12,7 @@ import { Owner } from 'src/app/model/owner/owner';
 })
 export class PetFormComponent {
 
-  constructor(private petService: PetService, private ownerService: OwnerService, private route: ActivatedRoute) { }
+  constructor(private petService: PetService, private ownerService: OwnerService, private route: ActivatedRoute, private router: Router) { }
 
   sendPet!: Pet;
 
