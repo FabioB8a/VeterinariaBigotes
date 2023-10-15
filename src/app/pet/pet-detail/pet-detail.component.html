@@ -31,21 +31,21 @@
 
     <section id="pet">
       <div>
-        <img id="pet-img" src={{pet.imgUrl}}>
+        <img id="pet-img" src={{pet?.imgUrl}}>
       </div>
       <div id="pet-info">
         <div id="pet-data-container">
           <div id="pet-name">
-            <h1><span>{{ pet.name }}</span></h1>
+            <h1><span>{{ pet?.name }}</span></h1>
           </div>
           <div id="pet-data">
             <div>
-              <p><strong>Raza: </strong><span>{{ pet.breed}}</span></p>
+              <p><strong>Raza: </strong><span>{{ pet?.breed}}</span></p>
               <p><strong>Dueño: </strong><span></span></p>
             </div>
             <div>
-              <p><strong>Edad: </strong><span>{{ pet.calculateAge() }} años</span></p>
-              <p><strong>Peso: </strong><span>{{ pet.weight }} gr</span></p>
+              <p><strong>Edad: </strong><span>{{ pet?.calculateAge() }} años</span></p>
+              <p><strong>Peso: </strong><span>{{ pet?.weight }} gr</span></p>
             </div>
           </div>
         </div>
@@ -75,7 +75,7 @@
       </thead>
       <tbody>
       <td>0001</td>
-      <td>{{ pet.disease }}</td>
+      <td>{{ pet?.disease }}</td>
 
 
       </tbody>
