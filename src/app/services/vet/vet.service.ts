@@ -20,16 +20,20 @@ export class VetService {
     return this.http.get<Veterinarian>("http://localhost:8090/vet/" + id);
   }
 
-  addOwner(newVet: Veterinarian) {
+  addVet(newVet: Veterinarian) {
     this.http.post("http://localhost:8090/vet", newVet).subscribe();
   }
 
-  updateOwner(changedVet: Veterinarian) {
+  updateVet(changedVet: Veterinarian) {
     this.http.put("http://localhost:8090/vet", changedVet).subscribe();
   }
 
   deleteById(id: number) {
     this.http.delete("http://localhost:8090/vet/" + id).subscribe();
+  }
+
+  vetExists(idCard: number): Observable<Boolean> {
+    return this.http.get<Boolean>("http://localhost:8090/vet/exists/" + idCard);
   }
 
 }

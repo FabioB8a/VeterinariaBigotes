@@ -21,7 +21,7 @@ export class VetTableComponent {
     this.vetService.findAll().subscribe(
       data => {
         this.vetList = data.map(x => Object.assign(new Veterinarian(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.password, x.speciality, x.imgUrl), x));
-        console.log(this.vetList); // Mueve el console.log aquí
+        console.log(this.vetList);
       }
     );
   }

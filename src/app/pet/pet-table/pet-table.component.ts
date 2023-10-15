@@ -1,7 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {Pet} from "../../model/pet/pet";
 import {PetService} from "../../services/pet/pet.service";
-import {UserService} from "../../services/user/UserService";
 import { ActivatedRoute } from '@angular/router';
 import {query} from "@angular/animations";
 
@@ -21,7 +20,6 @@ export class PetTableComponent {
 
     constructor(
         private petService: PetService
-        ,private userService: UserService
         ,private route: ActivatedRoute
     ) {
 

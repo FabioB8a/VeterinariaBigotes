@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwnerService } from '../services/owner/owner.service';
-import { UserService } from '../services/user/UserService';
 import { Owner } from '../model/owner/owner';
 
 
@@ -20,7 +19,6 @@ export class LogInComponent {
     constructor(
         private router: Router,
         private ownerService: OwnerService ,
-        private userService: UserService
     ) {}
 
     ngOnInit(): void {
@@ -94,8 +92,7 @@ export class LogInComponent {
 
             const idVet = idCardVet.value;
             const password = passwordVet.value;
-            //ACA
-            this.userService.setUserType('vet');
+            //ACA;
 
 
             this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});

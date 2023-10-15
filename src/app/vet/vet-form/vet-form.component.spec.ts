@@ -1,6 +1,6 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
-import { VetFormComponent } from './vet-form.component';
+import {VetFormComponent} from './vet-form.component';
 
 describe('VetFormComponent', () => {
   let component: VetFormComponent;

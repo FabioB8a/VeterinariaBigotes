@@ -19,7 +19,9 @@
         <a [routerLink]="['/owner/all']">Mostrar dueños</a>
       </div>
     </div>
-    <p>Cerrar Sesión</p>
+    <a id="cerrar-sesion" [routerLink]="['/login/show']">
+      Cerrar sesión
+    </a>
   </div>
   <div class="content">
     <div class="head" *ngIf="userType === 'vet'" >

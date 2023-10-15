@@ -20,7 +20,7 @@ export class OwnerService {
     return this.http.get<Owner>("http://localhost:8090/owner/" + id);
   }
 
-  
+
   findOwnerByPets_Id(id:number ): Observable<Owner>{
     return this.http.get<Owner>("http://localhost:8090/owner/pet/" + id);
   }
@@ -39,5 +39,9 @@ export class OwnerService {
 
   login(idCard: number): Observable<Owner> {
     return this.http.get<Owner>("http://localhost:8090/login/owner/" + idCard);
+  }
+
+  ownerExists(idCard: number): Observable<boolean> {
+    return this.http.get<boolean>("http://localhost:8090/owner/exists/" + idCard);
   }
 }

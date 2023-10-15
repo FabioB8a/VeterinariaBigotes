@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'owner/save', component: OwnerFormComponent},
   { path: 'vet/save', component: VetFormComponent},
   { path: 'login/show', component: LogInComponent}
-  
+
 ];
 
 @NgModule({

@@ -1,77 +1,97 @@
 <div class="content">
-    <div class="form-container">
-        <div class="title-container">
-            <h2>Datos<br>DUEÑO</h2>
-        </div>
-        <div class="form-content">
-            <form id = "formVet" >
-                <!-- Hidden input field for ID -->
-                <input type="hidden" field="*{id}" />
-
-                <div class="form-group">
-                    <label for="idCard">Cédula</label>
-                    <div class="container">
-                        <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>
-                        </i>
-                        <input name="idCard" [(ngModel)]="formVet.idCard" type="text" class="form-control" id="idCard" placeholder="0">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="secondLastName">Apellido 2</label>
-                    <div class="container">
-                        <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>
-                        </i>
-                        <input name="secondLastName"  [(ngModel)]="formVet.secondLastName" type="text" class="form-control" id="secondLastName"
-                               placeholder="Apellido 2">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="phone">Celular</label>
-                    <div class="container">
-                        <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>
-                        </i>
-                        <input name="phone" [(ngModel)]="formVet.phone" type="tel" class="form-control" id="phone"
-                               placeholder="Telefono">
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="firstName">Nombre</label>
-                    <div class="container">
-                        <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>
-                        </i>
-                        <input name="firstName" [(ngModel)]="formVet.firstName" type="text"class="form-control"  id="firstName" placeholder="Nombre">
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="firstLastName">Apellido 1</label>
-                    <div class="container">
-                        <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>
-                        </i>
-                        <input name="firstLastName" [(ngModel)]="formVet.firstLastName" type="text" class="form-control"  id="firstLastName" placeholder="Apellido 1">
-
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="email">Correo</label>
-                    <div class="container">
-                        <i class="fa-solid fa-paw">
-                            <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M226.5 92.9c14.3 42.9-.3 86.2-32.6 96.8s-70.1-15.6-84.4-58.5s.3-86.2 32.6-96.8s70.1 15.6 84.4 58.5zM100.4 198.6c18.9 32.4 14.3 70.1-10.2 84.1s-59.7-.9-78.5-33.3S-2.7 179.3 21.8 165.3s59.7 .9 78.5 33.3zM69.2 401.2C121.6 259.9 214.7 224 256 224s134.4 35.9 186.8 177.2c3.6 9.7 5.2 20.1 5.2 30.5v1.6c0 25.8-20.9 46.7-46.7 46.7c-11.5 0-22.9-1.4-34-4.2l-88-22c-15.3-3.8-31.3-3.8-46.6 0l-88 22c-11.1 2.8-22.5 4.2-34 4.2C84.9 480 64 459.1 64 433.3v-1.6c0-10.4 1.6-20.8 5.2-30.5zM421.8 282.7c-24.5-14-29.1-51.7-10.2-84.1s54-47.3 78.5-33.3s29.1 51.7 10.2 84.1s-54 47.3-78.5 33.3zM310.1 189.7c-32.3-10.6-46.9-53.9-32.6-96.8s52.1-69.1 84.4-58.5s46.9 53.9 32.6 96.8s-52.1 69.1-84.4 58.5z"/></svg>
-                        </i>
-                        <input name="email" [(ngModel)]="formVet.email" type="email" class="form-control" id="email"
-                               placeholder="Correo">
-                    </div>
-                </div>
-                <div class="buttons-container">
-                    <a [routerLink]="['/vet/all']" class="btn btn-secondary">Cancelar</a>
-                    <button type="submit" (click)="saveVet()" [routerLink]="['/vet/all']">Guardar</button>
-                </div>
-            </form>
-        </div>
+  <div class="form-container">
+    <div class="title-container">
+      <h2>Datos<br>veterinario</h2>
     </div>
+    <div class="form-content">
+      <form id="formVet">
+        <!-- Hidden input field for ID -->
+        <input type="hidden" field="*{id}"/>
+
+        <div class="form-group">
+          <label for="idCard">Cédula</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="idCard" [(ngModel)]="formVet.idCard" type="text" class="form-control" id="idCard"
+                   placeholder="0">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstName">Nombre</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="firstName" [(ngModel)]="formVet.firstName" type="text" class="form-control" id="firstName"
+                   placeholder="Nombre">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="firstLastName">Apellido 1</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="firstLastName" [(ngModel)]="formVet.firstLastName" type="text" class="form-control"
+                   id="firstLastName"
+                   placeholder="Apellido 1">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="secondLastName">Apellido 2</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="secondLastName" [(ngModel)]="formVet.secondLastName" type="text" class="form-control"
+                   id="secondLastName" placeholder="Apellido 2">
+
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="speciality">Especialidad</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="speciality" [(ngModel)]="formVet.speciality" type="text" class="form-control" id="speciality"
+                   placeholder="Especialidad">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="imgUrl">Imagen</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="imgUrl" [(ngModel)]="formVet.imgUrl" type="text" class="form-control" id="imgUrl"
+                   placeholder="URL">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Contraseña</label>
+          <div class="container">
+            <i class="fa-solid fa-paw">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512">
+              </svg>
+            </i>
+            <input name="password" [(ngModel)]="formVet.password" type="password" class="form-control" id="password"
+                   placeholder="Contraseña">
+          </div>
+        </div>
+        <div class="buttons-container">
+          <a [routerLink]="['/vet/all']" class="btn btn-secondary">Cancelar</a>
+          <button type="submit" (click)="saveVet()">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>
 </div>

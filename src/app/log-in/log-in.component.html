@@ -2,17 +2,17 @@
     <div class="outer-container">
 
         <div class="switch">
-            <div class="loginOwner" (click)="tab1()"><img src="/assets/images/login/ownerSymbol.png" alt="Owner symbol"></div>
-            <div class="loginVet" (click)="tab2()"><img src="/assets/images/login/vetSymbol.png" alt="Vet symbol"></div>
+            <div class="loginOwner" (click)="tab1()"><img src="../../assets/images/login/ownerSymbol.png" alt="Owner symbol"></div>
+            <div class="loginVet" (click)="tab2()"><img src="../../assets/images/login/vetSymbol.png" alt="Vet symbol"></div>
           </div>
 
         <div class="container">
             <div class="outer">
-                <img src="/assets/images/login/catSymbol.svg" alt="Cat symbol">
+                <img src="../../assets/images/login/catSymbol.svg" alt="Cat symbol">
                 <div class="container-forms">
 
                     <form id="formOwner" class="form-active" (ngSubmit)="onSubmit('owner')">
-        
+
                         <div class="page">
                             <label for="idCardOwner">Dueño</label>
                             <p>Por favor ingresa la cédula para acceder a la plataforma</p>
@@ -37,11 +37,9 @@
                             </div>
                             <button type="submit" class="button">Sign in</button>
                         </div>
-                    </form> 
-
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-      

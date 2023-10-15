@@ -33,10 +33,7 @@
 }
 
 .sidebar .filters {
-  margin-left: 10%;
-  margin-right: 7%;
-  margin-top: 5%;
-  margin-bottom: 30%;
+  margin: 5% 7% 30% 10%;
   font-size: 0.9rem;
   font-weight: 400;
 
@@ -59,11 +56,11 @@
 /* Estilos para el ícono de búsqueda */
 .search-icon {
   position: absolute;
-  left: 5%; /* Ajustar la posición a la izquierda */
+  left: 5%;
   top: 17%;
   height: 10%;
   transform: translateY(-50%);
-  color: #737373; /* Ajustar el color del ícono */
+  color: #737373;
   cursor: pointer;
 }
 
@@ -262,17 +259,6 @@
   /* Cambia el color del texto al hacer hover */
 }
 
-/* Estilo para el botón "Cerrar Sesión" */
-.sidebar p {
-  text-align: center;
-  color: #FFFFFF;
-  margin-top: 65%;
-  color: #FFF;
-  font-family: 'Raleway', sans-serif;
-  font-size: 1.3rem;
-  cursor: pointer;
-}
-
 /* Aplica estilos a la última columna */
 td#more {
   padding: 0;
@@ -310,3 +296,22 @@ td img {
   margin-left: 50px;
 }
 
+
+#cerrar-sesion{
+  text-align: center;
+  margin-top: 65%;
+  color: #FFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+
+#cerrar-sesion:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #1C697D 0.2rem solid;
+  border-top: #1C697D 0.2rem solid;
+}
