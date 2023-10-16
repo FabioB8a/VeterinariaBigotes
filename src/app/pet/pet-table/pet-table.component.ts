@@ -42,14 +42,14 @@ export class PetTableComponent {
             if (this.userType == 'vet') {
                 //this.userType = 'vet';
                 this.petService.findAll().subscribe(
-                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.ownerId), x))
                 );
             } else if (this.userType == 'user') {
                 //this.userType = 'user';
                 const userId = params['id'].toString();
 
                 this.petService.findByOwner(userId).subscribe(
-                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.ownerId), x))
                 );
             }
             else {

@@ -28,6 +28,10 @@ export class PetService {
   }
 
  addPet(newPet: Pet) {
+  console.log("Estoo");
+  console.log(newPet);
+  
+  
     this.http.post("http://localhost:8090/pet", newPet).subscribe();
   }
 
@@ -36,11 +40,11 @@ export class PetService {
   }
 
   deleteById(id: number) {
-    this.http.delete("http://localhost:8090/pet" + id).subscribe();
+    this.http.delete("http://localhost:8090/pet/" + id).subscribe();
   }
 
   ownerPets(id:number){
-    this.http.get("http://localhost:8090/owner/pet"+id).subscribe();
+    this.http.get("http://localhost:8090/owner/pet/"+id).subscribe();
   }
 
 }
