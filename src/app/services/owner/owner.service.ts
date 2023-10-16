@@ -53,5 +53,7 @@ export class OwnerService {
     return this.http.get<boolean>("http://localhost:8090/owner/exists/phone/" + phone);
   }
 
-
+  findByIDCard(idCard: number): Observable<Owner> {
+    return this.http.get<Owner>("http://localhost:8090/owner/idCard/" + idCard);
+  }
 }

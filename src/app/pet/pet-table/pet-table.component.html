@@ -34,38 +34,63 @@
       <h2>Nombre usuario</h2>
       <img class="icon" src="assets/images/users/FotoOwner.png">
     </div>
-    <table class="table table-striped">
-      <thead>
-      <tr>
-        <th scope="col">Nombre mascota</th>
-        <th scope="col">Raza</th>
-        <th scope="col">Edad</th>
-        <th scope="col">Peso</th>
-        <th scope="col">Enfermedad</th>
-        <th scope="col">Adicionales</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let pet of filterPetsByName() || petList">
-        <td class="firstLine">
-          <img class="petImage" src="{{ pet.imgUrl }}" alt="Imagen de la mascota" id="petImg" width="50" height="50">
-          <span class= "imagenPerro">{{ pet.name }}</span>
-        </td>
-        <td>{{ pet.breed }}</td>
-        <td>{{ pet.calculateAge() }} años</td>
-        <td>{{ pet.weight }} gr</td>
-        <td>{{ pet.disease }}</td>
-        <td id="more">
-          <div *ngIf="userType ==='vet'">
+    <div *ngIf="userType === 'vet'">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Nombre mascota</th>
+          <th scope="col">Raza</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Enfermedad</th>
+          <th scope="col">Adicionales</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pet of filterPetsByName() || petList">
+          <td class="firstLine">
+            <img class="petImage" src="{{ pet.imgUrl }}" alt="Imagen de la mascota" class="petImg" width="50" height="50">
+            <span class= "imagenPerro">{{ pet.name }}</span>
+          </td>
+          <td>{{ pet.breed }}</td>
+          <td>{{ pet.calculateAge() }} años</td>
+          <td>{{ pet.weight }} gr</td>
+          <td>{{ pet.disease }}</td>
+          <td id="more">
             <a (click)="deleteById(pet)">
               <img src="assets/images/vet/deleteIcon.png">
             </a>
             <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
             <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{userType: userType}"> ... </a>
-          </div>     
-        </td>
-      </tr>
-      </tbody>
-    </table>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div *ngIf="userType === 'user'">
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th scope="col">Nombre mascota</th>
+          <th scope="col">Raza</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Enfermedad</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pet of filterPetsByName() || petList">
+          <td class="firstLine">
+            <img class="petImage" src="{{ pet.imgUrl }}" alt="Imagen de la mascota" class="petImg" width="50" height="50">
+            <span class= "imagenPerro">{{ pet.name }}</span>
+          </td>
+          <td>{{ pet.breed }}</td>
+          <td>{{ pet.calculateAge() }} años</td>
+          <td>{{ pet.weight }} gr</td>
+          <td>{{ pet.disease }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>

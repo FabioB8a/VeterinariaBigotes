@@ -34,7 +34,7 @@ export class PetFormComponent {
 
 
   ngOnInit() {
-    
+
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
         this.petId = Number(params['petId']);
@@ -48,21 +48,30 @@ export class PetFormComponent {
   }
 
   savePet() {
-    console.log(this.idCardText);
-  
-    this.ownerService.login(this.idCardText).subscribe(data => {
+
+    if (!this.verifyForm()) {
+      return;
+    }
+
+    this.ownerService.findByIDCard(this.idCardText).subscribe(data => {
+
+      if (data == null) {
+        alert("No existe un dueño con la cédula ingresada");
+        return;
+      }
+
       this.formPet.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
-      console.log(this.formPet.owner);
-  
+
+      console.log("HOlllaaaa",this.formPet.owner);
       // Now that the owner data is updated, proceed with saving the pet
       this.sendPet = Object.assign({}, this.formPet);
-  
+
       if (this.petId != null) {
         this.petService.updatePet(this.sendPet!!);
       } else {
         this.petService.addPet(this.sendPet!!);
       }
-  
+
       this.leave();
     });
   }
@@ -70,5 +79,45 @@ export class PetFormComponent {
   leave(){
     this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});
   }
-  
+
+  verifyForm() {
+    if (!this.formPet.name) {
+      alert("El campo nombre es obligatorio.");
+      return false;
+    }
+
+    if (!this.formPet.breed) {
+      alert("El campo raza es obligatorio.");
+      return false;
+    }
+
+    if (!this.formPet.birthdate || !this.isDateValid()) {
+      alert("El campo fecha de nacimiento es obligatorio y debe ser menor a la fecha actual.");
+      return false;
+    }
+
+    if (!this.formPet.weight) {
+      alert("El campo peso es obligatorio.");
+      return false;
+    }
+
+    if (!this.formPet.disease) {
+      alert("El campo enfermedad es obligatorio.");
+      return false;
+    }
+
+    if (!this.formPet.imgUrl) {
+      alert("El campo imagen es obligatorio.");
+      return false;
+    }
+
+    return true;
+  }
+
+  isDateValid() {
+    let date = new Date(this.formPet.birthdate);
+    let today = new Date();
+    return date < today;
+  }
+
 }
