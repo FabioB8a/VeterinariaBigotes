@@ -1,11 +1,29 @@
-.sidebar {
-    position: fixed;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+.container{
+    display: grid;
+    grid-template-columns: 15vw 85vw;
+    grid-template-rows: 100%;
     height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding:0;
+}
+
+.sidebar {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
     background-color: #34344C;
     align-content: center;
     display: flex;
     flex-direction: column;
-    width: 15%;
+    justify-content: space-between;
+    padding-bottom: 1rem;
 }
 
 .sidebar img{
@@ -13,32 +31,165 @@
     margin-left: 10%;
 }
 
-
-.filters {
-    color: #FFFFFF;
-}
-
-.sidebar h4 {
-    font-size: 1.3rem;
-    margin-left: 5%;
-    color: #FFFFFF;
-}
-
 #cerrar-sesion{
-    text-align: center;
-    margin-top: 65%;
-    color: #FFF;
-    font-family: 'Raleway', sans-serif;
-    font-size: 1.3rem;
-    cursor: pointer;
+  text-align: center;
+  color: #FFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
 }
 
 #cerrar-sesion:hover {
-    text-decoration: none;
-    background: rgba(255, 255, 255, 0.20);
-    border-left: #FFFFFF 0.2rem solid;
-    color: #FFFFFF;
-    border-right: rgba(255, 255, 255, 0.20);
-    border-bottom: #1C697D 0.2rem solid;
-    border-top: #1C697D 0.2rem solid;
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #1C697D 0.2rem solid;
+  border-top: #1C697D 0.2rem solid;
+}
+
+.grid-container{
+  grid-column: 2/3;
+  grid-row: 1/2;
+  background: #D9D9D9;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  grid-template-rows: 1fr 1fr 2fr 2fr;
+  padding: 2rem;
+}
+
+.grid-container > * {
+  border-radius: 1rem;
+  margin: 0.5rem;
+}
+
+.tratamientos-mes{
+  grid-column: 1/2;
+  grid-row: 1/5;
+  background: white;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 4fr;
+}
+
+.tratamientos-mes .tratamientos-cantidad {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.tratamientos-mes .medicamentos-texto {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  padding: 1rem 2rem;
+}
+
+.tratamientos-mes .medicamentos-texto h4{
+  font-size: 1.5rem;
+  color: #34344C;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.tratamientos-mes .medicamentos-texto p{
+  font-size: 0.7rem;
+  font-weight: lighter;
+}
+
+.ventas{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.ganancias{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.ventas, .ganancias, .tratamientos-mes .tratamientos-cantidad{
+  background: #34344C;
+  display: flex;
+  align-items: center;
+  padding: 1rem 5rem;
+  color: white;
+  justify-content: space-between;
+}
+
+.tratamientos-mes .tratamientos-cantidad{
+  padding: 1rem 2rem;
+  border-radius: 1rem 1rem 0 0;
+}
+
+.ventas img, .ganancias img, .tratamientos-mes .tratamientos-cantidad img{
+  width: 4rem;
+}
+
+.ventas .texto h3, .ganancias .texto h3, .tratamientos-mes .tratamientos-cantidad .texto h3{
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.ventas .texto p, .ganancias .texto p, .tratamientos-mes .tratamientos-cantidad .texto p{
+  font-size: 0.75rem;
+  margin: 0.5rem 0;
+  font-weight: lighter;
+}
+
+.tratamientos-mes .scroll{
+  grid-column: 1/2;
+  grid-row: 3/4;
+  overflow-y: auto;
+  max-height: 95%;
+}
+
+.tratamientos-mes .scroll table {
+  width: 90%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.tratamientos-mes .scroll table thead tr {
+  background-color: #D9D9D9;
+}
+
+.tratamientos-mes .scroll table th {
+  padding: 0.5rem 0.5rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border-bottom: 0.1rem solid #ddd;
+}
+
+.tratamientos-mes .scroll table td {
+  padding: 0.8rem 0.5rem;
+  font-size: 0.8rem;
+  border-bottom: 0.1rem solid #ddd;
+}
+
+
+
+/* Para manejar border-radius en las esquinas del thead */
+.tratamientos-mes table thead tr th:first-child {
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
+}
+
+.tratamientos-mes table thead tr th:last-child {
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
+}
+
+
+.tratamientos-top{
+  background: white;
+  grid-column: 2/3;
+  grid-row: 3/4;
+}
+
+.vet-pet{
+  background: white;
+  grid-column: 2/3;
+  grid-row: 4/5;
 }
