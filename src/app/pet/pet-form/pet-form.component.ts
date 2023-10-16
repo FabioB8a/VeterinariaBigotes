@@ -3,6 +3,7 @@ import { Pet } from 'src/app/model/pet/pet';
 import { PetService } from "../../services/pet/pet.service";
 import { OwnerService } from "../../services/owner/owner.service";
 import { ActivatedRoute, Router } from '@angular/router';
+import { Owner } from 'src/app/model/owner/owner';
 
 @Component({
   selector: 'app-pet-form',
@@ -25,11 +26,11 @@ export class PetFormComponent {
     calculateAge() {
         return 0
     },
-    imgUrl: '',
-    ownerId: 0
+    imgUrl: ''
   };
 
   petId!: any;
+  idCardText!: any;
 
 
   ngOnInit() {
@@ -37,34 +38,33 @@ export class PetFormComponent {
     this.route.queryParams.subscribe(params => {
       if ('petId' in params) {
         this.petId = Number(params['petId']);
-        console.log(params['petId']);
 
         this.petService.findById(this.petId).subscribe(data => {
-          console.log(data);
-          this.formPet = new Pet(data.id, data.name, data.breed, data.birthdate, data.weight, data.disease, data.imgUrl, data.ownerId);
-          this.ownerService.findOwnerByPets_Id(this.petId).subscribe(owner => {
-            this.formPet.ownerId = owner.id;
-          });
-          
+          this.formPet = new Pet(data.id, data.name, data.breed, data.birthdate, data.weight, data.disease, data.imgUrl, data.owner);
+          this.idCardText = data.owner?.idCard
         });
       }
     });
   }
 
   savePet() {
-    this.sendPet = Object.assign({}, this.formPet);
-
-    if (this.petId != null){
-      this.petService.updatePet(this.formPet!!);
-    }
-    else{
-      console.log(this.formPet);
-      
-      this.petService.addPet(this.formPet!!);
-    }
-
-    this.leave();
-    
+    console.log(this.idCardText);
+  
+    this.ownerService.login(this.idCardText).subscribe(data => {
+      this.formPet.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
+      console.log(this.formPet.owner);
+  
+      // Now that the owner data is updated, proceed with saving the pet
+      this.sendPet = Object.assign({}, this.formPet);
+  
+      if (this.petId != null) {
+        this.petService.updatePet(this.sendPet!!);
+      } else {
+        this.petService.addPet(this.sendPet!!);
+      }
+  
+      this.leave();
+    });
   }
 
   leave(){

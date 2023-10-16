@@ -26,7 +26,7 @@ export class PetDetailComponent {
     
     
     this.petService.findById(id).subscribe((data) => {
-      this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.ownerId);
+      this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.owner);
     });
     this.route.queryParams.subscribe(params => {
       this.userType = params['userType'].toString();
