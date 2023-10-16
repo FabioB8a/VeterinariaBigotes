@@ -36,4 +36,8 @@ export class VetService {
     return this.http.get<Boolean>("http://localhost:8090/vet/exists/" + idCard);
   }
 
+  login(idCard: number, password: String): Observable<Veterinarian> {
+    return this.http.get<Veterinarian>("http://localhost:8090/login/vet/" + idCard + "/" + password);
+  }
+
 }

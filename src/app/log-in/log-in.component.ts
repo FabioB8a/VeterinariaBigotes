@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OwnerService } from '../services/owner/owner.service';
 import { Owner } from '../model/owner/owner';
+import {VetService} from "../services/vet/vet.service";
 
 
 
@@ -18,7 +19,8 @@ export class LogInComponent {
     selectedOwner?: Owner | null;
     constructor(
         private router: Router,
-        private ownerService: OwnerService ,
+        private ownerService: OwnerService,
+        private vetService: VetService
     ) {}
 
     ngOnInit(): void {
@@ -67,42 +69,48 @@ export class LogInComponent {
             const idCardOwner = document.getElementById('idCardOwner') as HTMLInputElement;
             const idOwner = +idCardOwner.value;
             if (!idOwner) {
-                alert('Por favor ingrese su cédula');
-            } else {
-                this.ownerService.login(idOwner).subscribe(
-                    (data) => {
-                        if (data != null) {
-                          this.selectedOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
-                          //this.userService.setUserType('user');
-                          this.router.navigate(['/pet/all'], { queryParams: { id: this.selectedOwner.id, type: "user" }});
-                        }else {
-                          alert("El usuario no existe")
-                        }
-                    },
-                    (error) => {
-                        alert("Hubo un problema al iniciar sesión. Por favor, inténtelo de nuevo más tarde.");
-                    }
-                );
+              alert('Por favor ingrese su cédula');
+              return;
             }
+
+            this.ownerService.login(idOwner).subscribe(
+                (data) => {
+                    if (data != null) {
+                      this.selectedOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
+                      //this.userService.setUserType('user');
+                      this.router.navigate(['/pet/all'], { queryParams: { id: this.selectedOwner.id, type: "user" }});
+                    }else {
+                      alert("El usuario no existe")
+                    }
+                }
+            );
+
         } else if (type === 'vet') {
 
             this.userType = 'vet';
             const idCardVet = document.getElementById('idCardVet') as HTMLInputElement;
             const passwordVet = document.getElementById('passwordVet') as HTMLInputElement;
 
-            const idVet = idCardVet.value;
+            const idVet = +idCardVet.value;
             const password = passwordVet.value;
-            //ACA;
 
-
-            this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});
-            /*
-            if (idVet === '') {
-              alert('Por favor ingrese su cédula');
+            if (!idVet) {
+                alert('Por favor ingrese su cédula');
+                return;
             }
-            if (password === '') {
-              alert('Por favor ingrese su contraseña');
-            }*/
+            if (!password) {
+                alert('Por favor ingrese su contraseña');
+                return;
+            }
+            this.vetService.login(idVet, password).subscribe(
+                (data) => {
+                    if (data != null) {
+                        this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});
+                    }else {
+                        alert("La cédula o la contraseña son incorrectas")
+                    }
+                });
+
         }
     }
 }
