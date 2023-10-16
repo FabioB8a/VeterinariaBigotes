@@ -20,17 +20,12 @@ export class DrugService {
     return this.http.get<Drug>("http://localhost:8090/drug/" + id);
   }
 
-
-  findOwnerByPets_Id(id:number ): Observable<Drug>{
-    return this.http.get<Drug>("http://localhost:8090/drug/pet/" + id);
+  addDrug(newDrug: Drug) {
+    this.http.post("http://localhost:8090/drug", newDrug).subscribe();
   }
 
-  addOwner(newOwner: Drug) {
-    this.http.post("http://localhost:8090/drug", newOwner).subscribe();
-  }
-
-  updateOwner(changedOwner: Drug) {
-    this.http.put("http://localhost:8090/drug", changedOwner).subscribe();
+  updateDrug(changedDrug: Drug) {
+    this.http.put("http://localhost:8090/drug", changedDrug).subscribe();
   }
 
   deleteById(id: number) {
