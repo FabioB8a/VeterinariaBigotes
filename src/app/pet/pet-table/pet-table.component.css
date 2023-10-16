@@ -43,6 +43,7 @@
 .search-input {
   position: relative;
   margin-bottom: 10%;
+
 }
 
 .search-input input[type="text"] {
@@ -51,6 +52,8 @@
   border-radius: 0.5rem;
   border: 1px solid rgba(0, 0, 0, 0.30);
   background: #FFF;
+  font-size: 0.6rem;
+  padding: 0.4rem 0.4rem 0.4rem 15%;
 }
 
 /* Estilos para el ícono de búsqueda */
@@ -138,7 +141,18 @@
 
 }
 
-.head h2 {
+.vetStyles .head h2 {
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 35%;
+  font-family: 'Raleway', sans-serif;
+  color: #1C697D;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.userStyles .head h2{
   margin-top: 1%;
   margin-bottom: 1%;
   margin-left: 35%;
