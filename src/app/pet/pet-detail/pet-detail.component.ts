@@ -10,7 +10,7 @@ import {PetService} from "../../services/pet/pet.service";
 })
 export class PetDetailComponent {
   @Input()
-  pet!: Pet;
+  pet?: Pet;
 
   @Input()
   userType: string ='';
@@ -23,14 +23,13 @@ export class PetDetailComponent {
 
   ngOnInit(): void {
     const id = Number(this.route.snapshot.paramMap.get('id'));
+    
+    
     this.petService.findById(id).subscribe((data) => {
-      this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.owner);
+      this.pet = new Pet(data.id,data.name,data.breed,data.birthdate,data.weight,data.disease,data.imgUrl,data.ownerId);
     });
-
     this.route.queryParams.subscribe(params => {
       this.userType = params['userType'].toString();
     });
-
-    console.log("HOLLLLAAAAA" +this.userType);
   }
 }

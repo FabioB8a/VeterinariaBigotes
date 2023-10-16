@@ -10,7 +10,7 @@ export class Pet {
   disease: string;
   imgUrl: string;
   status: string;
-  owner: Owner
+  ownerId: number
 
   constructor(
     id: number,
@@ -20,7 +20,7 @@ export class Pet {
     weight: number,
     disease: string,
     imgUrl: string,
-    owner: Owner
+    ownerId: number
   ) {
     this.id = id;
     this.name = name;
@@ -30,7 +30,7 @@ export class Pet {
     this.disease = disease;
     this.imgUrl = imgUrl;
     this.status = 'En tratamiento';
-    this.owner = owner
+    this.ownerId = ownerId
   }
 
 

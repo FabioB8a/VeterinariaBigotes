@@ -61,8 +61,8 @@
               <img src="assets/images/vet/deleteIcon.png">
             </a>
             <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
-          </div>
-          <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{userType: userType}"> ... </a>
+            <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{userType: userType}"> ... </a>
+          </div>     
         </td>
       </tr>
       </tbody>
