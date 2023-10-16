@@ -17,6 +17,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { VetFormComponent } from './vet/vet-form/vet-form.component';
 import { VetDetailComponent } from './vet/vet-detail/vet-detail.component';
 import { VetTableComponent } from './vet/vet-table/vet-table.component';
+import { DashBoardComponent } from './admin/dash-board/dash-board.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { VetTableComponent } from './vet/vet-table/vet-table.component';
     OwnerTableComponent,
     VetFormComponent,
     VetDetailComponent,
-    VetTableComponent
+    VetTableComponent,
+    DashBoardComponent
   ],
   imports: [
     BrowserModule,

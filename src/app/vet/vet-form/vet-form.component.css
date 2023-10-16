@@ -248,6 +248,14 @@ button {
 }
 
 
+.paw-container{
+    height: 100%;
+    width: 15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 
 
 

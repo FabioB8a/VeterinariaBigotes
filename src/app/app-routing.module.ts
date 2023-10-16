@@ -6,12 +6,12 @@ import { PetFormComponent } from './pet/pet-form/pet-form.component';
 import { LogInComponent } from './log-in/log-in.component';
 import { LandingComponent } from './landing/landing.component';
 import {OwnerTableComponent} from "./owner/owner-table/owner-table.component";
-import {Owner} from "./model/owner/owner";
 import {OwnerFormComponent} from "./owner/owner-form/owner-form.component";
 import {OwnerDetailComponent} from "./owner/owner-detail/owner-detail.component";
 import { VetTableComponent } from './vet/vet-table/vet-table.component';
 import { VetFormComponent } from './vet/vet-form/vet-form.component';
 import { VetDetailComponent } from './vet/vet-detail/vet-detail.component';
+import { DashBoardComponent} from "./admin/dash-board/dash-board.component";
 
 const routes: Routes = [
   {path: 'home', component: LandingComponent},
@@ -25,8 +25,8 @@ const routes: Routes = [
   { path: 'pet/save', component: PetFormComponent},
   { path: 'owner/save', component: OwnerFormComponent},
   { path: 'vet/save', component: VetFormComponent},
-  { path: 'login/show', component: LogInComponent}
-
+  { path: 'login/show', component: LogInComponent},
+  { path: 'admin/dashboard', component: DashBoardComponent}
 ];
 
 @NgModule({

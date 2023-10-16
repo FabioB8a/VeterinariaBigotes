@@ -1,0 +1,44 @@
+.sidebar {
+    position: fixed;
+    height: 100vh;
+    background-color: #34344C;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+
+.sidebar img{
+    width: 80%;
+    margin-left: 10%;
+}
+
+
+.filters {
+    color: #FFFFFF;
+}
+
+.sidebar h4 {
+    font-size: 1.3rem;
+    margin-left: 5%;
+    color: #FFFFFF;
+}
+
+#cerrar-sesion{
+    text-align: center;
+    margin-top: 65%;
+    color: #FFF;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1.3rem;
+    cursor: pointer;
+}
+
+#cerrar-sesion:hover {
+    text-decoration: none;
+    background: rgba(255, 255, 255, 0.20);
+    border-left: #FFFFFF 0.2rem solid;
+    color: #FFFFFF;
+    border-right: rgba(255, 255, 255, 0.20);
+    border-bottom: #1C697D 0.2rem solid;
+    border-top: #1C697D 0.2rem solid;
+}
