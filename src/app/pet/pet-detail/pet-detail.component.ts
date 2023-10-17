@@ -43,8 +43,8 @@ export class PetDetailComponent implements OnInit {
     });
 
     this.route.queryParams.subscribe(params => {
-      this.userType = params['userType'].toString();
-      this.vetId = params['vetId'].toString();
+      this.userType = params['type'].toString();
+      this.vetId = params['id'].toString();
     });
     if(this.vetId){
       this.vetService.findByIdCard(Number(this.vetId)).subscribe((data) => {
