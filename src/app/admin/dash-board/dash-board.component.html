@@ -1,4 +1,4 @@
-<div class ="container">
+<div class="container">
   <div class="sidebar">
     <img class="icon" src="assets/images/vet/Bigotes-2.png">
     <a id="cerrar-sesion" [routerLink]="['/login/show']">
@@ -8,25 +8,28 @@
 
   <div class="grid-container">
     <div class="tratamientos-mes">
-        <div class="tratamientos-cantidad">
-            <div class="texto">
-                <h3>400</h3>
-                <p>Tratamientos en este mes</p>
-            </div>
-          <img src="../../assets/images/dashboard/bandita.png">
+      <div class="tratamientos-cantidad">
+        <div class="texto">
+          <h3>400</h3>
+          <p>Tratamientos en este mes</p>
         </div>
-        <div class="medicamentos-texto">
-            <h4>Medicamentos</h4>
-            <p>Cantidad de tratamientos por tipo de medicamento administrado en el último mes.</p>
-        </div>
+        <img src="../../assets/images/dashboard/bandita.png">
+      </div>
+      <div class="medicamentos-texto">
+        <h4>Medicamentos</h4>
+        <p>Cantidad de tratamientos por tipo de medicamento administrado en el último mes.</p>
+      </div>
+      <div class="tabla-medicamentos">
+        <table>
+          <thead>
+          <tr>
+            <th>Medicamento</th>
+            <th>Cantidad</th>
+          </tr>
+          </thead>
+        </table>
         <div class="scroll">
           <table>
-            <thead>
-            <tr>
-              <th>Medicamento</th>
-              <th>Cantidad</th>
-            </tr>
-            </thead>
             <tbody>
             <tr>
               <td>Medicamento 1</td>
@@ -111,6 +114,7 @@
             </tbody>
           </table>
         </div>
+      </div>
     </div>
     <div class="ventas">
       <div class="texto">
@@ -127,11 +131,54 @@
       <img src="../../assets/images/dashboard/dinero.png">
     </div>
     <div class="tratamientos-top">
-
+      <div class="texto">
+        <h2>Top medicamentos</h2>
+        <p>Top 3 drogas con más unidades vendidas</p>
+        <img src="../../assets/images/dashboard/podio.png">
+      </div>
+      <ol>
+        <li>
+          <h2>Demacure Plus</h2>
+          <p>100 unidades</p>
+        </li>
+        <li>
+          <h2>Demacure Plus</h2>
+          <p>100 unidades</p>
+        </li>
+        <li>
+          <h2>Demacure Plus</h2>
+          <p>100 unidades</p>
+      </ol>
     </div>
     <div class="vet-pet">
-
+      <div class="mascotas-total">
+        <img src="../../assets/images/dashboard/pata2.png">
+        <div class="texto">
+          <h3>300</h3>
+          <p>Total mascotas</p>
+        </div>
+      </div>
+      <div class="mascotas-tratamiento">
+        <img src="../../assets/images/dashboard/pata1.png">
+        <div class="texto">
+          <h3>100</h3>
+          <p>Mascotas en tratamiento</p>
+        </div>
+      </div>
+      <div class="veterinarios-activos">
+        <img src="../../assets/images/dashboard/veterinario_activo.png">
+        <div class="texto">
+          <h3>30</h3>
+          <p>Veterinarios activos</p>
+        </div>
+      </div>
+      <div class="veterinarios-inactivos">
+        <img src="../../assets/images/dashboard/veterinario_inactivo.png">
+        <div class="texto">
+          <h3>10</h3>
+          <p>Veterinarios inactivos</p>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 

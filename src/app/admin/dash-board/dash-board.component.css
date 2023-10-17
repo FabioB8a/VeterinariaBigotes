@@ -136,41 +136,41 @@
   font-weight: lighter;
 }
 
-.tratamientos-mes .scroll{
+
+.tratamientos-mes .tabla-medicamentos{
   grid-column: 1/2;
   grid-row: 3/4;
-  overflow-y: auto;
-  max-height: 95%;
+  margin: 1rem auto;
+  width: 90%;
+
 }
 
-.tratamientos-mes .scroll table {
-  width: 90%;
+.tratamientos-mes .tabla-medicamentos table {
   border-collapse: separate;
   border-spacing: 0;
-  margin: 1rem auto;
   text-align: center;
+  width: 100%;
 }
 
-.tratamientos-mes .scroll table thead tr {
+.tratamientos-mes .tabla-medicamentos table thead tr {
   background-color: #D9D9D9;
 }
 
-.tratamientos-mes .scroll table th {
+.tratamientos-mes .tabla-medicamentos table th {
   padding: 0.5rem 0.5rem;
   font-size: 0.8rem;
-  font-weight: bold;
+  font-weight: normal;
   border-bottom: 0.1rem solid #ddd;
 }
 
-.tratamientos-mes .scroll table td {
-  padding: 0.8rem 0.5rem;
+.tratamientos-mes .tabla-medicamentos table td {
+  padding: 0.8rem 0.2rem;
   font-size: 0.8rem;
   border-bottom: 0.1rem solid #ddd;
+  margin-left: 1rem;
+  width: 60%;
 }
 
-
-
-/* Para manejar border-radius en las esquinas del thead */
 .tratamientos-mes table thead tr th:first-child {
   border-top-left-radius: 0.5rem;
   border-bottom-left-radius: 0.5rem;
@@ -181,15 +181,109 @@
   border-bottom-right-radius: 0.5rem;
 }
 
+.tratamientos-mes .scroll{
+  overflow-y: auto;
+  max-height: 45vh;
+}
+
 
 .tratamientos-top{
   background: white;
   grid-column: 2/3;
   grid-row: 3/4;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+
+.tratamientos-top .texto{
+  padding: 1rem 2rem;
+}
+
+.tratamientos-top .texto h2{
+  font-size: 1.5rem;
+  color: #34344C;
+  font-weight: normal;
+  margin-bottom: 0.5rem;
+}
+
+.tratamientos-top .texto p{
+  font-size: 0.7rem;
+  font-weight: lighter;
+  margin-bottom: 1rem;
+}
+
+.tratamientos-top img{
+  width: 5rem;
+}
+
+.tratamientos-top ol{
+  margin: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tratamientos-top li h2{
+  font-size: 1.25rem;
+  font-weight: normal;
+}
+
+.tratamientos-top li p{
+  font-size: 0.7rem;
+  font-weight: lighter;
 }
 
 .vet-pet{
   background: white;
   grid-column: 2/3;
   grid-row: 4/5;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.vet-pet .mascotas-total{
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+
+.vet-pet .mascotas-tratamiento{
+  grid-column: 1/2;
+  grid-row: 2/3;
+}
+
+.vet-pet .veterinarios-activos{
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+
+.vet-pet .veterinarios-inactivos{
+  grid-column: 2/3;
+  grid-row: 2/3;
+}
+
+.mascotas-total, .mascotas-tratamiento, .veterinarios-activos, .veterinarios-inactivos{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  padding: 1rem 5rem;
+}
+
+.mascotas-total img, .mascotas-tratamiento img, .veterinarios-activos img, .veterinarios-inactivos img{
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.mascotas-total h3, .mascotas-tratamiento h3, .veterinarios-activos h3, .veterinarios-inactivos h3{
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.mascotas-total p, .mascotas-tratamiento p, .veterinarios-activos p, .veterinarios-inactivos p{
+  font-size: 0.7rem;
+  font-weight: lighter;
+  white-space: nowrap;
 }
