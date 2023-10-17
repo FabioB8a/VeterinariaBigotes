@@ -42,13 +42,15 @@
     border-radius: 0.5rem;
     border: 1px solid rgba(0, 0, 0, 0.30);
     background: #FFF;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.4rem 0.4rem 15%;
 }
 
 /* Estilos para el ícono de búsqueda */
 .search-icon {
     position: absolute;
     left: 5%; /* Ajustar la posición a la izquierda */
-    top: 17%;
+    top: 25%;
     height: 10%;
     transform: translateY(-50%);
     color: #34344C; /* Ajustar el color del ícono */
@@ -297,7 +299,7 @@ td img {
 
 #cerrar-sesion{
   text-align: center;
-  margin-top: 65%;
+  margin-top: 40%;
   color: #FFF;
   font-family: 'Raleway', sans-serif;
   font-size: 1.3rem;
