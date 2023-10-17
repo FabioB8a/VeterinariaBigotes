@@ -8,10 +8,10 @@ export class Treatment {
     pet!: Pet;
     drug!: Drug;
     veterinarian!: Veterinarian;
-    description?: string; 
-  
+    description?: string;
+
     constructor(date: Date, description?: string) {
       this.date = date;
-      this.description = description; 
+      this.description = description;
     }
   }
