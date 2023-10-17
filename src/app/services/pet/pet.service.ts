@@ -30,8 +30,8 @@ export class PetService {
  addPet(newPet: Pet) {
   console.log("Estoo");
   console.log(newPet);
-  
-  
+
+
     this.http.post("http://localhost:8090/pet", newPet).subscribe();
   }
 
@@ -45,6 +45,14 @@ export class PetService {
 
   ownerPets(id:number){
     this.http.get("http://localhost:8090/owner/pet/"+id).subscribe();
+  }
+
+  getNumberOfPets(): Observable<number>{
+    return this.http.get<number>('http://localhost:8090/pet/count/total');
+  }
+
+  getNumberOfPetsOnTreatment(): Observable<number>{
+    return this.http.get<number>('http://localhost:8090/pet/count/ontreatment');
   }
 
 }

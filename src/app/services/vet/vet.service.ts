@@ -43,4 +43,12 @@ export class VetService {
     return this.http.get<Veterinarian>("http://localhost:8090/login/vet/" + idCard + "/" + password);
   }
 
+  getNumberOfActiveVets(): Observable<number>{
+    return this.http.get<number>('http://localhost:8090/vet/count/active');
+  }
+
+  getNumberOfInactiveVets(): Observable<number>{
+    return this.http.get<number>('http://localhost:8090/vet/count/inactive');
+  }
+
 }

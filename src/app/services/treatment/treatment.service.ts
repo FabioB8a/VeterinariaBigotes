@@ -31,4 +31,8 @@ export class TreatmentService {
   deleteById(id: number) {
     this.http.delete("http://localhost:8090/treatment/" + id).subscribe();
   }
+
+  getCountTreatmentsByMonth(): Observable<number>{
+    return this.http.get<number>('http://localhost:8090/treatment/count');
+  }
 }
