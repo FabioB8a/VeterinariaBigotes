@@ -274,10 +274,7 @@
 }
 
 /* Aplica estilos a la última columna */
-td#more {
-  padding: 0;
-  margin: 0;
-}
+
 
 #more {
   display: flex;
