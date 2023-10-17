@@ -5,7 +5,6 @@ import {TreatmentService} from "../../services/treatment/treatment.service";
 import {VetService} from "../../services/vet/vet.service";
 import {PetService} from "../../services/pet/pet.service";
 import {Drug} from "../../model/drug/drug";
-import {datepickerAnimation} from "ngx-bootstrap/datepicker/datepicker-animations";
 
 @Component({
   selector: 'app-dash-board',
@@ -15,8 +14,16 @@ import {datepickerAnimation} from "ngx-bootstrap/datepicker/datepicker-animation
 
 export class DashBoardComponent {
 
-  drugListByMonth!: Drug[];
+  drugListByMonth!: any[];
   top3DrugList!: Drug[];
+  numberOfTreatmentsByMonth!: number;
+  numberOfPets!: number;
+  numberOfPetsOnTreatment!: number;
+  numberOfActiveVets!: number;
+  numberOfInactiveVets!: number;
+  totalSales!: number;
+  totalProfit!: number;
+
 
 
   constructor(
@@ -30,7 +37,38 @@ export class DashBoardComponent {
   ngOnInit() {
     this.drugService.getTreatmentByMonth().subscribe(data => {
       this.drugListByMonth = data.map(x => Object.assign(new Object(x)));
-      console.log(this.drugListByMonth);
+    });
+
+    this.drugService.getTop3Drug().subscribe(data => {
+      this.top3DrugList = data.map(x => Object.assign(new Drug(x.name, <number>x.buyPrice, <number>x.sellPrice, <number>x.itemsAvailable, <number>x.itemsSell), x));
+    });
+
+    this.treatmentService.getCountTreatmentsByMonth().subscribe(data => {
+      this.numberOfTreatmentsByMonth= data;
+    });
+
+    this.petService.getNumberOfPets().subscribe(data => {
+      this.numberOfPets = data;
+    });
+
+    this.petService.getNumberOfPetsOnTreatment().subscribe(data => {
+      this.numberOfPetsOnTreatment = data;
+    });
+
+    this.vetService.getNumberOfActiveVets().subscribe(data => {
+      this.numberOfActiveVets = data;
+    });
+
+    this.vetService.getNumberOfInactiveVets().subscribe(data => {
+      this.numberOfInactiveVets = data;
+    });
+
+    this.drugService.getTotalSales().subscribe(data => {
+      this.totalSales = data;
+    });
+
+    this.drugService.getTotalProfit().subscribe(data => {
+      this.totalProfit = data;
     });
   }
 }

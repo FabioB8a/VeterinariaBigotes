@@ -10,7 +10,7 @@
     <div class="tratamientos-mes">
       <div class="tratamientos-cantidad">
         <div class="texto">
-          <h3>400</h3>
+          <h3>{{ numberOfTreatmentsByMonth }}</h3>
           <p>Tratamientos en este mes</p>
         </div>
         <img src="../../assets/images/dashboard/bandita.png">
@@ -32,7 +32,8 @@
           <table>
             <tbody>
             <tr *ngFor="let drug of drugListByMonth">
-              <td>{{ drug.breed }}</td>
+              <td>{{ drug[0] | lowercase}}</td>
+              <td>{{ drug[1] }}</td>
             </tr>
             </tbody>
           </table>
@@ -41,14 +42,14 @@
     </div>
     <div class="ventas">
       <div class="texto">
-        <h3>$100'000.000</h3>
+        <h3>${{totalSales | number}}</h3>
         <p>Ventas totales</p>
       </div>
       <img src="../../assets/images/dashboard/dinero.png">
     </div>
     <div class="ganancias">
       <div class="texto">
-        <h3>$32'000.000</h3>
+        <h3>${{totalProfit | number}}</h3>
         <p>Ganancias totales</p>
       </div>
       <img src="../../assets/images/dashboard/dinero.png">
@@ -60,45 +61,38 @@
         <img src="../../assets/images/dashboard/podio.png">
       </div>
       <ol>
-        <li>
-          <h2>Demacure Plus</h2>
-          <p>100 unidades</p>
+        <li *ngFor="let drug of top3DrugList">
+          <h2>{{ drug.name }}</h2>
+          <p>{{ drug.itemsSell }} unidad(es) vendidas</p>
         </li>
-        <li>
-          <h2>Demacure Plus</h2>
-          <p>100 unidades</p>
-        </li>
-        <li>
-          <h2>Demacure Plus</h2>
-          <p>100 unidades</p>
       </ol>
     </div>
     <div class="vet-pet">
       <div class="mascotas-total">
         <img src="../../assets/images/dashboard/pata2.png">
         <div class="texto">
-          <h3>300</h3>
+          <h3>{{numberOfPets}}</h3>
           <p>Total mascotas</p>
         </div>
       </div>
       <div class="mascotas-tratamiento">
         <img src="../../assets/images/dashboard/pata1.png">
         <div class="texto">
-          <h3>100</h3>
+          <h3>{{numberOfPetsOnTreatment}}</h3>
           <p>Mascotas en tratamiento</p>
         </div>
       </div>
       <div class="veterinarios-activos">
         <img src="../../assets/images/dashboard/veterinario_activo.png">
         <div class="texto">
-          <h3>30</h3>
+          <h3>{{numberOfActiveVets}}</h3>
           <p>Veterinarios activos</p>
         </div>
       </div>
       <div class="veterinarios-inactivos">
         <img src="../../assets/images/dashboard/veterinario_inactivo.png">
         <div class="texto">
-          <h3>10</h3>
+          <h3>{{numberOfInactiveVets}}</h3>
           <p>Veterinarios inactivos</p>
         </div>
       </div>
