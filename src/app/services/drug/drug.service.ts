@@ -31,4 +31,16 @@ export class DrugService {
   deleteById(id: number) {
     this.http.delete("http://localhost:8090/drug/" + id).subscribe();
   }
+
+  getTop3Drug(): Observable<Drug[]>{
+    return this.http.get<Drug[]>('http://localhost:8090/drug/top');
+  }
+
+  getTotalSales(): Observable<number>{
+    return this.http.get<number>('http://localhost:8090/drug/totalsales');
+  }
+
+  getTreatmentByMonth(): Observable<Object[]>{
+    return this.http.get<Object[]>('http://localhost:8090/drug/treatmentbymonth');
+  }
 }

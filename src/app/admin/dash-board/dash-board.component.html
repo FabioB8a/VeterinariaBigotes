@@ -31,85 +31,8 @@
         <div class="scroll">
           <table>
             <tbody>
-            <tr>
-              <td>Medicamento 1</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 2</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 3</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 4</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 5</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 1</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 2</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 3</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 4</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 5</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 1</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 2</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 3</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 4</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 5</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 1</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 2</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 3</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 4</td>
-              <td>100</td>
-            </tr>
-            <tr>
-              <td>Medicamento 5</td>
-              <td>100</td>
+            <tr *ngFor="let drug of drugListByMonth">
+              <td>{{ drug.breed }}</td>
             </tr>
             </tbody>
           </table>
