@@ -27,8 +27,6 @@
   </div>
 
   <main>
-
-
     <section id="pet">
       <div>
         <img id="pet-img" src={{pet?.imgUrl}}>
@@ -53,11 +51,10 @@
 
     </section>
   </main>
-
-  <section id="history">
-    <div id="history-title">
-      <h1>Historial médico</h1>
-      <div *ngIf="userType === 'vet'">
+  <div *ngIf="userType === 'vet'">
+    <section id="history">
+      <div id="history-title">
+        <h1>Historial médico</h1>
         <form (submit)="agregarMedicamento()">
           <button type="submit">
             <img src="assets/images/showPet/add.svg">
@@ -68,30 +65,31 @@
           <input [(ngModel)]="description" name="descripcion" placeholder="Descripción">
         </form>
       </div>
-    </div>
 
-    <table>
-      <thead>
-      <tr>
-        <th scope="col">idHistoria</th>
-        <th scope="col">Enfermedad</th>
-        <th scope="col">Tratamientos médicos</th>
-        <th scope="col">Fecha</th>
-        <th scope="col">Droga Sumnistrada</th>
-        <th scope="col">Precio asociado</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr *ngFor="let treatment of treatmentList">
-        <td>{{ treatment.id }}</td>
-        <td>{{ treatment.pet.disease }}</td>
-        <td>{{ treatment.description }}</td>
-        <td>{{ treatment.date }}</td>
-        <td>{{ treatment.drug.name }}</td>
-        <td>${{ treatment.drug.sellPrice }}</td>
-      </tr>
-      </tbody>
-    </table>
 
-  </section>
+      <table>
+        <thead>
+        <tr>
+          <th scope="col">idHistoria</th>
+          <th scope="col">Enfermedad</th>
+          <th scope="col">Tratamientos médicos</th>
+          <th scope="col">Fecha</th>
+          <th scope="col">Droga Sumnistrada</th>
+          <th scope="col">Precio asociado</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let treatment of treatmentList">
+          <td>{{ treatment.id }}</td>
+          <td>{{ treatment.pet.disease }}</td>
+          <td>{{ treatment.description }}</td>
+          <td>{{ treatment.date }}</td>
+          <td>{{ treatment.drug.name }}</td>
+          <td>${{ treatment.drug.sellPrice }}</td>
+        </tr>
+        </tbody>
+      </table>
+
+    </section>
+  </div>
 </div>

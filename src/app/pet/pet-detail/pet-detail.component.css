@@ -36,7 +36,16 @@ nav {
   height: 5rem;
 }
 
-.user {
+.vetStyles .user {
+  width: 50%;
+  padding-right: 1%;
+  padding-top: 2.5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
+.userStyles .user {
   width: 50%;
   padding-right: 1%;
   padding-top: 2.5%;
@@ -46,13 +55,19 @@ nav {
   gap: 1rem;
 }
 
-.user h2 {
+.vetStyles .user h2 {
   font-size: 1em;
   color: #1C697D;
   margin: 0;
   padding: 0;
 }
 
+.userStyles .user h2{
+  font-size: 1em;
+  color: #5DB3DB;
+  margin: 0;
+  padding: 0;
+}
 
 .user img {
   width: 3rem;
@@ -116,7 +131,7 @@ main {
   padding: 0;
 }
 
-#pet-info {
+.vetStyles #pet-info {
   width: 55%;
   height: 80%;
   position: relative;
@@ -125,6 +140,18 @@ main {
   justify-content: right;
   align-items: flex-end;
   background-color: #1C697D;
+  border-radius: 2rem;
+}
+
+.userStyles #pet-info{
+  width: 55%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: flex-end;
+  background-color: #5DB3DB;
   border-radius: 2rem;
 }
 
@@ -199,7 +226,7 @@ main {
 }
 
 #history-title form{
-  width: 150%;
+  width: 70%;
 }
 #history-title form button{
   border: none;
