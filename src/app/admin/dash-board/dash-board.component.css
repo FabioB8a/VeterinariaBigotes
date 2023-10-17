@@ -16,21 +16,56 @@
 }
 
 .sidebar {
-    grid-column: 1 / 2;
-    grid-row: 1 / 2;
     background-color: #34344C;
     align-content: center;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    align-content: center;
     padding-bottom: 1rem;
 }
 
 .sidebar img{
     width: 80%;
     margin-left: 10%;
+  margin-bottom: 20%;
+}
+.sidebar h4 {
+  font-size: 1.3rem;
+  margin-left: 10%;
+  color: #FFFFFF;
+  margin-bottom: 20%;
+  margin-top: 20%;
 }
 
+.addSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #34344C;
+  /* Color de fondo del sidebar */
+  color: #FFFFFF;
+  /* Color del texto */
+  margin-bottom: 70%;
+}
+.addSection a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 5%;
+}
+
+.addSection a:hover {
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #34344C 0.2rem solid;
+  border-top: #34344C 0.2rem solid;
+  /* Cambia el color del texto al hacer hover */
+}
 #cerrar-sesion{
   text-align: center;
   color: #FFF;
@@ -45,8 +80,8 @@
   border-left: #FFFFFF 0.2rem solid;
   color: #FFFFFF;
   border-right: rgba(255, 255, 255, 0.20);
-  border-bottom: #1C697D 0.2rem solid;
-  border-top: #1C697D 0.2rem solid;
+  border-bottom: #34344C 0.2rem solid;
+  border-top: #34344C 0.2rem solid;
 }
 
 .grid-container{

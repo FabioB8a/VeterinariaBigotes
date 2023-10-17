@@ -1,6 +1,13 @@
 <div class="container">
   <div class="sidebar">
     <img class="icon" src="assets/images/vet/Bigotes-2.png">
+    <h4>Adicionales</h4>
+    <div class="addSection">
+      <a [routerLink]="['/vet/all']">Mostrar veterinarios</a>
+      <a [routerLink]="['/pet/all']">Mostrar dueños</a>
+      <a [routerLink]="['/owner/all']">Mostrar mascotas</a>
+    </div>
+
     <a id="cerrar-sesion" [routerLink]="['/login/show']">
       Cerrar sesión
     </a>
