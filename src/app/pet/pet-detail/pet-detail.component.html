@@ -39,7 +39,7 @@
           <div id="pet-data">
             <div>
               <p><strong>Raza: </strong><span>{{ pet?.breed}}</span></p>
-              <p><strong>Dueño: </strong><span></span></p>
+              <p><strong>Dueño: </strong><span>{{pet?.owner?.firstName}} {{pet?.owner?.firstLastName}}</span></p>
             </div>
             <div>
               <p><strong>Edad: </strong><span>{{ pet?.calculateAge() }} años</span></p>
