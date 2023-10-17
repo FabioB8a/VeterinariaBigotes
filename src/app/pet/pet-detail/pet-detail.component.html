@@ -57,8 +57,16 @@
   <section id="history">
     <div id="history-title">
       <h1>Historial médico</h1>
-      <div *ngIf="userType ==='vet'">
-        <img src="assets/images/showPet/add.svg">
+      <div *ngIf="userType === 'vet'">
+        <form (submit)="agregarMedicamento()">
+          <button type="submit">
+            <img src="assets/images/showPet/add.svg">
+          </button>
+          <select [(ngModel)]="selectedDrug" name="selectedDrug">
+            <option *ngFor="let drug of drugList" [ngValue]="drug">{{ drug.name }}</option>
+          </select>
+          <input [(ngModel)]="description" name="descripcion" placeholder="Descripción">
+        </form>
       </div>
     </div>
 
@@ -74,10 +82,14 @@
       </tr>
       </thead>
       <tbody>
-      <td>0001</td>
-      <td>{{ pet?.disease }}</td>
-
-
+      <tr *ngFor="let treatment of treatmentList">
+        <td>{{ treatment.id }}</td>
+        <td>{{ treatment.pet.disease }}</td>
+        <td>{{ treatment.description }}</td>
+        <td>{{ treatment.date }}</td>
+        <td>{{ treatment.drug.name }}</td>
+        <td>${{ treatment.drug.sellPrice }}</td>
+      </tr>
       </tbody>
     </table>
 

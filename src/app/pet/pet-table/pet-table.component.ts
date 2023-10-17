@@ -11,9 +11,10 @@ import {query} from "@angular/animations";
 })
 export class PetTableComponent {
 
-    @Input() userType: string ='';
+  @Input() userType: string ='';
+  @Input() vetId: string = '';
 
-    selectedPet!: Pet;
+  selectedPet!: Pet;
 
     petList!: Pet[];
 
@@ -39,8 +40,8 @@ export class PetTableComponent {
             this.userType = params['type'].toString();
             //let type =  localStorage.getItem('userType');
 
-            if (this.userType == 'vet') {
-                //this.userType = 'vet';
+            if (this.userType === 'vet') {
+                this.vetId = params['id'].toString();
                 this.petService.findAll().subscribe(
                     data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
                 );

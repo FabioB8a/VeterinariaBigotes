@@ -21,7 +21,7 @@
         <h4>Adicionales</h4>
         <div class="addSection">
             <a [routerLink]="['/owner/save']">Agregar dueño</a>
-            <a [routerLink]="['/pet/all']" [queryParams]="{ type: 'vet'}">Mostrar mascotas</a>
+            <a [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
         </div>
       <a id="cerrar-sesion" [routerLink]="['/login/show']">
         Cerrar sesión

@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Owner} from "../../model/owner/owner";
 import {OwnerService} from "../../services/owner/owner.service";
+import {ActivatedRoute} from "@angular/router";
+
 
 @Component({
   selector: 'app-owner-table',
@@ -11,15 +13,22 @@ export class OwnerTableComponent {
 
   selectedOwner!: Owner;
   ownerList!: Owner[];
+  @Input() userType: string = '';
+  @Input() vetId: string = '';
 
   constructor(
-    private ownerService: OwnerService
+    private ownerService: OwnerService,
+    private route: ActivatedRoute
   ) {}
 
   filterText: string = '';
   isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe(params => {
+      this.vetId = params['id'].toString();
+      this.userType = params['type'].toString();
+    });
     this.ownerService.findAll().subscribe(
       data => this.ownerList = data.map(x => Object.assign(new Owner(x.id, x.idCard, x.firstName,x.firstLastName, x.secondLastName,x.phone,x.email), x))
     )

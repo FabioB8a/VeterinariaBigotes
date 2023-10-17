@@ -105,7 +105,7 @@ export class LogInComponent {
             this.vetService.login(idVet, password).subscribe(
                 (data) => {
                     if (data != null) {
-                        this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});
+                      this.router.navigate(['/pet/all'], {queryParams: { id: idVet, type: "vet" }});
                     }else {
                         alert("La cédula o la contraseña son incorrectas")
                     }

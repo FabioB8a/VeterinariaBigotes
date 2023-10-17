@@ -16,7 +16,7 @@
       <h4>Adicionales</h4>
       <div class="addSection">
         <a [routerLink]="['/pet/save']">Agregar mascota</a>
-        <a [routerLink]="['/owner/all']">Mostrar dueños</a>
+        <a [routerLink]="['/owner/all']" [queryParams]="{type:userType, id:vetId}">Mostrar dueños</a>
       </div>
     </div>
     <a id="cerrar-sesion" [routerLink]="['/login/show']">
@@ -61,9 +61,9 @@
               <img src="assets/images/vet/deleteIcon.png">
             </a>
             <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
-
           </div>
-          <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{userType: userType}"> ... </a>
+            <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{ type: userType, id: vetId, petId: pet.id }">...</a>
+
         </td>
       </tr>
       </tbody>

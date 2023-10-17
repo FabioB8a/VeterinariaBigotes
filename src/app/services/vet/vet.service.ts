@@ -19,6 +19,9 @@ export class VetService {
   findById(id:number ): Observable<Veterinarian>{
     return this.http.get<Veterinarian>("http://localhost:8090/vet/" + id);
   }
+  findByIdCard(id:number ): Observable<Veterinarian>{
+    return this.http.get<Veterinarian>("http://localhost:8090/vet/idcard/" + id);
+  }
 
   addVet(newVet: Veterinarian) {
     this.http.post("http://localhost:8090/vet", newVet).subscribe();
