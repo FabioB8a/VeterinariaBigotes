@@ -47,7 +47,7 @@ export class PetDetailComponent implements OnInit {
       this.vetId = params['vetId'].toString();
     });
     if(this.vetId){
-      this.vetService.findById(Number(this.vetId)).subscribe((data) => {
+      this.vetService.findByIdCard(Number(this.vetId)).subscribe((data) => {
         this.veterinarian = data;
       });
     }
