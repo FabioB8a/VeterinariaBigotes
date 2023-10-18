@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import {Owner} from "../../model/owner/owner";
 import {OwnerService} from "../../services/owner/owner.service";
 import {ActivatedRoute} from "@angular/router";
+import {query} from "@angular/animations";
 
 
 @Component({
@@ -26,7 +27,9 @@ export class OwnerTableComponent {
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      this.vetId = params['id'].toString();
+      if ('id' in params){
+        this.vetId = params['id'].toString();
+      }
       this.userType = params['type'].toString();
     });
     this.ownerService.findAll().subscribe(
@@ -48,4 +51,5 @@ export class OwnerTableComponent {
     this.ownerService.deleteById(owner.id);
   }
 
+  protected readonly query = query;
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {DrugService} from "../../services/drug/drug.service";
 import {TreatmentService} from "../../services/treatment/treatment.service";
@@ -23,6 +23,7 @@ export class DashBoardComponent {
   numberOfInactiveVets!: number;
   totalSales!: number;
   totalProfit!: number;
+  userType: string = '';
 
 
 
@@ -35,6 +36,7 @@ export class DashBoardComponent {
   ) { }
 
   ngOnInit() {
+    this.userType = 'admin'
     this.drugService.getTreatmentByMonth().subscribe(data => {
       this.drugListByMonth = data.map(x => Object.assign(new Object(x)));
     });

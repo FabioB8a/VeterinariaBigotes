@@ -39,14 +39,14 @@ export class PetTableComponent {
         this.route.queryParams.subscribe(params => {
             this.userType = params['type'].toString();
             //let type =  localStorage.getItem('userType');
-
-            if (this.userType === 'vet') {
+            if (this.userType === 'vet' || this.userType === 'admin') {
+              if ('id' in params) {
                 this.vetId = params['id'].toString();
+              }
                 this.petService.findAll().subscribe(
                     data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
                 );
             } else if (this.userType == 'user') {
-                //this.userType = 'user';
                 const userId = params['id'].toString();
 
                 this.petService.findByOwner(userId).subscribe(

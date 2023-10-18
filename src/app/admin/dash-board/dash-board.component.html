@@ -3,9 +3,9 @@
     <img class="icon" src="assets/images/vet/Bigotes-2.png">
     <h4>Adicionales</h4>
     <div class="addSection">
-      <a [routerLink]="['/vet/all']">Mostrar veterinarios</a>
-      <a [routerLink]="['/pet/all']">Mostrar dueños</a>
-      <a [routerLink]="['/owner/all']">Mostrar mascotas</a>
+      <a [routerLink]="['/vet/all']" [queryParams]="{type:userType}">Mostrar veterinarios</a>
+      <a [routerLink]="['/owner/all']" [queryParams]="{type:userType}">Mostrar dueños</a>
+      <a [routerLink]="['/pet/all']" [queryParams]="{type:userType}">Mostrar mascotas</a>
     </div>
 
     <a id="cerrar-sesion" [routerLink]="['/login/show']">

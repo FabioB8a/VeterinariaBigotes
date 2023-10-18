@@ -54,7 +54,15 @@ nav {
   align-items: center;
   gap: 1rem;
 }
-
+.adminStyles .user {
+  width: 50%;
+  padding-right: 1%;
+  padding-top: 2.5%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 1rem;
+}
 .vetStyles .user h2 {
   font-size: 1em;
   color: #1C697D;
@@ -65,6 +73,12 @@ nav {
 .userStyles .user h2{
   font-size: 1em;
   color: #5DB3DB;
+  margin: 0;
+  padding: 0;
+}
+.adminStyles .user h2{
+  font-size: 1em;
+  color: #34344C;
   margin: 0;
   padding: 0;
 }
@@ -142,6 +156,17 @@ main {
   background-color: #1C697D;
   border-radius: 2rem;
 }
+.adminStyles #pet-info{
+  width: 55%;
+  height: 80%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: flex-end;
+  background-color: #34344C;
+  border-radius: 2rem;
+}
 
 .userStyles #pet-info{
   width: 55%;
@@ -216,9 +241,17 @@ main {
   padding-bottom: 2.5%;
 }
 
-#history-title h1 {
+.vetStyles #history-title h1 {
   font-size: 2rem;
   color: #1C697D;
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+.adminStyles #history-title h1 {
+  font-size: 2rem;
+  color: #34344C;
   font-family: 'Raleway', sans-serif;
   font-style: normal;
   font-weight: 900;

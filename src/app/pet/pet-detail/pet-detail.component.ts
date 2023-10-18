@@ -1,13 +1,13 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Pet } from "../../model/pet/pet";
-import { ActivatedRoute, Router } from "@angular/router";
-import { PetService } from "../../services/pet/pet.service";
-import { Drug } from "../../model/drug/drug";
-import { DrugService } from "../../services/drug/drug.service";
-import { TreatmentService } from "../../services/treatment/treatment.service";
-import { Treatment } from "../../model/treatment/treatment";
-import { Veterinarian } from "../../model/veterinarian/veterinarian";
-import { VetService } from "../../services/vet/vet.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Pet} from "../../model/pet/pet";
+import {ActivatedRoute, Router} from "@angular/router";
+import {PetService} from "../../services/pet/pet.service";
+import {Drug} from "../../model/drug/drug";
+import {DrugService} from "../../services/drug/drug.service";
+import {TreatmentService} from "../../services/treatment/treatment.service";
+import {Treatment} from "../../model/treatment/treatment";
+import {Veterinarian} from "../../model/veterinarian/veterinarian";
+import {VetService} from "../../services/vet/vet.service";
 
 @Component({
   selector: 'app-pet-detail',
@@ -22,8 +22,8 @@ export class PetDetailComponent implements OnInit {
   selectedDrug?: Drug | null;
   description: string = '';
   veterinarian?: Veterinarian;
-  treatmentList: Treatment[] = [];  // Lista de tratamientos
-  @Input()vetId: string = '';
+  treatmentList: Treatment[] = []; // Lista de tratamientos
+  @Input() vetId: string = '';
   id: number = 0;
 
   constructor(
@@ -33,33 +33,32 @@ export class PetDetailComponent implements OnInit {
     private petService: PetService,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
 
     this.petService.findById(this.id).subscribe((data) => {
       this.pet = new Pet(data.id, data.name, data.breed, data.birthdate, data.weight, data.disease, data.imgUrl, data.owner);
+      this.treatmentService.showTreatmentbyPet(this.pet.id).subscribe((data) => {
+        this.treatmentList = data;
+      });
     });
-
     this.route.queryParams.subscribe(params => {
       this.userType = params['type'].toString();
       this.vetId = params['id'].toString();
     });
-    if(this.vetId){
+    if (this.vetId) {
       this.vetService.findByIdCard(Number(this.vetId)).subscribe((data) => {
         this.veterinarian = data;
       });
     }
-    this.drugService.findAll().subscribe((data) => {
-      // Filtrar las drogas cuya cantidad de items disponibles es mayor a 0
-      this.drugList = data.filter(drug => drug && drug.itemsAvailable && drug.itemsAvailable > 0);
+    this.drugService.findDrugsAvailabale().subscribe((data) => {
+      this.drugList = data;
     });
 
-    // Fetch all treatments and filter them based on the pet's ID
-    this.treatmentService.findAll().subscribe((treatments) => {
-      this.treatmentList = treatments.filter(treatment => treatment.pet.id === this.id);
-    });
+
   }
 
   agregarMedicamento() {

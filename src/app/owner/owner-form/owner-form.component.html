@@ -80,7 +80,7 @@
                     </div>
                 </div>
                 <div class="buttons-container">
-                    <a [routerLink]="['/owner/all']" class="btn btn-secondary">Cancelar</a>
+                    <a [routerLink]="['/owner/all']"[queryParams]="{type:userType}" class="btn btn-secondary">Cancelar</a>
                     <button type="submit" (click)="saveOwner()">Guardar</button>
                 </div>
             </form>

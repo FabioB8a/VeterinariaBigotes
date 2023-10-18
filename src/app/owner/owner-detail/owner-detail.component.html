@@ -1,46 +1,64 @@
-
-<nav>
-    <div id="logo-container">
+<div [ngClass]="userType=== 'admin' ? 'adminStyles' : 'vetStyles'">
+  <div *ngIf="userType === 'vet'">
+    <nav>
+      <div class="logo-container">
         <a href="">
-            <img id="logo" src="../../../assets/images/showPet/logoVet.png">
+          <img class="logo" src="../../../assets/images/showPet/logoVet.png">
         </a>
-    </div>
-    <div id="user">
+      </div>
+      <div class="user">
         <h2>Veterinario</h2>
-        <img id="user-img" src="assets/images/users/FotoUser.png">
-    </div>
-</nav>
+        <img class="user-img" src="assets/images/users/FotoUser.png">
+      </div>
+    </nav>
+  </div>
+  <div *ngIf="userType === 'admin'">
+    <nav>
+      <div class="logo-container">
+        <a href="">
+          <img class="logo" src="../../../assets/images/users/logo-admin.png">
+        </a>
+      </div>
+      <div class="user">
+        <h2>Admin</h2>
+        <img class="user-img" src="assets/images/users/FotoAdmin.png">
+      </div>
+    </nav>
+  </div>
 
-<main>
+  <main>
     <section id="owner">
-        <div>
-            <img id="owner-img" src="assets/images/users/owner.png">
-        </div>
-        <div id="owner-info">
-            <div id="owner-data-container">
-                <div id="owner-name">
-                    <h1>Datos Dueño</h1>
-                </div>
-                <div id="owner-data">
-                    <div>
-                        <p><strong>Cédula: </strong><span>{{owner.idCard}}</span></p>
-                        <p><strong>Apellido1: </strong><span>{{owner.firstLastName}}</span></p>
-                        <p><strong>Celular: </strong><span>{{owner.phone}}</span></p>
-                    </div>
-                    <div class>
-                        <p><strong>Nombre: </strong><span>{{owner.firstName}}</span></p>
-                        <p><strong>Apellido2: </strong><span>{{owner.secondLastName}}</span></p>
-                        <p><strong>Correo: </strong><span>{{ owner.email}}</span></p>
-                    </div>
-                </div>
+      <div>
+        <img id="owner-img" src="assets/images/users/owner.png">
+      </div>
+      <div id="owner-info">
+        <div id="owner-data-container">
+          <div id="owner-name">
+            <h1>Datos Dueño</h1>
+          </div>
+          <div id="owner-data">
+            <div>
+              <p><strong>Cédula: </strong><span>{{owner.idCard}}</span></p>
+              <p><strong>Apellido1: </strong><span>{{owner.firstLastName}}</span></p>
+              <p><strong>Celular: </strong><span>{{owner.phone}}</span></p>
             </div>
-
-
+            <div class>
+              <p><strong>Nombre: </strong><span>{{owner.firstName}}</span></p>
+              <p><strong>Apellido2: </strong><span>{{owner.secondLastName}}</span></p>
+              <p><strong>Correo: </strong><span>{{ owner.email}}</span></p>
+            </div>
+          </div>
         </div>
+
+
+      </div>
 
     </section>
 
-</main>
-<div class="ver-macotas">
+  </main>
+  <div class="ver-macotas">
     <a [routerLink]="'/owner/pet/id'">Ver mascotas</a>
+  </div>
+
 </div>
+

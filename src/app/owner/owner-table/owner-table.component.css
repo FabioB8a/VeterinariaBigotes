@@ -1,9 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700;900&display=swap');
 /* styles.css */
-.sidebar {
+.vetStyles .sidebar {
     position: fixed;
     height: 100vh;
     background-color: #1C697D;
+    align-content: center;
+    display: flex;
+    flex-direction: column;
+    width: 15%;
+}
+.adminStyles .sidebar{
+    position: fixed;
+    height: 100vh;
+    background-color: #34344C;
     align-content: center;
     display: flex;
     flex-direction: column;
@@ -84,8 +93,12 @@
 }
 
 /* Estilos para el minicuadrado cuando el checkbox esté seleccionado */
-.sidebar input[type="checkbox"]:checked + label[for="filterNameOwner"]::before {
+.vetStyles .sidebar input[type="checkbox"]:checked + label[for="filterNameOwner"]::before {
     background-color: #1C697D;
+    border-color: #FFFFFF;
+}
+.adminStyles.sidebar input[type="checkbox"]:checked + label[for="filterNameVet"]::before {
+    background-color: #34344C;
     border-color: #FFFFFF;
 }
 
@@ -123,7 +136,7 @@
 
 }
 
-.head h2 {
+.vetStyles .head h2 {
     margin-top: 1%;
     margin-bottom: 1%;
     margin-left: 35%;
@@ -134,16 +147,24 @@
     font-weight: 500;
     line-height: normal;
 }
-
+.adminStyles .head h2{
+    margin-top: 1%;
+    margin-bottom: 1%;
+    margin-left: 35%;
+    font-family: 'Raleway', sans-serif;
+    color: #34344C;
+    font-size: 1.2rem;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+}
 /* Estilos para el título h1 */
-.content h1 {
+.vetStyles .content h1 {
     text-align: right;
     /* Alinea el texto a la derecha */
     margin-right: 10%;
     /* Agrega margen derecho para separación */
     font-size: 1.5rem;
-    /* Tamaño de fuente del título */
-    color: #34344C;
     /* Color del título */
     font-family: 'Raleway', sans-serif;
     /* Peso de la fuente */
@@ -156,6 +177,24 @@
     font-weight: 900;
     line-height: normal;
 
+}
+.adminStyles .content h1{
+  text-align: right;
+  /* Alinea el texto a la derecha */
+  margin-right: 10%;
+  /* Agrega margen derecho para separación */
+  font-size: 1.5rem;
+  /* Color del título */
+  font-family: 'Raleway', sans-serif;
+  /* Peso de la fuente */
+  margin-top: 2%;
+  margin-bottom: 3%;
+  color: #34344C;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.23rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
 }
 
 #searchPet {
@@ -214,7 +253,7 @@
     vertical-align: middle;
 }
 /* Estilos para el contenedor de los botones */
-.addSection {
+.vetStyles .addSection {
     display: flex;
     flex-direction: column;
     background-color: #1C697D;
@@ -234,7 +273,7 @@
     margin-top: 5%;
 }
 
-.addSection a:hover {
+.vetStyles .addSection a:hover {
     text-decoration: none;
     background: rgba(255, 255, 255, 0.20);
     border-left: #FFFFFF 0.2rem solid;
@@ -243,6 +282,24 @@
     border-bottom: #1C697D 0.2rem solid;
     border-top: #1C697D 0.2rem solid;
     /* Cambia el color del texto al hacer hover */
+}
+.adminStyles .addSection{
+  display: flex;
+  flex-direction: column;
+  background-color: #34344C;
+  /* Color de fondo del sidebar */
+  color: #FFFFFF;
+  /* Color del texto */
+}
+.adminStyles .addSection a:hover{
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #34344C 0.2rem solid;
+  border-top: #34344C 0.2rem solid;
+  /* Cambia el color del texto al hacer hover */
 }
 
 
@@ -266,7 +323,7 @@ td#more a {
     margin: 0;
 }
 
-#cerrar-sesion{
+.vetStyles #cerrar-sesion{
   text-align: center;
   margin-top: 65%;
   color: #FFF;
@@ -274,8 +331,16 @@ td#more a {
   font-size: 1.3rem;
   cursor: pointer;
 }
+.adminStyles #cerrar-sesion{
+  text-align: center;
+  margin-top: 45%;
+  color: #FFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
 
-#cerrar-sesion:hover {
+.vetStyles #cerrar-sesion:hover {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.20);
   border-left: #FFFFFF 0.2rem solid;
@@ -284,4 +349,14 @@ td#more a {
   border-bottom: #1C697D 0.2rem solid;
   border-top: #1C697D 0.2rem solid;
 }
+.adminStyles #cerrar-sesion:hover{
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #34344C 0.2rem solid;
+  border-top: #34344C 0.2rem solid;
+}
+
 

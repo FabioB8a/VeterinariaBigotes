@@ -95,7 +95,7 @@
           </div>
         </div>
         <div class="buttons-container">
-          <a [routerLink]="['/vet/all']" class="btn btn-secondary">Cancelar</a>
+          <a [routerLink]="['/vet/all']"[queryParams]="{type:userType}" class="btn btn-secondary">Cancelar</a>
           <button type="submit" (click)="saveVet()">Guardar</button>
         </div>
       </form>

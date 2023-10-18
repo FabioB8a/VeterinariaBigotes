@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Owner} from "../../model/owner/owner";
 import {ActivatedRoute, Router} from "@angular/router";
 import {OwnerService} from "../../services/owner/owner.service";
@@ -11,6 +11,7 @@ import {concat, first, forkJoin} from "rxjs";
 })
 export class OwnerFormComponent {
 
+  @Input() userType: string = '';
     constructor(private ownerService: OwnerService, private route: ActivatedRoute, private router: Router) {
     }
 
@@ -19,12 +20,16 @@ export class OwnerFormComponent {
     formOwner: any = {};  // Initialize formOwner as an empty object or with default values
 
     ngOnInit() {
+
         this.route.queryParams.subscribe(params => {
             if ('ownerId' in params) {
                 const ownerId = Number(params['ownerId']);
                 this.ownerService.findById(ownerId).subscribe(
                     data => this.formOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email)
                 );
+            }
+            if ('type' in params){
+              this.userType = params['type'].toString();
             }
         });
     }
@@ -54,12 +59,12 @@ export class OwnerFormComponent {
                     alert("Ya existe un dueño con el mismo teléfono");
                 } else {
                     this.ownerService.addOwner(this.sendOwner);
-                    this.router.navigate(['/owner/all']);
+                    this.router.navigate(['/owner/all'], {queryParams: {type:this.userType }});
                 }
             });
         } else {
             this.ownerService.updateOwner(this.sendOwner);
-            this.router.navigate(['/owner/all']);
+            this.router.navigate(['/owner/all'], {queryParams: {type:this.userType }});
         }
     }
 

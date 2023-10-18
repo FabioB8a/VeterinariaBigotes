@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import { Pet } from 'src/app/model/pet/pet';
 import { PetService } from "../../services/pet/pet.service";
 import { OwnerService } from "../../services/owner/owner.service";
@@ -12,6 +12,7 @@ import { Owner } from 'src/app/model/owner/owner';
 })
 export class PetFormComponent {
 
+  @Input() userType: string = '';
   constructor(private petService: PetService, private ownerService: OwnerService, private route: ActivatedRoute, private router: Router) { }
 
   sendPet!: Pet;
@@ -77,7 +78,7 @@ export class PetFormComponent {
   }
 
   leave(){
-    this.router.navigate(['/pet/all'], {queryParams: {type: "vet"}});
+    this.router.navigate(['/pet/all'], {queryParams: {type:this.userType }});
   }
 
   verifyForm() {

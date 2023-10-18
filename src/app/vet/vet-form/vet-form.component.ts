@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {Veterinarian} from 'src/app/model/veterinarian/veterinarian';
 import {VetService} from 'src/app/services/vet/vet.service';
@@ -9,6 +9,7 @@ import {VetService} from 'src/app/services/vet/vet.service';
   styleUrls: ['./vet-form.component.css']
 })
 export class VetFormComponent {
+  @Input() userType: string = '';
 
   constructor(private vetService: VetService, private route: ActivatedRoute, private router: Router) {
   }
@@ -17,8 +18,10 @@ export class VetFormComponent {
 
   formVet: any = {};
 
+
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
+      this.userType = params['type'].toString();
       if ('vetId' in params) {
         const ownerId = Number(params['vetId']);
         this.vetService.findById(ownerId).subscribe(

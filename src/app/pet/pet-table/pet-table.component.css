@@ -22,6 +22,16 @@
   width: 15%;
 }
 
+.adminStyles .sidebar {
+  position: fixed;
+  height: 100vh;
+  background-color: #34344C;
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  width: 15%;
+}
+
 .filters {
   color: #FFFFFF;
 }
@@ -107,6 +117,10 @@
   background-color: #5DB3DB;
   border-color: #FFFFFF;
 }
+.adminStyles .sidebar input[type="checkbox"]:checked + label[for="filterNamePet"]::before {
+  background-color: #34344C;
+  border-color: #FFFFFF;
+}
 
 /* Ajusta el margen superior de la imagen */
 .icon {
@@ -164,15 +178,24 @@
   line-height: normal;
 }
 
-.content h1 {
+.adminStyles .head h2{
+  margin-top: 1%;
+  margin-bottom: 1%;
+  margin-left: 35%;
+  font-family: 'Raleway', sans-serif;
+  color: #34344C;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+}
+.vetStyles .content h1 {
   text-align: right;
   /* Alinea el texto a la derecha */
   margin-right: 10%;
   /* Agrega margen derecho para separación */
   font-size: 1.5rem;
   /* Tamaño de fuente del título */
-  color: #34344C;
-  /* Color del título */
   font-family: 'Raleway', sans-serif;
   /* Peso de la fuente */
   margin-top: 2%;
@@ -184,7 +207,24 @@
   font-weight: 900;
   line-height: normal;
 }
-
+.adminStyles .content h1{
+  text-align: right;
+  /* Alinea el texto a la derecha */
+  margin-right: 10%;
+  /* Agrega margen derecho para separación */
+  font-size: 1.5rem;
+  /* Tamaño de fuente del título */
+  font-family: 'Raleway', sans-serif;
+  /* Peso de la fuente */
+  margin-top: 2%;
+  margin-bottom: 3%;
+  color: #34344C;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.23rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
 
 #searchVet {
   font-size: 0.53rem;
@@ -242,7 +282,7 @@
 }
 
 /* Estilos para el contenedor de los botones */
-.addSection {
+.vetStyles .addSection {
   display: flex;
   flex-direction: column;
   background-color: #1C697D;
@@ -251,7 +291,7 @@
   /* Color del texto */
 }
 
-.addSection a {
+.vetStyles .addSection a {
   text-decoration: none;
   color: #FFFFFF;
   font-family: 'Raleway', sans-serif;
@@ -262,7 +302,7 @@
   margin-top: 5%;
 }
 
-.addSection a:hover {
+.vetStyles .addSection a:hover {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.20);
   border-left: #FFFFFF 0.2rem solid;
@@ -270,6 +310,37 @@
   border-right: rgba(255, 255, 255, 0.20);
   border-bottom: #1C697D 0.2rem solid;
   border-top: #1C697D 0.2rem solid;
+  /* Cambia el color del texto al hacer hover */
+}
+
+.adminStyles .addSection {
+  display: flex;
+  flex-direction: column;
+  background-color: #34344C;
+  /* Color de fondo del sidebar */
+  color: #FFFFFF;
+  /* Color del texto */
+}
+
+.adminStyles .addSection a {
+  text-decoration: none;
+  color: #FFFFFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-align: center;
+  padding: 5%;
+  margin-top: 5%;
+}
+
+.adminStyles .addSection a:hover{
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: rgba(255, 255, 255, 0.20);
+  border-bottom: #34344C 0.2rem solid;
+  border-top: #34344C 0.2rem solid;
   /* Cambia el color del texto al hacer hover */
 }
 
@@ -338,6 +409,7 @@ td img {
   border-bottom: #1C697D 0.2rem solid;
   border-top: #1C697D 0.2rem solid;
 }
+
 .userStyles #cerrar-sesion:hover {
   text-decoration: none;
   background: rgba(255, 255, 255, 0.20);
@@ -346,4 +418,22 @@ td img {
   border-right: #5DB3DB;
   border-bottom: #5DB3DB 0.2rem solid;
   border-top: #5DB3DB 0.2rem solid;
+}
+
+.adminStyles #cerrar-sesion{
+  text-align: center;
+  margin-top: 45%;
+  color: #FFF;
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.3rem;
+  cursor: pointer;
+}
+.adminStyles #cerrar-sesion:hover{
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.20);
+  border-left: #FFFFFF 0.2rem solid;
+  color: #FFFFFF;
+  border-right: #34344C;
+  border-bottom: #34344C 0.2rem solid;
+  border-top: #34344C 0.2rem solid;
 }

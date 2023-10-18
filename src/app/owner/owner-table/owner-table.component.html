@@ -1,71 +1,89 @@
-<div class="d-flex">
-    <div class="sidebar">
-        <!-- Sidebar content -->
-        <img class="icon" src="assets/images/vet/Bigotes-2.png">
-        <!-- Dentro de tu barra lateral en el archivo HTML -->
-        <h4>Filtros</h4>
-        <div class="filters">
+<div class="d-flex" [ngClass]="userType=== 'admin' ? 'adminStyles' : 'vetStyles'">
+  <div class="sidebar">
+    <!-- Sidebar content -->
+    <img class="icon" src="assets/images/vet/Bigotes-2.png">
+    <!-- Dentro de tu barra lateral en el archivo HTML -->
+    <h4>Filtros</h4>
+    <div class="filters">
 
-            <div>
-                <input type="checkbox" id="filterNameOwner">
-                <label for="filterNameOwner">Nombre dueño</label>
-            </div>
-            <!-- Dentro de tu barra lateral en el archivo HTML -->
-            <div class="search-input">
-                <input type="text" id="searchPet" placeholder="Inserte el nombre del dueño">
-                <span class="search-icon"><i class="fas fa-search"></i></span>
-            </div>
+      <div>
+        <input type="checkbox" id="filterNameOwner">
+        <label for="filterNameOwner">Nombre dueño</label>
+      </div>
+      <!-- Dentro de tu barra lateral en el archivo HTML -->
+      <div class="search-input">
+        <input type="text" id="searchPet" placeholder="Inserte el nombre del dueño">
+        <span class="search-icon"><i class="fas fa-search"></i></span>
+      </div>
 
-
-        </div>
-        <h4>Adicionales</h4>
-        <div class="addSection">
-            <a [routerLink]="['/owner/save']">Agregar dueño</a>
-            <a [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
-        </div>
-      <a id="cerrar-sesion" [routerLink]="['/login/show']">
-        Cerrar sesión
-      </a>
 
     </div>
-
-    <div class="content">
-        <div class="head">
-            <h1>Nuestros Dueños</h1>
-            <h2>Veterinario</h2>
-            <img class="icon" src="assets/images/users/FotoUser.png">
-        </div>
-        <table class="table table-striped">
-            <thead>
-            <tr>
-                <th scope="col">Cédula</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Celular</th>
-                <th scope="col">Correo</th>
-                <th>Adicionales</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let owner of filterOwnersByName() || ownerList">
-                <td>{{owner.idCard}}</td>
-                <td >{{owner.firstName}}</td>
-                <td> {{owner.firstLastName}}</td>
-                <td>{{owner.phone}}</td>
-                <td>{{owner.email}}</td>
-                <td id="more">
-                    <!--add pet to owner we need the path-->
-                    <a (click)="deleteById(owner)">
-                        <img src="assets/images/vet/deleteIcon.png">
-                    </a>
-                    <a [routerLink]="['/owner/save']" [queryParams]="{ ownerId: owner.id }"> <img src="assets/images/vet/editIcon.png"> </a>
-
-                    <a [routerLink]="['/owner/detail', owner.id]"> ... </a>
-
-                </td>
-            </tr>
-            </tbody>
-        </table>
-
+    <div *ngIf="userType==='vet'">
+      <h4>Adicionales</h4>
+      <div class="addSection">
+        <a [routerLink]="['/owner/save']">Agregar dueño</a>
+        <a [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
+      </div>
     </div>
+    <div *ngIf="userType==='admin'">
+      <h4>Adicionales</h4>
+      <div class="addSection">
+        <a [routerLink]="['/owner/save']" [queryParams]="{type:userType}">Agregar dueño</a>
+        <a [routerLink]="['/vet/all']" [queryParams]="{type:userType}">Mostrar veterinarios</a>
+        <a [routerLink]="['/admin/dashboard']" [queryParams]="{type:userType}">Mostrar dashboard</a>
+        <a [routerLink]="['/pet/all'] " [queryParams]="{type:userType}">Mostrar mascotas</a>
+      </div>
+    </div>
+
+    <a id="cerrar-sesion" [routerLink]="['/login/show']">
+      Cerrar sesión
+    </a>
+
+  </div>
+
+  <div class="content">
+    <div class="head" *ngIf="userType === 'admin'" >
+      <h1>Nuestros dueños</h1>
+      <h2>Admin</h2>
+      <img class="icon" src="assets/images/users/FotoAdmin.png">
+    </div>
+    <div class="head" *ngIf="userType === 'vet'" >
+      <h1>Nuestros dueños</h1>
+      <h2>Veterinario</h2>
+      <img class="icon" src="assets/images/users/FotoUser.png">
+      </div>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">Cédula</th>
+        <th scope="col">Nombre</th>
+        <th scope="col">Apellido</th>
+        <th scope="col">Celular</th>
+        <th scope="col">Correo</th>
+        <th>Adicionales</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let owner of filterOwnersByName() || ownerList">
+        <td>{{owner.idCard}}</td>
+        <td>{{owner.firstName}}</td>
+        <td> {{owner.firstLastName}}</td>
+        <td>{{owner.phone}}</td>
+        <td>{{owner.email}}</td>
+        <td id="more">
+          <!--add pet to owner we need the path-->
+          <a (click)="deleteById(owner)">
+            <img src="assets/images/vet/deleteIcon.png">
+          </a>
+          <a [routerLink]="['/owner/save']" [queryParams]="{ ownerId: owner.id }"> <img
+            src="assets/images/vet/editIcon.png"> </a>
+
+          <a [routerLink]="['/owner/detail', owner.id]" [queryParams]="{type:userType}"> ... </a>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+
+  </div>
 </div>

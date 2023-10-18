@@ -47,4 +47,7 @@ export class DrugService {
   getTreatmentByMonth(): Observable<Object[]>{
     return this.http.get<Object[]>('http://localhost:8090/drug/treatmentbymonth');
   }
+  findDrugsAvailabale(): Observable<Drug[]>{ // Retorna las drogas cuya cantidad de items disponibles es mayor a 0
+    return this.http.get<Drug[]>('http://localhost:8090/drug/available');
+  }
 }

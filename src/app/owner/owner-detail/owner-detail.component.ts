@@ -9,8 +9,8 @@ import {Owner} from "../../model/owner/owner";
   styleUrls: ['./owner-detail.component.css']
 })
 export class OwnerDetailComponent {
-  @Input()
-  owner!: Owner;
+  @Input() owner: Owner= new Owner(0, 0, "", "", "", "", "");
+  @Input() userType: string = '';
 
   constructor(
     private ownerService: OwnerService,
@@ -23,6 +23,10 @@ export class OwnerDetailComponent {
     this.ownerService.findById(id).subscribe((data) => {
       this.owner = new Owner(data.id,data.idCard,data.firstName,data.firstLastName,data.secondLastName,data.phone,data.email);
     });
+    if ('type' in this.route.snapshot.queryParams){
+      this.userType = this.route.snapshot.queryParams['type'].toString();
+    }
+
   }
 
 }
