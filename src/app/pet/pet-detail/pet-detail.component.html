@@ -72,6 +72,7 @@
     <section id="history">
       <div id="history-title">
         <h1>Historial médico</h1>
+        <div *ngIf="userType === 'vet'">
         <form (submit)="agregarMedicamento()">
           <button type="submit">
             <img src="assets/images/showPet/add.svg">
@@ -81,6 +82,7 @@
           </select>
           <input [(ngModel)]="description" name="descripcion" placeholder="Descripción">
         </form>
+        </div>
       </div>
       <table>
         <thead>

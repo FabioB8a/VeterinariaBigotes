@@ -58,7 +58,6 @@ export class PetDetailComponent implements OnInit {
       this.drugList = data;
     });
 
-
   }
 
   agregarMedicamento() {
