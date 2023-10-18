@@ -35,4 +35,8 @@ export class TreatmentService {
   getCountTreatmentsByMonth(): Observable<number>{
     return this.http.get<number>('http://localhost:8090/treatment/count');
   }
+
+  showTreatmentbyPet(id: number): Observable<Treatment[]>{
+    return this.http.get<Treatment[]>('http://localhost:8090/treatment/pet/' + id);
+  }
 }
