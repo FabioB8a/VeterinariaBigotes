@@ -12,6 +12,7 @@ import {concat, first, forkJoin} from "rxjs";
 export class OwnerFormComponent {
 
   @Input() userType: string = '';
+  @Input() vetId: string = '';
     constructor(private ownerService: OwnerService, private route: ActivatedRoute, private router: Router) {
     }
 
@@ -30,6 +31,10 @@ export class OwnerFormComponent {
             }
             if ('type' in params){
               this.userType = params['type'].toString();
+              console.log("nuestro user en el momento de entrar es", this.userType)
+            }
+            if ('id' in params){
+              this.vetId = params['id'].toString();
             }
         });
     }
@@ -59,11 +64,13 @@ export class OwnerFormComponent {
                     alert("Ya existe un dueño con el mismo teléfono");
                 } else {
                     this.ownerService.addOwner(this.sendOwner);
+                    console.log("El usuario actual es ", this.userType)
                     this.router.navigate(['/owner/all'], {queryParams: {type:this.userType }});
                 }
             });
         } else {
             this.ownerService.updateOwner(this.sendOwner);
+            console.log("El usuario actual es ", this.userType)
             this.router.navigate(['/owner/all'], {queryParams: {type:this.userType }});
         }
     }

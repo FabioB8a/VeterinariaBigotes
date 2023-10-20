@@ -28,10 +28,10 @@
     <div *ngIf="userType==='admin'">
       <h4>Adicionales</h4>
       <div class="addSection">
-        <a [routerLink]="['/owner/save']" [queryParams]="{type:userType}">Agregar dueño</a>
-        <a [routerLink]="['/vet/all']" [queryParams]="{type:userType}">Mostrar veterinarios</a>
-        <a [routerLink]="['/admin/dashboard']" [queryParams]="{type:userType}">Mostrar dashboard</a>
-        <a [routerLink]="['/pet/all'] " [queryParams]="{type:userType}">Mostrar mascotas</a>
+        <a [routerLink]="['/owner/save']" [queryParams]="{id:vetId, type: userType}">Agregar dueño</a>
+        <a [routerLink]="['/vet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar veterinarios</a>
+        <a [routerLink]="['/admin/dashboard']" [queryParams]="{id:vetId, type: userType}">Mostrar dashboard</a>
+        <a [routerLink]="['/pet/all'] " [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
       </div>
     </div>
 
@@ -75,10 +75,10 @@
           <a (click)="deleteById(owner)">
             <img src="assets/images/vet/deleteIcon.png">
           </a>
-          <a [routerLink]="['/owner/save']" [queryParams]="{ ownerId: owner.id }"> <img
+          <a [routerLink]="['/owner/save']" [queryParams]="{ ownerId: owner.id , id:vetId, type: userType}"> <img
             src="assets/images/vet/editIcon.png"> </a>
 
-          <a [routerLink]="['/owner/detail', owner.id]" [queryParams]="{type:userType}"> ... </a>
+          <a [routerLink]="['/owner/detail', owner.id]" [queryParams]="{id:vetId, type: userType}"> ... </a>
 
         </td>
       </tr>

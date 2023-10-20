@@ -11,6 +11,7 @@ import {Owner} from "../../model/owner/owner";
 export class OwnerDetailComponent {
   @Input() owner: Owner= new Owner(0, 0, "", "", "", "", "");
   @Input() userType: string = '';
+  @Input() vetId: string = '';
 
   constructor(
     private ownerService: OwnerService,
@@ -25,6 +26,9 @@ export class OwnerDetailComponent {
     });
     if ('type' in this.route.snapshot.queryParams){
       this.userType = this.route.snapshot.queryParams['type'].toString();
+    }
+    if ('id' in this.route.snapshot.queryParams){
+      this.vetId = this.route.snapshot.queryParams['id'].toString();
     }
 
   }

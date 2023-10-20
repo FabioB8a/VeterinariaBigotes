@@ -20,24 +20,29 @@ export class OwnerTableComponent {
   constructor(
     private ownerService: OwnerService,
     private route: ActivatedRoute
-  ) {}
+  ) {
+  }
 
   filterText: string = '';
   isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
-      if ('id' in params){
+      if ('id' in params) {
         this.vetId = params['id'].toString();
       }
-      this.userType = params['type'].toString();
+      if ('type' in params) {
+
+        this.userType = params['type'].toString();
+      }
     });
     this.ownerService.findAll().subscribe(
-      data => this.ownerList = data.map(x => Object.assign(new Owner(x.id, x.idCard, x.firstName,x.firstLastName, x.secondLastName,x.phone,x.email), x))
+      data => this.ownerList = data.map(x => Object.assign(new Owner(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.phone, x.email), x))
     )
   }
-  filterOwnersByName(){
-    if(this.isNameFilterActive){
+
+  filterOwnersByName() {
+    if (this.isNameFilterActive) {
       return this.ownerList.filter(owner => owner.firstName.toLowerCase().includes(this.filterText.toLowerCase()));
 
     } else {
@@ -45,9 +50,9 @@ export class OwnerTableComponent {
     }
   }
 
-  deleteById(owner:Owner):void{
+  deleteById(owner: Owner): void {
     const index = this.ownerList.indexOf(owner);
-    this.ownerList.splice(index,1);
+    this.ownerList.splice(index, 1);
     this.ownerService.deleteById(owner.id);
   }
 
