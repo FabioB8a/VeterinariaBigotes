@@ -87,7 +87,6 @@
       <table>
         <thead>
         <tr>
-          <th scope="col">idHistoria</th>
           <th scope="col">Enfermedad</th>
           <th scope="col">Tratamientos médicos</th>
           <th scope="col">Fecha</th>
@@ -97,7 +96,6 @@
         </thead>
         <tbody>
         <tr *ngFor="let treatment of treatmentList">
-          <td>{{ treatment.id }}</td>
           <td>{{ treatment.pet.disease }}</td>
           <td>{{ treatment.description }}</td>
           <td>{{ treatment.date }}</td>
