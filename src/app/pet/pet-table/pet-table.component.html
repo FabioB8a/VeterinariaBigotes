@@ -80,7 +80,7 @@
             <a (click)="deleteById(pet)">
               <img src="assets/images/vet/deleteIcon.png">
             </a>
-            <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id }"> <img src="assets/images/vet/editIcon.png"> </a>
+            <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id , type:userType}"> <img src="assets/images/vet/editIcon.png"> </a>
           </div>
             <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{ type: userType, id: vetId, petId: pet.id }">...</a>
 

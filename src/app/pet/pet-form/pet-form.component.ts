@@ -37,6 +37,9 @@ export class PetFormComponent {
   ngOnInit() {
 
     this.route.queryParams.subscribe(params => {
+      if ('type' in params) {
+        this.userType = params['type'].toString();
+      }
       if ('petId' in params) {
         this.petId = Number(params['petId']);
 
@@ -63,7 +66,6 @@ export class PetFormComponent {
 
       this.formPet.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
 
-      console.log("HOlllaaaa",this.formPet.owner);
       // Now that the owner data is updated, proceed with saving the pet
       this.sendPet = Object.assign({}, this.formPet);
 
@@ -72,7 +74,6 @@ export class PetFormComponent {
       } else {
         this.petService.addPet(this.sendPet!!);
       }
-
       this.leave();
     });
   }
