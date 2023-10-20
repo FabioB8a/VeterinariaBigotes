@@ -120,7 +120,7 @@ iframe {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; 
+    justify-content: center;
     text-align: center;
 }
 
@@ -147,6 +147,13 @@ iframe {
     border-bottom: 3px solid #000;
     outline: none;
     background: transparent;
+}
+.form-active input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
 }
 .form-active {
     margin-left: 5%;
