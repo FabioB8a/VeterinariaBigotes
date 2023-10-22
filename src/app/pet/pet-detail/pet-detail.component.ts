@@ -19,7 +19,7 @@ export class PetDetailComponent implements OnInit {
   @Input() pet?: Pet;
   @Input() userType: string = '';
   drugList: Drug[] = [];
-  selectedDrug?: Drug | null;
+  selectedDrug?: Drug | undefined;
   description: string = '';
   veterinarian?: Veterinarian;
   treatmentList: Treatment[] = []; // Lista de tratamientos
@@ -63,32 +63,38 @@ export class PetDetailComponent implements OnInit {
   agregarMedicamento() {
     if (this.selectedDrug && this.description !== '' && this.pet && this.veterinarian) {
       const newTreatment: Treatment = {
-        id: 0,
+        id: 0,  // El ID es asignado por la API, 0 solo es un marcador temporal
         date: new Date(),
         pet: this.pet,
         drug: this.selectedDrug,
         veterinarian: this.veterinarian,
         description: this.description
       };
-      const drugId = this.selectedDrug.id;
-      this.treatmentService.addTreatment(newTreatment);
-      // Update the drug's itemsAvailable
 
-      // @ts-ignore
-      this.selectedDrug.itemsAvailable -= 1;
-      // @ts-ignore
-      this.selectedDrug.itemsSell += 1;
-      this.drugService.updateDrug(this.selectedDrug);
-      // Update the treatmentList after adding a treatment
-      this.treatmentList.push(newTreatment);
+      this.treatmentService.addTreatment(newTreatment).subscribe((response) => {
+        // El tratamiento recién creado debe incluir su ID generado
+        if (response) {
+          // Agrega el tratamiento a la lista en el frontend
+          this.treatmentList.push(response);
 
-      // Reset the selected drug and description
-      this.selectedDrug = null;
-      this.description = '';
-
+          // Actualiza las cantidades de la droga
+          if (this.selectedDrug){
+            // @ts-ignore
+            this.selectedDrug.itemsAvailable -= 1;
+            // @ts-ignore
+            this.selectedDrug.itemsSell += 1;
+            this.drugService.updateDrug(this.selectedDrug);
+          }
+            // Limpiar selección y descripción después de agregar el tratamiento
+            this.selectedDrug = undefined;
+            this.description = '';
+        }
+      });
     } else {
       alert("Por favor, rellene todos los campos");
     }
   }
+
+
 
 }
