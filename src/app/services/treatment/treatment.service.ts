@@ -20,8 +20,8 @@ export class TreatmentService {
     return this.http.get<Treatment>("http://localhost:8090/treatment/" + id);
   }
 
-  addTreatment(newTreatment: Treatment) {
-    this.http.post("http://localhost:8090/treatment", newTreatment).subscribe();
+  addTreatment(newTreatment: Treatment):Observable<Treatment> {
+    return this.http.post<Treatment>("http://localhost:8090/treatment", newTreatment);
   }
 
   updateTreatment(changedTreatment: Treatment) {
