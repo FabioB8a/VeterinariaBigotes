@@ -57,7 +57,7 @@
 
   </main>
   <div class="ver-macotas">
-    <a [routerLink]="'/owner/pet/id'">Ver mascotas</a>
+    <a [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type:userType, ownerId:owner.id}">Ver mascotas</a>
   </div>
 
 </div>

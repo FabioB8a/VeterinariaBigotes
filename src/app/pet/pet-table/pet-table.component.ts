@@ -43,9 +43,18 @@ export class PetTableComponent {
               if ('id' in params) {
                 this.vetId = params['id'].toString();
               }
-                this.petService.findAll().subscribe(
-                    data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+              if ('ownerId' in params) {
+                const ownerId = Number(params['ownerId']);
+                this.petService.findByOwner(ownerId).subscribe(
+                  data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
                 );
+              }
+              else {
+                this.petService.findAll().subscribe(
+                  data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+                );
+              }
+
             } else if (this.userType == 'user') {
                 const userId = params['id'].toString();
 
