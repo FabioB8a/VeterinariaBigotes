@@ -41,6 +41,7 @@ export class PetDetailComponent implements OnInit {
 
     this.petService.findById(this.id).subscribe((data) => {
       this.pet = new Pet(data.id, data.name, data.breed, data.birthdate, data.weight, data.disease, data.imgUrl, data.owner);
+      this.pet.status = data.status;
       this.treatmentService.showTreatmentbyPet(this.pet.id).subscribe((data) => {
         this.treatmentList = data;
       });

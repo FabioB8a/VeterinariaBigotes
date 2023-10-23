@@ -55,4 +55,16 @@ export class PetService {
     return this.http.get<number>('http://localhost:8090/pet/count/ontreatment');
   }
 
+  showAllPetsInTreatment(): Observable<Pet[]>{
+    return this.http.get<Pet[]>('http://localhost:8090/pet/all/ontreatment');
+  }
+
+  updatePetStatus(id: number, status: string) {
+    return this.http.put<Pet>(`http://localhost:8090/pet/updateStatus/${id}`, { status });
+  }
+
+
+  showAllPetsDischarged(): Observable<Pet[]>{
+    return this.http.get<Pet[]>('http://localhost:8090/pet/all/discharge');
+  }
 }

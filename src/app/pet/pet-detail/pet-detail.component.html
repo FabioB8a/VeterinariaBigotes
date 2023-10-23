@@ -73,15 +73,17 @@
       <div id="history-title">
         <h1>Historial médico</h1>
         <div *ngIf="userType === 'vet'">
-        <form (submit)="agregarMedicamento()">
-          <button type="submit">
-            <img src="assets/images/showPet/add.svg">
-          </button>
-          <select [(ngModel)]="selectedDrug" name="selectedDrug">
-            <option *ngFor="let drug of drugList" [ngValue]="drug">{{ drug.name }}</option>
-          </select>
-          <input [(ngModel)]="description" name="descripcion" placeholder="Descripción">
-        </form>
+          <ng-container *ngIf="pet?.status !== 'Alta'">
+          <form (submit)="agregarMedicamento()">
+              <button type="submit">
+                <img src="assets/images/showPet/add.svg">
+              </button>
+              <select [(ngModel)]="selectedDrug" name="selectedDrug">
+                <option *ngFor="let drug of drugList" [ngValue]="drug">{{ drug.name }}</option>
+              </select>
+              <input [(ngModel)]="description" name="descripcion" placeholder="Descripción">
+            </form>
+          </ng-container>
         </div>
       </div>
       <table>

@@ -54,6 +54,29 @@
       <h2>Admin</h2>
       <img class="icon" src="assets/images/users/FotoAdmin.png">
     </div>
+    <div class="switch vetStyles" *ngIf="userType === 'vet'">
+      <label>
+        <input type="checkbox" [(ngModel)]="showAllPets" (change)="filterPets()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="switch userStyles" *ngIf="userType === 'user'">
+      <label>
+        <input type="checkbox" [(ngModel)]="showAllPets" (change)="filterPets()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="switch adminStyles" *ngIf="userType === 'admin'">
+      <label>
+        <input type="checkbox" [(ngModel)]="showAllPets" (change)="filterPets()">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+
+
     <table class="table table-striped">
       <thead>
       <tr>
@@ -72,14 +95,22 @@
           <span class= "imagenPerro">{{ pet.name }}</span>
         </td>
         <td>{{ pet.breed }}</td>
-        <td>{{ pet.calculateAge() }} años</td>
+        <td>
+          <ng-container *ngIf="showAllPets && pet.calculateAge">
+            {{ pet.calculateAge() }} años
+          </ng-container>
+        </td>
+
         <td>{{ pet.weight }} gr</td>
         <td>{{ pet.disease }}</td>
         <td id="more">
           <div *ngIf="userType ==='vet' || userType ==='admin'">
-            <a (click)="deleteById(pet)">
-              <img src="assets/images/vet/deleteIcon.png">
-            </a>
+            <ng-container *ngIf="pet.status !== 'Alta'">
+              <a (click)="deleteById(pet)">
+                <img src="assets/images/vet/deleteIcon.png">
+              </a>
+            </ng-container>
+
             <a [routerLink]="['/pet/save']" [queryParams]="{ petId: pet.id , type:userType}"> <img src="assets/images/vet/editIcon.png"> </a>
           </div>
             <a [routerLink]="['/pet/detail', pet.id]" [queryParams]="{ type: userType, id: vetId, petId: pet.id }">...</a>

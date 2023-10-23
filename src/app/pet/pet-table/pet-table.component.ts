@@ -17,6 +17,7 @@ export class PetTableComponent {
   selectedPet!: Pet;
 
     petList!: Pet[];
+    showAllPets: boolean = true;
 
 
     constructor(
@@ -50,7 +51,7 @@ export class PetTableComponent {
                 );
               }
               else {
-                this.petService.findAll().subscribe(
+                this.petService.showAllPetsInTreatment().subscribe(
                   data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
                 );
               }
@@ -78,11 +79,53 @@ export class PetTableComponent {
         }
     }
 
-    deleteById(pet:Pet):void{
-        const index = this.petList.indexOf(pet);
-        this.petList.splice(index,1);
-        this.petService.deleteById(pet.id);
+  deleteById(pet: Pet): void {
+    const id = pet.id;
+    const newStatus = 'Alta';  // Cambiar el estado a 'Alta' o el estado deseado
+    const newDisease = 'ninguna'; // Cambiar la enfermedad a 'ninguna' o la enfermedad deseada
+
+    // Cambia el estado de la mascota directamente a través del servicio
+    pet.status = newStatus;
+    pet.disease = newDisease;
+
+    this.petService.updatePet(pet);
+      // Cuando se actualiza el estado, elimina la mascota de la lista
+    const index = this.petList.indexOf(pet);
+    this.petList.splice(index, 1);
+  }
+
+
+  filterPets() {
+    if ('ownerId' in this.route.snapshot.queryParams) {
+      const ownerId = this.route.snapshot.queryParams['ownerId'];
+
+      if (this.showAllPets) {
+        console.log("Mostrando mascotas en tratamiento del dueño");
+        this.petService.findByOwner(ownerId).subscribe((data: Pet[]) => {
+          this.petList = data.filter(pet => pet.status === 'En tratamiento');
+        });
+      } else {
+        console.log("Mostrando mascotas dadas de alta del dueño");
+        this.petService.findByOwner(ownerId).subscribe((data: Pet[]) => {
+          this.petList = data.filter(pet => pet.status === 'Alta');
+        });
+      }
+    } else {
+      if (this.showAllPets) {
+        console.log("Mostrando todas las mascotas en tratamiento");
+        this.petService.showAllPetsInTreatment().subscribe((data: Pet[]) => {
+          this.petList = data;
+        });
+      } else {
+        console.log("Mostrando todas las mascotas dadas de alta");
+        this.petService.showAllPetsDischarged().subscribe((data: Pet[]) => {
+          this.petList = data;
+        });
+      }
     }
+  }
+
+
 
   protected readonly query = query;
   protected readonly String = String;
