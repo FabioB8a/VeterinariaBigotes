@@ -25,7 +25,7 @@ export class VetFormComponent {
       if ('vetId' in params) {
         const ownerId = Number(params['vetId']);
         this.vetService.findById(ownerId).subscribe(
-          data => this.formVet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl)
+          data => this.formVet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl, data.status)
         );
       }
     });

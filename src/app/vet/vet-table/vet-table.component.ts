@@ -22,10 +22,9 @@ export class VetTableComponent {
 
   ngOnInit(): void {
     this.userType="admin";
-    this.vetService.findAll().subscribe(
+    this.vetService.findAllActiveVeterinarians().subscribe(
       data => {
-        this.vetList = data.map(x => Object.assign(new Veterinarian(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.password, x.speciality, x.imgUrl), x));
-        console.log(this.vetList);
+        this.vetList = data.map(x => Object.assign(new Veterinarian(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.password, x.speciality, x.imgUrl, x.status), x));
       }
     );
   }
@@ -33,7 +32,6 @@ export class VetTableComponent {
   filterVetsByName(){
     if(this.isNameFilterActive){
       return this.vetList.filter(vet => vet.firstName.toLowerCase().includes(this.filterText.toLowerCase()));
-
     } else {
       return this.vetList;
     }
@@ -42,7 +40,8 @@ export class VetTableComponent {
   deleteById(vet:Veterinarian):void{
     const index = this.vetList.indexOf(vet);
     this.vetList.splice(index,1);
-    this.vetService.deleteById(vet.id);
+    vet.status = 'Inactivo';
+    this.vetService.updateVet(vet);
   }
 
 }

@@ -51,4 +51,12 @@ export class VetService {
     return this.http.get<number>('http://localhost:8090/vet/count/inactive');
   }
 
+  findAllActiveVeterinarians(): Observable<Veterinarian[]>{
+    return this.http.get<Veterinarian[]>('http://localhost:8090/vet/active');
+  }
+
+  findAllInactiveVeterinarians(): Observable<Veterinarian[]>{
+    return this.http.get<Veterinarian[]>('http://localhost:8090/vet/inactive');
+  }
+
 }

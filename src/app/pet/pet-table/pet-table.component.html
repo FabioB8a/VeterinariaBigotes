@@ -96,9 +96,7 @@
         </td>
         <td>{{ pet.breed }}</td>
         <td>
-          <ng-container *ngIf="showAllPets && pet.calculateAge">
             {{ pet.calculateAge() }} años
-          </ng-container>
         </td>
 
         <td>{{ pet.weight }} gr</td>

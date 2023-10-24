@@ -26,7 +26,7 @@ export class VetDetailComponent {
     });
     const id = Number(this.route.snapshot.paramMap.get('id'));
     this.vetService.findById(id).subscribe((data) => {
-      this.vet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl);
+      this.vet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl, data.status);
     });
   }
 }

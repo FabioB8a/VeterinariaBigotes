@@ -100,26 +100,23 @@ export class PetTableComponent {
       const ownerId = this.route.snapshot.queryParams['ownerId'];
 
       if (this.showAllPets) {
-        console.log("Mostrando mascotas en tratamiento del dueño");
         this.petService.findByOwner(ownerId).subscribe((data: Pet[]) => {
           this.petList = data.filter(pet => pet.status === 'En tratamiento');
         });
       } else {
-        console.log("Mostrando mascotas dadas de alta del dueño");
         this.petService.findByOwner(ownerId).subscribe((data: Pet[]) => {
           this.petList = data.filter(pet => pet.status === 'Alta');
         });
       }
     } else {
       if (this.showAllPets) {
-        console.log("Mostrando todas las mascotas en tratamiento");
         this.petService.showAllPetsInTreatment().subscribe((data: Pet[]) => {
-          this.petList = data;
+          this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x));
         });
       } else {
-        console.log("Mostrando todas las mascotas dadas de alta");
         this.petService.showAllPetsDischarged().subscribe((data: Pet[]) => {
-          this.petList = data;
+          this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x));
+          console.log(data);
         });
       }
     }
