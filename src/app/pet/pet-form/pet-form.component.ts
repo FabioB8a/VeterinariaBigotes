@@ -23,7 +23,7 @@ export class PetFormComponent {
     birthdate: '',
     weight: 0,
     breed: '',
-    status: '',
+    status: 'En tratamiento',
     calculateAge() {
         return 0
     },
