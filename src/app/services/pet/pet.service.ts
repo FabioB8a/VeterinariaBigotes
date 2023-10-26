@@ -28,10 +28,6 @@ export class PetService {
   }
 
  addPet(newPet: Pet) {
-  console.log("Estoo");
-  console.log(newPet);
-
-
     this.http.post("http://localhost:8090/pet", newPet).subscribe();
   }
 
