@@ -70,7 +70,7 @@ export class PetFormComponent {
                   // Now that the owner data is updated, proceed with saving the pet
                   this.sendPet = Object.assign({}, this.formPet);
                   console.log("la mascota send es", this.sendPet);
-                  if (this.petId !== null) {
+                  if (this.petId != null) {
                       this.petService.updatePet(this.sendPet);
                   } else {
                       this.petService.addPet(this.sendPet);
