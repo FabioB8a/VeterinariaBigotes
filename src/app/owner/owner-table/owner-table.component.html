@@ -21,7 +21,7 @@
     <div *ngIf="userType==='vet'">
       <h4>Adicionales</h4>
       <div class="addSection">
-        <a [routerLink]="['/owner/save']" [queryParams]="{id:vetId, type: userType}">Agregar dueño</a>
+        <a id="btnsaveOwner" [routerLink]="['/owner/save']" [queryParams]="{id:vetId, type: userType}">Agregar dueño</a>
         <a [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
       </div>
     </div>
@@ -65,7 +65,7 @@
       </thead>
       <tbody>
       <tr *ngFor="let owner of filterOwnersByName() || ownerList">
-        <td>{{owner.idCard}}</td>
+        <td class="ownerId">{{owner.idCard}}</td>
         <td>{{owner.firstName}}</td>
         <td> {{owner.firstLastName}}</td>
         <td>{{owner.phone}}</td>
