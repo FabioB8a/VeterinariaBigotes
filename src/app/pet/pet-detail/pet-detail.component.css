@@ -47,8 +47,8 @@ nav {
 }
 .userStyles .user {
   width: 50%;
-  padding-right: 1%;
-  padding-top: 2.5%;
+  height: 7rem;
+  padding-right: 2%;
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -71,7 +71,7 @@ nav {
 }
 
 .userStyles .user h2{
-  font-size: 1em;
+  font-size: 1.5em;
   color: #5DB3DB;
   margin: 0;
   padding: 0;
@@ -84,7 +84,7 @@ nav {
 }
 
 .user img {
-  width: 3rem;
+  width: 7rem;
 }
 
 main {
@@ -241,6 +241,13 @@ main {
   padding-bottom: 2.5%;
 }
 
+.userStyles #history-title h1{
+  font-size: 2rem;
+  font-family: 'Raleway', sans-serif;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
 .vetStyles #history-title h1 {
   font-size: 2rem;
   color: #1C697D;

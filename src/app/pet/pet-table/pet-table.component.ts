@@ -47,7 +47,7 @@ export class PetTableComponent {
               if ('ownerId' in params) {
                 const ownerId = Number(params['ownerId']);
                 this.petService.findByOwner(ownerId).subscribe(
-                  data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+                  data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x)).filter(pet => pet.status === 'En tratamiento')
                 );
               }
               else {
@@ -96,19 +96,24 @@ export class PetTableComponent {
 
 
   filterPets() {
-    if ('ownerId' in this.route.snapshot.queryParams) {
+    if ('ownerId' in this.route.snapshot.queryParams ) {
       const ownerId = this.route.snapshot.queryParams['ownerId'];
 
       if (this.showAllPets) {
         this.petService.findByOwner(ownerId).subscribe((data: Pet[]) => {
-          this.petList = data.filter(pet => pet.status === 'En tratamiento');
+          this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x)).filter(pet => pet.status === 'En tratamiento');
+          console.log("la lista de mascotas es", this.petList)
+          //this.petList = data.filter(pet => pet.status === 'En tratamiento');
         });
       } else {
         this.petService.findByOwner(ownerId).subscribe((data: Pet[]) => {
-          this.petList = data.filter(pet => pet.status === 'Alta');
+          this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x)).filter(pet => pet.status === 'Alta');
+          console.log("la lista de mascotas es", this.petList)
+          //this.petList = data.filter(pet => pet.status === 'Alta');
         });
       }
     } else {
+      console.log("El usuario actual es ", this.userType)
       if (this.showAllPets) {
         this.petService.showAllPetsInTreatment().subscribe((data: Pet[]) => {
           this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x));

@@ -13,6 +13,7 @@ import { Owner } from 'src/app/model/owner/owner';
 export class PetFormComponent {
 
   @Input() userType: string = '';
+  @Input() vetId: string = '';
   constructor(private petService: PetService, private ownerService: OwnerService, private route: ActivatedRoute, private router: Router) { }
 
   sendPet!: Pet;
@@ -48,6 +49,9 @@ export class PetFormComponent {
           this.idCardText = data.owner?.idCard
         });
       }
+      if ('id' in params) {
+        this.vetId = params['id'].toString();
+      }
     });
   }
 
@@ -75,12 +79,15 @@ export class PetFormComponent {
       } else {
         this.petService.addPet(this.sendPet!!);
       }
-      this.leave();
+
+      setTimeout(() => {
+        this.leave();
+      }, 1000);
     });
   }
 
   leave(){
-    this.router.navigate(['/pet/all'], {queryParams: {type:this.userType }});
+    this.router.navigate(['/pet/all'], {queryParams: {type:this.userType, id:this.vetId}});
   }
 
   verifyForm() {
