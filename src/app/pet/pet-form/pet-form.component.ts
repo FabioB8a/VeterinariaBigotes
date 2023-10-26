@@ -62,28 +62,32 @@ export class PetFormComponent {
     }
     console.log("la mascota es", this.formPet);
 
-    this.ownerService.findByIDCard(this.idCardText).subscribe(data => {
+      this.ownerService.findByIDCard(this.idCardText).subscribe(
+          data => {
+              if (data) {
+                  this.formPet.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
 
-      if (data == null) {
-        alert("No existe un dueño con la cédula ingresada");
-        return;
-      }
+                  // Now that the owner data is updated, proceed with saving the pet
+                  this.sendPet = Object.assign({}, this.formPet);
+                  console.log("la mascota send es", this.sendPet);
+                  if (this.petId !== null) {
+                      this.petService.updatePet(this.sendPet);
+                  } else {
+                      this.petService.addPet(this.sendPet);
+                  }
+                  this.leave();
+              }
+          },
+          error => {
+              if (error.status === 404) {
+                  alert('No existe un dueño con esa cédula.');
+              } else {
+                  alert('Un error ocurrio, vuelva a intentarlo.');
+              }
+          }
+      );
 
-      this.formPet.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
 
-      // Now that the owner data is updated, proceed with saving the pet
-      this.sendPet = Object.assign({}, this.formPet);
-    console.log("la mascota send es", this.sendPet);
-      if (this.petId != null) {
-        this.petService.updatePet(this.sendPet!!);
-      } else {
-        this.petService.addPet(this.sendPet!!);
-      }
-
-      setTimeout(() => {
-        this.leave();
-      }, 1000);
-    });
   }
 
   leave(){

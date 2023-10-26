@@ -31,9 +31,6 @@ export class PetTableComponent {
     filterText: string = '';
     isNameFilterActive: boolean = false;
 
-    ngOnChanges(): void {
-
-    }
 
     ngOnInit(): void {
 
@@ -51,9 +48,12 @@ export class PetTableComponent {
                 );
               }
               else {
-                this.petService.showAllPetsInTreatment().subscribe(
-                  data => this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
-                );
+                this.petService.showAllPetsInTreatment().subscribe({
+                    next: (data) =>
+                        this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x)),
+                    error: (err) => console.error(err)
+
+                });
               }
 
             } else if (this.userType == 'user') {
