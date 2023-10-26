@@ -21,15 +21,19 @@ export class VetFormComponent {
 
   ngOnInit() {
     this.route.queryParams.subscribe(params => {
-      this.userType = params['type'].toString();
+      if (params['type']) { // Check if 'type' is available and not undefined
+        this.userType = params['type'].toString();
+      }
+
       if ('vetId' in params) {
-        const ownerId = Number(params['vetId']);
-        this.vetService.findById(ownerId).subscribe(
+        const vetId = Number(params['vetId']);
+        this.vetService.findById(vetId).subscribe(
           data => this.formVet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl, data.status)
         );
       }
     });
   }
+
 
   saveVet() {
     // Validar que todos los campos estén llenos
