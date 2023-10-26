@@ -19,14 +19,14 @@
     <div *ngIf="userType === 'vet'">
       <h4>Adicionales</h4>
       <div class="addSection">
-        <a [routerLink]="['/pet/save']" [queryParams]="{type:userType, id:vetId}">Agregar mascota</a>
+        <a id="btnAddPet" [routerLink]="['/pet/save']" [queryParams]="{type:userType, id:vetId}">Agregar mascota</a>
         <a  id="btnAllOwner" [routerLink]="['/owner/all']" [queryParams]="{type:userType, id:vetId}">Mostrar dueños</a>
       </div>
     </div>
   <div *ngIf="userType === 'admin'">
     <h4>Adicionales</h4>
     <div class="addSection">
-      <a [routerLink]="['/pet/save'] "[queryParams]="{type:userType}">Agregar mascota</a>
+      <a id="btnAddPet" [routerLink]="['/pet/save'] "[queryParams]="{type:userType}">Agregar mascota</a>
       <a [routerLink]="['/vet/all']"[queryParams]="{type:userType}">Mostrar veterinarios</a>
       <a [routerLink]="['/admin/dashboard']"[queryParams]="{type:userType}">Mostrar dashboard</a>
       <a [routerLink]="['/owner/all']" [queryParams]="{type:userType}">Mostrar dueños</a>

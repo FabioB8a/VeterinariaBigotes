@@ -22,7 +22,7 @@
       <h4>Adicionales</h4>
       <div class="addSection">
         <a id="btnsaveOwner" [routerLink]="['/owner/save']" [queryParams]="{id:vetId, type: userType}">Agregar dueño</a>
-        <a [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
+        <a id="btnAllPets" [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
       </div>
     </div>
     <div *ngIf="userType==='admin'">
