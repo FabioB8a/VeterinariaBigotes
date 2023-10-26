@@ -65,13 +65,13 @@ export class OwnerFormComponent {
                 } else {
                     this.ownerService.addOwner(this.sendOwner);
                     console.log("El usuario actual es ", this.userType)
-                    this.router.navigate(['/owner/all'], {queryParams: {type:this.userType }});
+                    this.router.navigate(['/owner/all'], {queryParams: {type:this.userType, id:this.vetId}});
                 }
             });
         } else {
             this.ownerService.updateOwner(this.sendOwner);
             console.log("El usuario actual es ", this.userType)
-            this.router.navigate(['/owner/all'], {queryParams: {type:this.userType }});
+            this.router.navigate(['/owner/all'], {queryParams: {type:this.userType ,  id:this.vetId}});
         }
     }
 

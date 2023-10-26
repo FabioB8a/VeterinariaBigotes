@@ -78,7 +78,7 @@ export class LogInComponent {
                     if (data != null) {
                       this.selectedOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
                       //this.userService.setUserType('user');
-                      this.router.navigate(['/pet/all'], { queryParams: { id: this.selectedOwner.id, type: "user" }});
+                      this.router.navigate(['/pet/all'], { queryParams: { ownerId: this.selectedOwner.id, type: "user" }});
                     }else {
                       alert("El usuario no existe")
                     }

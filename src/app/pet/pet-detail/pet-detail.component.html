@@ -10,10 +10,6 @@
           <img class="logo" src="../../../assets/images/showPet/logoVet.png">
         </a>
       </div>
-      <div class="user">
-        <h2>Veterinario</h2>
-        <img class="user-img" src="assets/images/showPet/user.png">
-      </div>
     </nav>
   </div>
   <div *ngIf="userType === 'admin'">
@@ -23,10 +19,6 @@
           <img class="logo" src="../../../assets/images/users/logo-admin.png">
         </a>
       </div>
-      <div class="user">
-        <h2>Admin</h2>
-        <img class="user-img" src="assets/images/users/FotoAdmin.png">
-      </div>
     </nav>
   </div>
   <div *ngIf="userType === 'user'">
@@ -35,10 +27,6 @@
         <a href="">
           <img class="logo" src="../../../assets/images/showPet/logoOwner.svg">
         </a>
-      </div>
-      <div class="user">
-        <h2>Dueño</h2>
-        <img class="user-img" src="assets/images/users/owner.png">
       </div>
     </nav>
   </div>
@@ -68,7 +56,7 @@
 
     </section>
   </main>
-  <div *ngIf="userType === 'vet' || userType ==='admin'">
+  <div>
     <section id="history">
       <div id="history-title">
         <h1>Historial médico</h1>
