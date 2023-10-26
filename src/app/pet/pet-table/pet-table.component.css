@@ -158,7 +158,7 @@
 .vetStyles .head h2 {
   margin-top: 1%;
   margin-bottom: 1%;
-  margin-left: 35%;
+  margin-left: 45%;
   font-family: 'Raleway', sans-serif;
   color: #1C697D;
   font-size: 1.2rem;
@@ -169,7 +169,7 @@
 .userStyles .head h2{
   margin-top: 1%;
   margin-bottom: 1%;
-  margin-left: 35%;
+  margin-left: 56%;
   font-family: 'Raleway', sans-serif;
   color: #5DB3DB;
   font-size: 1.2rem;
@@ -181,7 +181,7 @@
 .adminStyles .head h2{
   margin-top: 1%;
   margin-bottom: 1%;
-  margin-left: 35%;
+  margin-left: 49%;
   font-family: 'Raleway', sans-serif;
   color: #34344C;
   font-size: 1.2rem;
@@ -191,11 +191,19 @@
 }
 
 /* Estilos para el interruptor personalizado */
+.switch-container{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 2%;
+}
+
 .switch {
   position: relative;
   display: inline-block;
   width: 60px;
   height: 34px;
+  margin-right: 2%;
 }
 
 /* Estilo para el checkbox oculto */
@@ -203,6 +211,14 @@
   opacity: 0;
   width: 0;
   height: 0;
+}
+switchText{
+  font-family: 'Raleway', sans-serif;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  color: #FFFFFF;
 }
 
 /* Estilo para la etiqueta del interruptor */
@@ -270,6 +286,24 @@
   margin-top: 2%;
   margin-bottom: 3%;
   color: #1C697D;
+  font-family: 'Raleway', sans-serif;
+  font-size: 2.23rem;
+  font-style: normal;
+  font-weight: 900;
+  line-height: normal;
+}
+.userStyles .content h1{
+  text-align: right;
+  /* Alinea el texto a la derecha */
+  margin-right: 10%;
+  /* Agrega margen derecho para separación */
+  font-size: 1.5rem;
+  /* Tamaño de fuente del título */
+  font-family: 'Raleway', sans-serif;
+  /* Peso de la fuente */
+  margin-top: 2%;
+  margin-bottom: 3%;
+  color: #5DB3DB;
   font-family: 'Raleway', sans-serif;
   font-size: 2.23rem;
   font-style: normal;
@@ -438,6 +472,12 @@ td img {
 #more a img {
   width: 2.5rem;
   margin: 0;
+}
+
+#more a svg{
+  margin-left: 26%;
+  margin-top: 105%;
+  margin-bottom: 0;
 }
 
 .firstLine {

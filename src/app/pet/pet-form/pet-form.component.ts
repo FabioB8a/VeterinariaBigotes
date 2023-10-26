@@ -56,6 +56,7 @@ export class PetFormComponent {
     if (!this.verifyForm()) {
       return;
     }
+    console.log("la mascota es", this.formPet);
 
     this.ownerService.findByIDCard(this.idCardText).subscribe(data => {
 
@@ -68,7 +69,7 @@ export class PetFormComponent {
 
       // Now that the owner data is updated, proceed with saving the pet
       this.sendPet = Object.assign({}, this.formPet);
-
+    console.log("la mascota send es", this.sendPet);
       if (this.petId != null) {
         this.petService.updatePet(this.sendPet!!);
       } else {
