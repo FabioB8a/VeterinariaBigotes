@@ -16,7 +16,7 @@ export class VetFormComponent {
 
   sendVet!: Veterinarian;
 
-  formVet: any = {};
+  formVet: Veterinarian = {id: 0, idCard: 0, firstName: '', firstLastName: '', secondLastName: '', password: '', speciality: '', imgUrl: '', status: 'Activo'};
 
 
   ngOnInit() {
@@ -44,22 +44,26 @@ export class VetFormComponent {
     // Se crea un objeto de tipo Veterinarian con los datos del formulario
     this.sendVet = Object.assign({}, this.formVet);
 
-    // Se verifica que si el id es null, no exista un veterinario con el mismo idCard en la base de datos
-    if (this.sendVet.id == null) {
+    // Se verifica que si el id es 0, no exista un veterinario con el mismo idCard en la base de datos
+    if (this.sendVet.id == 0) {
       this.vetService.vetExists(this.sendVet.idCard).subscribe(exists => {
         if (exists) {
           alert("Ya existe un veterinario con el mismo número de cédula");
         } else {
-          // Si el id es diferente de null se añade el veterinario a la base de datos
+          // Si el id es diferente de 0 se añade el veterinario a la base de datos
           this.vetService.addVet(this.sendVet);
-          this.router.navigate(['/vet/all']);
+          setTimeout( () => {
+            this.router.navigate(['/vet/all']);
+          }, 1000);
         }
       });
     }
-    // Si el id no es null se actualiza el veterinario en la base de datos
+    // Si el id no es 0 se actualiza el veterinario en la base de datos
     else {
       this.vetService.updateVet(this.sendVet);
-      this.router.navigate(['/vet/all']);
+      setTimeout( () => {
+        this.router.navigate(['/vet/all']);
+      }, 1000);
     }
   }
 

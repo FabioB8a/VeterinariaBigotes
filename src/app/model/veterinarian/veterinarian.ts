@@ -32,6 +32,6 @@ export class Veterinarian {
       this.password = password;
       this.speciality = speciality;
       this.imgUrl = imgUrl;
-      this.status = status;
+      this.status = "Activo";
     }
   }

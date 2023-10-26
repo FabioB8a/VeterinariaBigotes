@@ -284,6 +284,7 @@ td#more a {
   display: flex;
   align-items: center;
   justify-items: center;
+  padding-left: 20%;
 }
 
 
