@@ -63,13 +63,13 @@
         <div *ngIf="userType === 'vet'">
           <ng-container *ngIf="pet?.status !== 'Alta'">
           <form (submit)="agregarMedicamento()">
-              <button type="submit">
+              <button id ="btn-add-treatment" type="submit">
                 <img src="assets/images/showPet/add.svg">
               </button>
-              <select [(ngModel)]="selectedDrug" name="selectedDrug">
+              <select id="selected-drug" [(ngModel)]="selectedDrug" name="selectedDrug">
                 <option *ngFor="let drug of drugList" [ngValue]="drug">{{ drug.name }}</option>
               </select>
-              <input [(ngModel)]="description" name="descripcion" placeholder="Descripción">
+              <input id="field-description" [(ngModel)]="description" name="descripcion" placeholder="Descripción">
             </form>
           </ng-container>
         </div>
