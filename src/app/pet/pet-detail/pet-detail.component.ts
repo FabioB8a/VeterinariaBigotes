@@ -72,20 +72,20 @@ export class PetDetailComponent implements OnInit {
         description: this.description
       };
 
+      // Actualiza las cantidades de la droga
+      if (this.selectedDrug){
+        // @ts-ignore
+        this.selectedDrug.itemsAvailable -= 1;
+        // @ts-ignore
+        this.selectedDrug.itemsSell += 1;
+        this.drugService.updateDrug(this.selectedDrug);
+      }
+
       this.treatmentService.addTreatment(newTreatment).subscribe((response) => {
         // El tratamiento recién creado debe incluir su ID generado
         if (response) {
           // Agrega el tratamiento a la lista en el frontend
           this.treatmentList.push(response);
-
-          // Actualiza las cantidades de la droga
-          if (this.selectedDrug){
-            // @ts-ignore
-            this.selectedDrug.itemsAvailable -= 1;
-            // @ts-ignore
-            this.selectedDrug.itemsSell += 1;
-            this.drugService.updateDrug(this.selectedDrug);
-          }
             // Limpiar selección y descripción después de agregar el tratamiento
             this.selectedDrug = undefined;
             this.description = '';
