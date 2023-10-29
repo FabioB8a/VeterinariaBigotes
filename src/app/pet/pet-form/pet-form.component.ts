@@ -75,7 +75,7 @@ export class PetFormComponent {
                   } else {
                       this.petService.addPet(this.sendPet);
                   }
-                  this.leave();
+                  
               }
           },
           error => {
@@ -84,6 +84,9 @@ export class PetFormComponent {
               } else {
                   alert('Un error ocurrio, vuelva a intentarlo.');
               }
+          },
+          () => {
+            this.leave();
           }
       );
 
@@ -91,7 +94,9 @@ export class PetFormComponent {
   }
 
   leave(){
+    setTimeout(() => {
     this.router.navigate(['/pet/all'], {queryParams: {type:this.userType, id:this.vetId}});
+  }, 1000);
   }
 
   verifyForm() {
