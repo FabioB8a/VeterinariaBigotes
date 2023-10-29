@@ -1,45 +1,46 @@
 <iframe src="https://streamable.com/e/s6atx6?autoplay=1&nocontrols=1" allowfullscreen allow="autoplay"></iframe>
-    <div class="outer-container">
+<div class="outer-container">
 
-        <div class="switch">
-            <div class="loginOwner" (click)="tab1()"><img src="../../assets/images/login/ownerSymbol.png" alt="Owner symbol"></div>
-            <div class="loginVet" (click)="tab2()"><img src="../../assets/images/login/vetSymbol.png" alt="Vet symbol"></div>
-          </div>
-
-        <div class="container">
-            <div class="outer">
-                <img src="../../assets/images/login/catSymbol.svg" alt="Cat symbol">
-                <div class="container-forms">
-
-                    <form id="formOwner" class="form-active" (ngSubmit)="onSubmit('owner')">
-
-                        <div class="page">
-                            <label for="idCardOwner">Dueño</label>
-                            <p>Por favor ingresa la cédula para acceder a la plataforma</p>
-                            <div class="element">
-                                <input id ="idCardOwner" name="idCardOwner" type="number" placeholder="Cédula">
-                            </div>
-                            <button  id="btnOwnerSubmit" type="submit" class="button">Sign in</button>
-                        </div>
-                    </form>
-
-                    <form id="formVet" class="form-active" (ngSubmit)="onSubmit('vet')">
-                        <div class="page">
-                            <label>Veterinario</label>
-                            <p>Por favor ingresa la cédula y contraseña para acceder a la plataforma</p>
-                            <div class="element">
-                                <label for="idCardVet"></label>
-                                <input type="number" name = "idCardVet" id = "idCardVet" placeholder="Cédula">
-                            </div>
-                            <div class="element">
-                                <label for="passwordVet"></label>
-                                <input type="password" id = "passwordVet" name="passwordVet" placeholder="Contraseña">
-                            </div>
-                            <button type="submit" id="btnVetSubmit" class="button">Sign in</button>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+  <div class="switch">
+    <div class="loginOwner" (click)="tab1()"><img src="../../assets/images/login/ownerSymbol.png" alt="Owner symbol">
     </div>
+    <div class="loginVet" (click)="tab2()"><img src="../../assets/images/login/vetSymbol.png" alt="Vet symbol"></div>
+  </div>
+
+  <div class="container">
+    <div class="outer">
+      <img src="../../assets/images/login/catSymbol.svg" alt="Cat symbol">
+      <div class="container-forms">
+
+        <form id="formOwner" class="form-active" (ngSubmit)="onSubmit('owner')">
+
+          <div class="page">
+            <label for="idCardOwner">Dueño</label>
+            <p>Por favor ingresa la cédula para acceder a la plataforma</p>
+            <div class="element">
+              <input id="idCardOwner" name="idCardOwner" type="number" placeholder="Cédula">
+            </div>
+            <button id="btnOwnerSubmit" type="submit" class="button">Sign in</button>
+          </div>
+        </form>
+
+        <form id="formVet" class="form-active" (ngSubmit)="onSubmit('vet')">
+          <div class="page">
+            <label>Veterinario</label>
+            <p>Por favor ingresa la cédula y contraseña para acceder a la plataforma</p>
+            <div class="element">
+              <label for="idCardVet"></label>
+              <input type="number" name="idCardVet" id="idCardVet" placeholder="Cédula">
+            </div>
+            <div class="element">
+              <label for="passwordVet"></label>
+              <input type="password" id="passwordVet" name="passwordVet" placeholder="Contraseña">
+            </div>
+            <button type="submit" id="btnVetSubmit" class="button">Sign in</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
