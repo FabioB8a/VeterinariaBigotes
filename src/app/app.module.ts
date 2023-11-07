@@ -13,12 +13,13 @@ import { FormsModule } from '@angular/forms';
 import { OwnerDetailComponent } from './owner/owner-detail/owner-detail.component';
 import { OwnerFormComponent } from './owner/owner-form/owner-form.component';
 import { OwnerTableComponent } from './owner/owner-table/owner-table.component';
-import { HttpClientModule } from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import { VetFormComponent } from './vet/vet-form/vet-form.component';
 import { VetDetailComponent } from './vet/vet-detail/vet-detail.component';
 import { VetTableComponent } from './vet/vet-table/vet-table.component';
 import { DashBoardComponent } from './admin/dash-board/dash-board.component';
 import { AdminLogInComponent } from './admin/admin-log-in/admin-log-in.component';
+import {AuthInterceptor} from "./helpers/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -44,7 +45,9 @@ import { AdminLogInComponent } from './admin/admin-log-in/admin-log-in.component
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
