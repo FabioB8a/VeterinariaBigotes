@@ -40,9 +40,15 @@ export class VetService {
     return this.http.get<Boolean>("http://localhost:8090/vet/exists/" + idCard);
   }
 
-  login(vet: User): Observable<Veterinarian> {
-    return this.http.post<Veterinarian>("http://localhost:8090/login/vet", vet);
-  }
+  /*
+  login(vet: User): Observable<String> {
+    return this.http.post<String>("http://localhost:8090/login/vet", vet, {
+      responseType: 'text'
+    });
+    }
+
+   */
+
 
   getNumberOfActiveVets(): Observable<number>{
     return this.http.get<number>('http://localhost:8090/vet/count/active');

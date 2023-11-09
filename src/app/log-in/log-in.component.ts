@@ -103,16 +103,20 @@ export class LogInComponent {
                 alert('Por favor ingrese su contraseña');
                 return;
             }
-            let user = {idCard: idVet, password: password} as User;
+            let user = {username: idVet, password: password} as User;
 
             this.vetService.login(user).subscribe(
                 (data) => {
+                  console.log("HOLLAAAAA")
+                  console.log(data);
+
                     if (data != null) {
                       this.router.navigate(['/pet/all'], {queryParams: { id: idVet, type: "vet" }});
                     }else {
                         alert("La cédula o la contraseña son incorrectas")
                     }
                 });
+
 
         }
     }
