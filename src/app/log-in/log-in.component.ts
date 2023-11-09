@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { OwnerService } from '../services/owner/owner.service';
 import { Owner } from '../model/owner/owner';
 import {VetService} from "../services/vet/vet.service";
+import {User} from "../model/user/user";
 
 
 
@@ -102,7 +103,9 @@ export class LogInComponent {
                 alert('Por favor ingrese su contraseña');
                 return;
             }
-            this.vetService.login(idVet, password).subscribe(
+            let user = {idCard: idVet, password: password} as User;
+
+            this.vetService.login(user).subscribe(
                 (data) => {
                     if (data != null) {
                       this.router.navigate(['/pet/all'], {queryParams: { id: idVet, type: "vet" }});
