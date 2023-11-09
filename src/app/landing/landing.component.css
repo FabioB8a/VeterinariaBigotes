@@ -30,6 +30,11 @@ nav {
     margin-left: 1rem;
     margin-right: 2rem;
 }
+.icon-nav {
+  height: 100%;
+  margin-left: 1rem;
+  margin-right: 2rem;
+}
 
 .menu {
     height: 60%;
@@ -722,3 +727,45 @@ button:hover {
   @keyframes p1 {
       100% {background-size:110%}
   }
+
+
+@media (max-width: 768px) {
+  /* Add responsive styles for screens up to 768px wide */
+  root,
+  body {
+    font-size: 0.8rem; /* Adjust the font size for smaller screens */
+    width: 100%;
+  }
+
+}
+
+@media (max-width: 768px) {
+  nav {
+    height: auto; /* Adjust the height for mobile */
+    flex-direction: column; /* Stack menu items vertically */
+    align-items: center;
+  }
+  .icon-nav{
+    height: 20%;
+    width: 15%;
+  }
+
+  .menu {
+    width: 100%; /* Take up the full width */
+    flex-direction: column; /* Stack buttons vertically */
+    margin-top: 1%;
+    height: 40%;
+  }
+
+  .button1 {
+
+    padding: 0.5rem 1rem;
+    font-size: 0.8rem;
+  }
+  .button1 a {
+    font-size: 0.8rem;
+  }
+  .content{
+    margin-top: 30%;
+  }
+}
