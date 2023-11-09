@@ -1,4 +1,4 @@
 export interface User {
-  idCard: number;
+  username: number;
   password: string;
 }
