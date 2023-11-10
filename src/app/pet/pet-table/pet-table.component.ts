@@ -96,6 +96,7 @@ export class PetTableComponent {
 
   filterPets() {
     if ('ownerId' in this.route.snapshot.queryParams ) {
+      console.log("Aqui estamos viendo el owner")
       const ownerId = this.route.snapshot.queryParams['ownerId'];
 
       if (this.showAllPets) {
@@ -108,13 +109,21 @@ export class PetTableComponent {
         });
       }
     } else {
+      console.log("Qui no tenemos el owner")
       if (this.showAllPets) {
+        console.log("Aqui estamos viendo todos los pets en tratamiento")
         this.petService.showAllPetsInTreatment().subscribe((data: Pet[]) => {
           this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x));
         });
       } else {
+        console.log("Aqui estamos viendo todos los pets dados de alta")
         this.petService.showAllPetsDischarged().subscribe((data: Pet[]) => {
-          this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x));
+          //imprimimos lo que nos llega
+          console.log(data);
+          if(data)
+            this.petList = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x));
+          else
+            this.petList = [];
         });
       }
     }
