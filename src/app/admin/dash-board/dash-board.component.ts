@@ -23,7 +23,7 @@ export class DashBoardComponent {
   numberOfInactiveVets!: number;
   totalSales!: number;
   totalProfit!: number;
-  userType: string = '';
+  userType: string = 'admin';
 
 
 
