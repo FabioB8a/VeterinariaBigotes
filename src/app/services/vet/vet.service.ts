@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import { Veterinarian } from 'src/app/model/veterinarian/veterinarian';
 import { Observable } from 'rxjs';
-import {User} from "../../model/user/user";
+import {UserEntity} from "../../model/user/user";
 
 @Injectable({
   providedIn: 'root'
@@ -40,14 +40,16 @@ export class VetService {
     return this.http.get<Boolean>("http://localhost:8090/vet/exists/" + idCard);
   }
 
-  /*
-  login(vet: User): Observable<String> {
-    return this.http.post<String>("http://localhost:8090/login/vet", vet, {
-      responseType: 'text'
-    });
-    }
 
-   */
+  login(user: UserEntity): Observable<String> {
+    return this.http.post<String>("http://localhost:8090/login/vet", user,
+        {
+          responseType: 'text' as 'json'
+        });
+  }
+
+
+
 
 
   getNumberOfActiveVets(): Observable<number>{

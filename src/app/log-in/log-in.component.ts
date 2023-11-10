@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { OwnerService } from '../services/owner/owner.service';
 import { Owner } from '../model/owner/owner';
 import {VetService} from "../services/vet/vet.service";
-import {User} from "../model/user/user";
+import {UserEntity} from "../model/user/user";
 
 
 
@@ -103,19 +103,25 @@ export class LogInComponent {
                 alert('Por favor ingrese su contraseña');
                 return;
             }
-            let user = {username: idVet, password: password} as User;
+            let user = {username: idVet, password: password} as UserEntity;
 
             this.vetService.login(user).subscribe(
                 (data) => {
-                  console.log("HOLLAAAAA")
-                  console.log(data);
-
-                    if (data != null) {
-                      this.router.navigate(['/pet/all'], {queryParams: { id: idVet, type: "vet" }});
-                    }else {
-                        alert("La cédula o la contraseña son incorrectas")
+                    localStorage.setItem('token', String(data));
+                    this.router.navigate(['/pet/all'], { queryParams: { id: idVet, type: "vet" } });
+                },
+                (error) => {
+                    // Handle errors here
+                    if (error.status === 401 || error.status === 400) {
+                        // Handle incorrect credentials
+                        alert("La cédula o la contraseña son incorrectas");
+                    } else {
+                        // Handle other types of errors (like network issues, server errors, etc.)
+                        alert("Error al intentar iniciar sesión");
                     }
-                });
+                }
+            );
+
 
 
         }
