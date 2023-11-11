@@ -14,6 +14,7 @@ export class PetFormComponent {
 
   @Input() userType: string = '';
   @Input() vetId: string = '';
+  @Input() ownerId: string = '';
   constructor(private petService: PetService, private ownerService: OwnerService, private route: ActivatedRoute, private router: Router) { }
 
   sendPet!: Pet;
@@ -52,6 +53,10 @@ export class PetFormComponent {
       if ('id' in params) {
         this.vetId = params['id'].toString();
       }
+      if ('ownerId' in params) {
+        this.ownerId = params['ownerId'].toString();
+        console.log("el owner id es", this.ownerId)
+      }
     });
   }
 
@@ -75,7 +80,7 @@ export class PetFormComponent {
                   } else {
                       this.petService.addPet(this.sendPet);
                   }
-                  
+
               }
           },
           error => {
@@ -94,9 +99,15 @@ export class PetFormComponent {
   }
 
   leave(){
-    setTimeout(() => {
-    this.router.navigate(['/pet/all'], {queryParams: {type:this.userType, id:this.vetId}});
-  }, 1000);
+    if ( this.ownerId === null) {
+      setTimeout(() => {
+        this.router.navigate(['/pet/all'], {queryParams: {type: this.userType, id: this.vetId}});
+      }, 1000);
+    }else {
+      setTimeout(() => {
+        this.router.navigate(['/owner/detail', this.ownerId], {queryParams: {type: this.userType, id: this.vetId, ownerId: this.ownerId}});
+      }, 1000);
+    }
   }
 
   verifyForm() {
