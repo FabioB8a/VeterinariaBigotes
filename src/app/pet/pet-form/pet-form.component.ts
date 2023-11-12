@@ -104,9 +104,15 @@ export class PetFormComponent {
         this.router.navigate(['/pet/all'], {queryParams: {type: this.userType, id: this.vetId}});
       }, 1000);
     }else {
-      setTimeout(() => {
-        this.router.navigate(['/owner/detail', this.ownerId], {queryParams: {type: this.userType, id: this.vetId, ownerId: this.ownerId}});
-      }, 1000);
+      if (this.userType === 'vet') {
+        setTimeout(() => {
+          this.router.navigate(['/owner/detail', this.ownerId], {queryParams: {type: this.userType, id: this.vetId}});
+        }, 1000);
+      }else {
+        setTimeout(() => {
+          this.router.navigate(['/owner/detail', this.ownerId], {queryParams: {type: this.userType}});
+        }, 1000);
+      }
     }
   }
 

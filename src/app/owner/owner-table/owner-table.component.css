@@ -97,7 +97,7 @@
     background-color: #1C697D;
     border-color: #FFFFFF;
 }
-.adminStyles.sidebar input[type="checkbox"]:checked + label[for="filterNameVet"]::before {
+.adminStyles.sidebar input[type="checkbox"]:checked + label[for="filterNameOwner"]::before {
     background-color: #34344C;
     border-color: #FFFFFF;
 }
