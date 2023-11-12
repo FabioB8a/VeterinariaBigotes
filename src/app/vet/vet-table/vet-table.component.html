@@ -5,11 +5,11 @@
         <div class="filters">
 
             <div>
-                <input type="checkbox" id="filterNameOwner">
-                <label for="filterNameOwner">Nombre veterinario</label>
+                <input type="checkbox" id="filterNameVet" [(ngModel)]="isNameFilterActive" (change)="filterVetsByName()">
+                <label id="checkbox" for="filterNameVet">Nombre veterinario</label>
             </div>
             <div class="search-input">
-                <input type="text" id="searchVet" placeholder="Inserte el nombre del veterinario">
+                <input type="text" id="searchVet" placeholder="Inserte el nombre del veterinario" [(ngModel)]="filterText">
                 <span class="search-icon"><i class="fas fa-search"></i></span>
             </div>
 
@@ -44,7 +44,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr *ngFor="let vet of filterVetsByName() || vetList">
+            <tr *ngFor="let vet of filterVetsByName()">
                 <td class="firstLine">
                     <img class="petImage" src="{{ vet.imgUrl }}" alt="Imagen deL médico" id="vetImg" width="50" height="50">
                     <span class= "imagenPerro">{{ vet.firstName + ' ' + vet.firstLastName + ' ' + vet.secondLastName }}</span>
