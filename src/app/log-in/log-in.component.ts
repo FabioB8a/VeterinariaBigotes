@@ -4,6 +4,7 @@ import { OwnerService } from '../services/owner/owner.service';
 import { Owner } from '../model/owner/owner';
 import {VetService} from "../services/vet/vet.service";
 import {UserEntity} from "../model/user/user";
+import {AuthService} from "../services/auth/auth.service";
 
 
 
@@ -21,10 +22,34 @@ export class LogInComponent {
     constructor(
         private router: Router,
         private ownerService: OwnerService,
-        private vetService: VetService
+        private vetService: VetService,
+        private authService: AuthService
     ) {}
 
+    idCard: number = 0;
+
     ngOnInit(): void {
+
+        if (this.authService.isAuthenticated()) {
+            this.authService.userType(localStorage.getItem('token') as string).subscribe(
+                (data) => {
+                    console.log(data);
+                    this.idCard = data.idCard;
+                    this.userType = data.role;
+                    console.log(this.userType);
+                    console.log(this.idCard);
+                    localStorage.setItem('userType', this.userType);
+                    if (this.userType === 'OWNER') {
+                        this.router.navigate(['/pet/all'], { queryParams: { ownerId: this.idCard, type: "user" }});
+                    } else if (this.userType === 'VET') {
+                        this.router.navigate(['/pet/all'], { queryParams: { id: this.idCard, type: "vet" } });
+                    } else if (this.userType === 'ADMIN') {
+                        this.router.navigate(['/admin/dashboard']);
+                    }
+                }
+            );
+        }
+
         this.formActive = document.querySelector('.container-forms');
         this.loginVet = document.querySelector('.loginVet');
         this.loginOwner = document.querySelector('.loginOwner');
@@ -106,6 +131,7 @@ export class LogInComponent {
             let user = {username: idVet, password: password} as UserEntity;
 
             this.vetService.login(user).subscribe(
+
                 (data) => {
                     localStorage.setItem('token', String(data));
                     this.router.navigate(['/pet/all'], { queryParams: { id: idVet, type: "vet" } });
