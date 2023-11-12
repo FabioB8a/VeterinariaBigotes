@@ -1,5 +1,5 @@
 <div class="d-flex" [ngClass]="userType=== 'admin' ? 'adminStyles' : 'vetStyles'">
-  <div class="sidebar">
+  <div class="sidebar" [ngClass]="userType=== 'admin' ? 'adminStyles' : 'vetStyles'">
     <!-- Sidebar content -->
     <img class="icon" src="assets/images/vet/Bigotes-2.png">
     <!-- Dentro de tu barra lateral en el archivo HTML -->
@@ -7,12 +7,12 @@
     <div class="filters">
 
       <div>
-        <input type="checkbox" id="filterNameOwner">
-        <label for="filterNameOwner">Nombre dueño</label>
+        <input type="checkbox" id="filterNameOwner" [(ngModel)]="isNameFilterActive" (change)="filterOwnersByName()">
+        <label id="checkbox" for="filterNameOwner">Nombre dueño</label>
       </div>
       <!-- Dentro de tu barra lateral en el archivo HTML -->
       <div class="search-input">
-        <input type="text" id="searchPet" placeholder="Inserte el nombre del dueño">
+        <input type="text" id="searchPet" placeholder="Inserte el nombre del dueño" [(ngModel)]="filterText">
         <span class="search-icon"><i class="fas fa-search"></i></span>
       </div>
 
