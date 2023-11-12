@@ -45,7 +45,6 @@ export class OwnerTableComponent {
     if (this.isNameFilterActive) {
       return this.ownerList.filter(owner =>
         owner.firstName.toLowerCase().includes(this.filterText.toLowerCase()));
-      console.log("Estamos por aqui");
 
     } else {
       return this.ownerList;

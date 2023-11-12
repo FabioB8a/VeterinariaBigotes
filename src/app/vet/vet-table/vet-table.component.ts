@@ -11,14 +11,15 @@ import {ActivatedRoute} from "@angular/router";
 export class VetTableComponent {
 
   vetList!: Veterinarian[];
-  filterText: string = '';
-  isNameFilterActive: boolean = false;
   userType: string = '';
 
   constructor(
     private vetService: VetService,
     private route: ActivatedRoute
   ) {}
+
+  filterText: string = '';
+  isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
     this.userType="admin";
@@ -31,7 +32,8 @@ export class VetTableComponent {
 
   filterVetsByName(){
     if(this.isNameFilterActive){
-      return this.vetList.filter(vet => vet.firstName.toLowerCase().includes(this.filterText.toLowerCase()));
+      return this.vetList.filter(vet =>
+        vet.firstName.toLowerCase().includes(this.filterText.toLowerCase()));
     } else {
       return this.vetList;
     }
