@@ -121,9 +121,6 @@ export class LogInComponent {
                     }
                 }
             );
-
-
-
         }
     }
 }
