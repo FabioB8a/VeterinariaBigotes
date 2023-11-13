@@ -14,6 +14,7 @@ import { VetDetailComponent } from './vet/vet-detail/vet-detail.component';
 import { DashBoardComponent} from "./admin/dash-board/dash-board.component";
 import { AdminLogInComponent} from "./admin/admin-log-in/admin-log-in.component";
 import {PetDetailsComponent} from "./pet/pet-details/pet-details.component";
+import {OwnerDetailsComponent} from "./owner/owner-details/owner-details.component";
 
 const routes: Routes = [
   {path: 'home', component: LandingComponent},
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path: 'owner/all', component: OwnerTableComponent},
   {path: 'vet/all', component: VetTableComponent},
   //{ path : 'pet/detail/:id', component : PetDetailComponent},
-  { path : 'owner/detail/:id', component : OwnerDetailComponent},
+  //{ path : 'owner/detail/:id', component : OwnerDetailComponent},
   { path : 'vet/detail/:id', component : VetDetailComponent},
   { path: 'pet/save', component: PetFormComponent},
   { path: 'owner/save', component: OwnerFormComponent},
@@ -31,6 +32,7 @@ const routes: Routes = [
   { path: 'admin/dashboard', component: DashBoardComponent},
   { path: 'admin/login', component: AdminLogInComponent},
   { path: 'pet/detail/:id', component: PetDetailsComponent},
+  {path: 'owner/detail/:id', component: OwnerDetailsComponent},
 ];
 
 @NgModule({
