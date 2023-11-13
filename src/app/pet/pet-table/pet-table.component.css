@@ -456,6 +456,12 @@ switchText{
   vertical-align: middle;
   border-top: 0;
 }
+#more .more-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 /* Estilos para el enlace dentro de la última columna */
 #more a {
@@ -474,7 +480,7 @@ td img {
   margin: 0;
 }
 
-#more a svg{
+#more .more-content a svg{
   margin-left: 2%;
   margin-top: 2%;
 }
