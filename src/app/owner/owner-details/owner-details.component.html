@@ -1,0 +1,130 @@
+<div class="content" [ngClass]="userType === 'admin' ? 'adminStyles' :'vetStyles'">
+  <div class="owner-content">
+    <div class="owner-info">
+      <div class="owner-head">
+        <img src="assets/images/users/owner.png">
+        <h2>{{owner.firstName}} {{owner.firstLastName}} {{owner.secondLastName}}</h2>
+      </div>
+      <div class="owner-details">
+        <p><strong>Cédula:</strong> {{owner.idCard}}</p>
+        <p><strong>Celular:</strong> {{owner.phone}} años</p>
+        <p><strong>Correo:</strong> {{owner.email}}</p>
+      </div>
+    </div>
+    <div *ngIf="userType==='vet'" class="addSection">
+      <form (submit)="actualizarMascota()">
+        <div class="add-head">
+          <h2>Editar Mascotas</h2>
+          <button><img src="assets/images/showPet/add.svg"></button>
+        </div>
+        <div class="pet-fields">
+          <div>
+            <label for="name">Nombre</label>
+            <input type="text" name="name" id="name" [(ngModel)]="formPet.name">
+          </div>
+          <div>
+            <label for="birthday">Cumpleaños</label>
+            <input type="date" name="birthday" id="birthday" [(ngModel)]="formPet.birthdate">
+          </div>
+          <div>
+            <label for="disease">Enfermedad</label>
+            <input type="text" name="disease" id="disease" [(ngModel)]="formPet.disease">
+          </div>
+          <div>
+            <label for="breed">Raza</label>
+            <input type="text" name="breed" id="breed" [(ngModel)]="formPet.breed">
+          </div>
+         <div>
+           <label for="weight">Peso</label>
+           <input type="text" name="weight" id="weight" [(ngModel)]="formPet.weight">
+         </div>
+         <div>
+           <label for="imgUrl">Imagen</label>
+           <input type="text" name="imgUrl" id="imgUrl" [(ngModel)]="formPet.imgUrl">
+         </div>
+
+        </div>
+      </form>
+
+    </div>
+  </div>
+  <div class="owner-pets">
+    <h2>Mascotas del dueño</h2>
+    <div class="switch-container" *ngIf="userType === 'vet'">
+      <div class="switch vetStyles">
+        <label>
+          <input type="checkbox" [(ngModel)]="showAllPets" (change)="filterPets()">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="switchText">
+        {{ showAllPets ? 'Mascotas en tratamiento' : 'Mascotas de alta'}}
+      </div>
+    </div>
+
+    <div class="switch-container" *ngIf="userType === 'admin'">
+      <div class="switch adminStyles">
+        <label>
+          <input type="checkbox" [(ngModel)]="showAllPets" (change)="filterPets()">
+          <span class="slider"></span>
+        </label>
+      </div>
+      <div class="switchText">
+        {{ showAllPets ? 'Mascotas en tratamiento' : 'Mascotas de alta'}}
+      </div>
+    </div>
+    <div class="table-content">
+      <table>
+        <thead>
+        <tr>
+          <th scope="col">Nombre mascota</th>
+          <th scope="col">Raza</th>
+          <th scope="col">Edad</th>
+          <th scope="col">Peso</th>
+          <th scope="col">Enfermedad</th>
+          <th scope="col" class="th-add">Adicionales</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let pet of petlist">
+          <td class="firstLine">
+            <img class="petImage" src="{{ pet.imgUrl }}" alt="Imagen de la mascota" id="petImg" width="50" height="50">
+            <span class="imagenPerro">{{ pet.name }}</span>
+          </td>
+          <td>{{ pet.breed }}</td>
+          <td>
+            {{pet.calculateAge()}} años
+          </td>
+          <td>{{ pet.weight }} gr</td>
+          <td>{{ pet.disease }}</td>
+          <td id="more">
+            <div *ngIf="userType ==='vet' || userType ==='admin'">
+              <ng-container *ngIf="pet.status !== 'Alta'">
+                <a (click)="deleteById(pet)">
+                  <img src="assets/images/vet/deleteIcon.png">
+                </a>
+              </ng-container>
+
+              <a (click)="editPet(pet)"> <img
+                src="assets/images/vet/editIcon.png"> </a>
+              <a class='pet-detail' [routerLink]="['/pet/detail', pet.id]"
+                 [queryParams]="{ type: userType, id: vetId, petId: pet.id }">
+                <svg xmlns="http://www.w3.org/2000/svg" height="0.6em" viewBox="0 0 512 512">
+                  <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+                  <style>svg {
+                    fill: #000000
+                  }</style>
+                  <path
+                    d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                </svg>
+              </a>
+            </div>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+
+  </div>
+</div>
