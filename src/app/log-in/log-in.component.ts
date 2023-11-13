@@ -103,7 +103,7 @@ export class LogInComponent {
 
                 (data) => {
                     localStorage.setItem('token', String(data));
-                    this.router.navigate(['/pet/all'], { queryParams: { id: idOwner, type: "user" } });
+                    this.router.navigate(['/pet/all'], { queryParams: { ownerId: idOwner, type: "user" } });
                 },
                 (error) => {
                     if (error.status === 401 || error.status === 400) {
