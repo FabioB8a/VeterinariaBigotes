@@ -44,7 +44,7 @@ import { PetDetailsComponent } from './pet/pet-details/pet-details.component';
     AppRoutingModule,
     NgOptimizedImage,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
