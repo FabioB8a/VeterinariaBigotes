@@ -1,16 +1,38 @@
 .content{
     margin:5%;
 }
-.pet-content{
+.vetStyles .pet-content{
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
 }
+.adminStyles .pet-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.userStyles .pet-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
 
-.pet-content .pet-info{
+.vetStyles .pet-content .pet-info{
     border: #D9D9D9 0.13rem solid;
     border-radius: 1rem;
 
+}
+.adminStyles .pet-content .pet-info{
+    border: #D9D9D9 0.13rem solid;
+    border-radius: 1rem;
+    width: 30%;
+}
+.userStyles .pet-content .pet-info{
+    border: #D9D9D9 0.13rem solid;
+    border-radius: 1rem;
+    width: 30%;
 }
 
 .pet-content .pet-info .pet-head{
