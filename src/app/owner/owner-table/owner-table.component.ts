@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Owner} from "../../model/owner/owner";
 import {OwnerService} from "../../services/owner/owner.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 import {query} from "@angular/animations";
 
 
@@ -19,7 +19,8 @@ export class OwnerTableComponent {
 
   constructor(
     private ownerService: OwnerService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) {
   }
 
@@ -57,5 +58,13 @@ export class OwnerTableComponent {
     this.ownerService.deleteById(owner.id);
   }
 
+
+  logOut(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    this.userType = '';
+    this.vetId = '';
+    this.router.navigate(['/login/show']);
+  }
   protected readonly query = query;
 }
