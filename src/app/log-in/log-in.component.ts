@@ -36,8 +36,6 @@ export class LogInComponent {
                     console.log(data);
                     this.idCard = data.idCard;
                     this.userType = data.role;
-                    console.log(this.userType);
-                    console.log(this.idCard);
                     localStorage.setItem('userType', this.userType);
                     if (this.userType === 'OWNER') {
                         this.router.navigate(['/pet/all'], { queryParams: { ownerId: this.idCard, type: "user" }});
@@ -99,14 +97,21 @@ export class LogInComponent {
               return;
             }
 
-            this.ownerService.login(idOwner).subscribe(
+            let user = {username: idOwner, password: "123"} as UserEntity;
+
+            this.ownerService.login(user).subscribe(
+
                 (data) => {
-                    if (data != null) {
-                      this.selectedOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
-                      //this.userService.setUserType('user');
-                      this.router.navigate(['/pet/all'], { queryParams: { ownerId: this.selectedOwner.id, type: "user" }});
-                    }else {
-                      alert("El usuario no existe")
+                    localStorage.setItem('token', String(data));
+                    this.router.navigate(['/pet/all'], { queryParams: { id: idOwner, type: "user" } });
+                },
+                (error) => {
+                    if (error.status === 401 || error.status === 400) {
+                        // Handle incorrect credentials
+                        alert("La cédula es incorrecta");
+                    } else {
+                        // Handle other types of errors (like network issues, server errors, etc.)
+                        alert("Error al intentar iniciar sesión");
                     }
                 }
             );

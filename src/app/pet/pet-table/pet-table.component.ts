@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {Pet} from "../../model/pet/pet";
 import {PetService} from "../../services/pet/pet.service";
-import { ActivatedRoute } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {query} from "@angular/animations";
 
 @Component({
@@ -22,7 +22,8 @@ export class PetTableComponent {
 
     constructor(
         private petService: PetService
-        ,private route: ActivatedRoute
+        ,private route: ActivatedRoute,
+        private router: Router
     ) {
 
     }
@@ -118,6 +119,14 @@ export class PetTableComponent {
         });
       }
     }
+  }
+
+  logOut(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    this.userType = '';
+    this.vetId = '';
+    this.router.navigate(['/login/show']);
   }
 
 
