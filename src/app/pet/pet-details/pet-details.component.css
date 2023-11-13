@@ -164,6 +164,7 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 2%;
+    background: rgb(217, 217, 217 , 0.20);
 }
 .userStyles .pet-treatments h2{
     color: #5DB3DB;
@@ -174,6 +175,7 @@
     font-weight: 700;
     line-height: normal;
     margin-bottom: 2%;
+    background: rgb(217, 217, 217 , 0.20);
 }
 .pet-treatments table{
     width: 100%;
