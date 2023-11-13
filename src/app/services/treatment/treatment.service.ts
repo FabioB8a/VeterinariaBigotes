@@ -39,4 +39,8 @@ export class TreatmentService {
   showTreatmentbyPet(id: number): Observable<Treatment[]>{
     return this.http.get<Treatment[]>('http://localhost:8090/treatment/pet/' + id);
   }
+
+    showTreatmentbyVet(id: number): Observable<Treatment[]>{
+        return this.http.get<Treatment[]>('http://localhost:8090/treatment/vet/' + id);
+    }
 }

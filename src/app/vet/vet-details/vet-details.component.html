@@ -1,0 +1,47 @@
+<div class="content">
+    <div class="vet-content">
+        <div>
+
+        </div>
+        <div class="vet-info">
+            <div class="vet-head">
+                <img src="{{vet.imgUrl}}">
+                <h2>{{vet.firstName}} {{vet.firstLastName}} {{vet.secondLastName}}</h2>
+            </div>
+            <div class="vet-details">
+                <p><strong>Cedula:</strong> {{vet.idCard}}</p>
+                <p><strong>Especialidad:</strong> {{vet.speciality}}</p>
+                <p><strong>Fecha ingreso:</strong> </p>
+            </div>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="vet-treatments">
+        <h2>HISTORIAL MÉDICO</h2>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Mascota ID</th>
+                <th scope="col">Enfermedad</th>
+                <th scope="col">Tratamientos médicos</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Droga Sumnistrada</th>
+                <th scope="col">Precio asociado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let treatment of treatmentList">
+                <td>{{ treatment.pet.id }}</td>
+                <td class="td-treatment-disease">{{ treatment.pet.disease }}</td>
+                <td>{{ treatment.description }}</td>
+                <td>{{ treatment.date }}</td>
+                <td>{{ treatment.drug.name }}</td>
+                <td>${{ treatment.drug.sellPrice }}</td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
