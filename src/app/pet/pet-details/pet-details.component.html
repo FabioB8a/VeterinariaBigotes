@@ -1,5 +1,5 @@
 <div class="content" [ngClass]="{
-'userSytles': userType === 'user',
+'userStyles': userType === 'user',
 'adminStyles': userType === 'admin',
 'vetStyles': userType === 'vet'
 }">
@@ -17,15 +17,14 @@
                 <p><strong>Peso:</strong> {{pet?.weight}}</p>
             </div>
         </div>
-        <div *ngIf="pet?.status !== 'Alta'"  class="addSection">
+        <div *ngIf="pet?.status !== 'Alta' && userType=='vet'"  class="addSection">
             <form (submit)="agregarMedicamento()">
                 <div class="add-head">
                     <h2>Agregar tratamiento</h2>
                     <button><img src="assets/images/showPet/add.svg"></button>
                 </div>
                 <div class="treatment-fields">
-                    <input id="field-description" [(ngModel)]="description" name="descripcion"
-                           placeholder="Descripción">
+                    <textarea rows="3" id="field-description" [(ngModel)]="description" name="descripcion" placeholder="Descripción"></textarea>
                     <div class="drug-fields">
                         <p>Elige el medicamento suministrado</p>
                         <select id="field-drug" [(ngModel)]="selectedDrug" name="droga">

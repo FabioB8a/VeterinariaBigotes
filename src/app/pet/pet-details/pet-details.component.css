@@ -34,7 +34,7 @@
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-style: normal;
-    font-weight: 600;
+    font-weight: 700;
     line-height: normal;
     width: 75%;
     padding: 3%;
@@ -58,6 +58,16 @@
     margin-top: 5%;
     margin-bottom: 5%;
 }
+.pet-content .pet-info .pet-details p{
+    padding: 1%;
+    font-weight: 400;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: normal;
+    color: #000 ;
+}
+
 
 .pet-content .addSection{
     border: #D9D9D9 0.13rem solid;
@@ -76,7 +86,7 @@
     font-family: 'Raleway', sans-serif;
     font-size: 30px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 700;
     line-height: normal;
     margin-left: 3%;
 }
@@ -93,10 +103,17 @@
     margin:2%;
 }
 
-.pet-content .addSection .treatment-fields input{
-    height: 100%;
+.pet-content .addSection .treatment-fields #field-description{
     border: #D9D9D9 solid 0.13rem;
     border-radius: 1rem;
+    font-weight: 400;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: normal;
+    color: #000 ;
+    padding-left: 1%;
+
 }
 
 .pet-content .addSection .treatment-fields .drug-fields{
@@ -108,9 +125,9 @@
     margin-bottom: 10%;
 }
 .pet-content .addSection .treatment-fields .drug-fields p{
-    color: #1C697D;
+    color: #34344C;
     font-family: 'Raleway', sans-serif;
-    font-size: 20px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -119,6 +136,8 @@
 .pet-content .addSection .treatment-fields .drug-fields select{
     border: #D9D9D9 solid 0.13rem;
     border-radius: 0.5rem;
+    padding: 1%;
+    margin-top: 1%;
 }
 .pet-treatments{
     margin-top: 3%;
@@ -133,6 +152,9 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    background: rgba(217, 217, 217, 0.20);
+    margin-bottom: 2%;
+;
 }
 .adminStyles .pet-treatments h2{
     color: #34344C;
@@ -142,6 +164,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-bottom: 2%;
 }
 .userStyles .pet-treatments h2{
     color: #5DB3DB;
@@ -151,6 +174,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    margin-bottom: 2%;
 }
 .pet-treatments table{
     width: 100%;
@@ -181,6 +205,12 @@ tr, td{
     padding-bottom: 2%;
     text-align: center;
     vertical-align: middle;
+    font-weight: 400;
+    font-family: 'Raleway', sans-serif;
+    font-size: 1rem;
+    font-style: normal;
+    line-height: normal;
+    color: #000 ;
 }
 
 
