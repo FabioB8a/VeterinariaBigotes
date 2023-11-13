@@ -1,0 +1,64 @@
+<div class="content" [ngClass]="{
+'userSytles': userType === 'user',
+'adminStyles': userType === 'admin',
+'vetStyles': userType === 'vet'
+}">
+    <div class="pet-content">
+        <div class="pet-info">
+            <div class="pet-head">
+                <!-- Aqui va a ir la foto de la mascota con su nombre -->
+                <img src="{{pet?.imgUrl}}" alt="Foto de {{pet?.name}}">
+                <h2>{{pet?.name}}</h2>
+            </div>
+            <div class="pet-details">
+                <p><strong>Dueño:</strong> {{pet?.owner?.firstName}} {{pet?.owner?.firstLastName}}</p>
+                <p><strong>Edad:</strong> {{pet?.calculateAge()}} años</p>
+                <p><strong>Raza:</strong> {{pet?.breed}}</p>
+                <p><strong>Peso:</strong> {{pet?.weight}}</p>
+            </div>
+        </div>
+        <div *ngIf="pet?.status !== 'Alta'"  class="addSection">
+            <form (submit)="agregarMedicamento()">
+                <div class="add-head">
+                    <h2>Agregar tratamiento</h2>
+                    <button><img src="assets/images/showPet/add.svg"></button>
+                </div>
+                <div class="treatment-fields">
+                    <input id="field-description" [(ngModel)]="description" name="descripcion"
+                           placeholder="Descripción">
+                    <div class="drug-fields">
+                        <p>Elige el medicamento suministrado</p>
+                        <select id="field-drug" [(ngModel)]="selectedDrug" name="droga">
+                            <option *ngFor="let drug of drugList" [ngValue]="drug">{{drug.name}}</option>
+                        </select>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+
+    </div>
+    <div class="pet-treatments">
+        <h2>Historial médico</h2>
+        <table>
+            <thead>
+            <tr>
+                <th scope="col">Enfermedad</th>
+                <th scope="col">Tratamientos médicos</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Droga Sumnistrada</th>
+                <th scope="col">Precio asociado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let treatment of treatmentList">
+                <td class="td-treatment-disease">{{ treatment.pet.disease }}</td>
+                <td>{{ treatment.description }}</td>
+                <td>{{ treatment.date }}</td>
+                <td>{{ treatment.drug.name }}</td>
+                <td>${{ treatment.drug.sellPrice }}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
