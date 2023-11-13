@@ -4,7 +4,6 @@ import {Pet} from "../../model/pet/pet";
 import {OwnerService} from "../../services/owner/owner.service";
 import {PetService} from "../../services/pet/pet.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {concat, first, forkJoin} from "rxjs";
 
 @Component({
   selector: 'app-owner-details',
@@ -46,16 +45,7 @@ export class OwnerDetailsComponent {
   }
 
   filterPets() {
-
-    if (this.showAllPets) {
-      this.petService.findByOwner(this.id).subscribe(
-        data => this.petlist = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x)).filter(pet => pet.status === 'En tratamiento')
-      );
-    } else {
-      this.petService.findByOwner(this.id).subscribe(
-        data => this.petlist = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x)).filter(pet => pet.status === 'Alta')
-      );
-    }
+    this.loadPetList()
 
   }
 
