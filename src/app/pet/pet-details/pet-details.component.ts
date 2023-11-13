@@ -37,6 +37,7 @@ export class PetDetailsComponent {
     }
 
     ngOnInit(): void {
+
         this.id = Number(this.route.snapshot.paramMap.get('id'));
 
         this.petService.findById(this.id).subscribe((data) => {
@@ -58,7 +59,7 @@ export class PetDetailsComponent {
         this.drugService.findDrugsAvailabale().subscribe((data) => {
             this.drugList = data;
         });
-
+        console.log("EL user es ", this.userType)
     }
 
     agregarMedicamento() {
