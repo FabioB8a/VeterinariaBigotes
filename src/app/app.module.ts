@@ -21,6 +21,7 @@ import { DashBoardComponent } from './admin/dash-board/dash-board.component';
 import { AdminLogInComponent } from './admin/admin-log-in/admin-log-in.component';
 import { PetDetailsComponent } from './pet/pet-details/pet-details.component';
 import { OwnerDetailsComponent } from './owner/owner-details/owner-details.component';
+import { VetDetailsComponent } from './vet/vet-details/vet-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { OwnerDetailsComponent } from './owner/owner-details/owner-details.compo
     DashBoardComponent,
     AdminLogInComponent,
     PetDetailsComponent,
-    OwnerDetailsComponent
+    OwnerDetailsComponent,
+    VetDetailsComponent
   ],
   imports: [
     BrowserModule,
