@@ -87,9 +87,9 @@
         <tbody>
         <tr *ngFor="let treatment of treatmentList">
           <td class="td-treatment-disease">{{ treatment.pet.disease }}</td>
-          <td>{{ treatment.description }}</td>
+          <td class="td-treatment-description">{{ treatment.description }}</td>
           <td>{{ treatment.date }}</td>
-          <td>{{ treatment.drug.name }}</td>
+          <td class="td-treatment-drug">{{ treatment.drug.name }}</td>
           <td>${{ treatment.drug.sellPrice }}</td>
         </tr>
         </tbody>

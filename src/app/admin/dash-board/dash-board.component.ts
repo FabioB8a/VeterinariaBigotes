@@ -5,6 +5,7 @@ import {TreatmentService} from "../../services/treatment/treatment.service";
 import {VetService} from "../../services/vet/vet.service";
 import {PetService} from "../../services/pet/pet.service";
 import {Drug} from "../../model/drug/drug";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-dash-board',
@@ -32,7 +33,8 @@ export class DashBoardComponent {
     private drugService: DrugService,
     private treatmentService: TreatmentService,
     private vetService: VetService,
-    private petService: PetService
+    private petService: PetService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -72,5 +74,12 @@ export class DashBoardComponent {
     this.drugService.getTotalProfit().subscribe(data => {
       this.totalProfit = data;
     });
+  }
+
+  logOut(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    this.userType = '';
+    this.router.navigate(['/admin/login']);
   }
 }

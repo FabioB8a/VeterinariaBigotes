@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { OwnerService } from '../services/owner/owner.service';
 import { Owner } from '../model/owner/owner';
 import {VetService} from "../services/vet/vet.service";
+import {UserEntity} from "../model/user/user";
+import {AuthService} from "../services/auth/auth.service";
 
 
 
@@ -20,10 +22,32 @@ export class LogInComponent {
     constructor(
         private router: Router,
         private ownerService: OwnerService,
-        private vetService: VetService
+        private vetService: VetService,
+        private authService: AuthService
     ) {}
 
+    idCard: number = 0;
+
     ngOnInit(): void {
+
+        if (this.authService.isAuthenticated()) {
+            this.authService.userType(localStorage.getItem('token') as string).subscribe(
+                (data) => {
+                    console.log(data);
+                    this.idCard = data.idCard;
+                    this.userType = data.role;
+                    localStorage.setItem('userType', this.userType);
+                    if (this.userType === 'OWNER') {
+                        this.router.navigate(['/pet/all'], { queryParams: { ownerId: this.idCard, type: "user" }});
+                    } else if (this.userType === 'VET') {
+                        this.router.navigate(['/pet/all'], { queryParams: { id: this.idCard, type: "vet" } });
+                    } else if (this.userType === 'ADMIN') {
+                        this.router.navigate(['/admin/dashboard']);
+                    }
+                }
+            );
+        }
+
         this.formActive = document.querySelector('.container-forms');
         this.loginVet = document.querySelector('.loginVet');
         this.loginOwner = document.querySelector('.loginOwner');
@@ -73,14 +97,21 @@ export class LogInComponent {
               return;
             }
 
-            this.ownerService.login(idOwner).subscribe(
+            let user = {username: idOwner, password: "123"} as UserEntity;
+
+            this.ownerService.login(user).subscribe(
+
                 (data) => {
-                    if (data != null) {
-                      this.selectedOwner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
-                      //this.userService.setUserType('user');
-                      this.router.navigate(['/pet/all'], { queryParams: { ownerId: this.selectedOwner.id, type: "user" }});
-                    }else {
-                      alert("El usuario no existe")
+                    localStorage.setItem('token', String(data));
+                    this.router.navigate(['/pet/all'], { queryParams: { id: idOwner, type: "user" } });
+                },
+                (error) => {
+                    if (error.status === 401 || error.status === 400) {
+                        // Handle incorrect credentials
+                        alert("La cédula es incorrecta");
+                    } else {
+                        // Handle other types of errors (like network issues, server errors, etc.)
+                        alert("Error al intentar iniciar sesión");
                     }
                 }
             );
@@ -102,15 +133,25 @@ export class LogInComponent {
                 alert('Por favor ingrese su contraseña');
                 return;
             }
-            this.vetService.login(idVet, password).subscribe(
-                (data) => {
-                    if (data != null) {
-                      this.router.navigate(['/pet/all'], {queryParams: { id: idVet, type: "vet" }});
-                    }else {
-                        alert("La cédula o la contraseña son incorrectas")
-                    }
-                });
+            let user = {username: idVet, password: password} as UserEntity;
 
+            this.vetService.login(user).subscribe(
+
+                (data) => {
+                    localStorage.setItem('token', String(data));
+                    this.router.navigate(['/pet/all'], { queryParams: { id: idVet, type: "vet" } });
+                },
+                (error) => {
+                    // Handle errors here
+                    if (error.status === 401 || error.status === 400) {
+                        // Handle incorrect credentials
+                        alert("La cédula o la contraseña son incorrectas");
+                    } else {
+                        // Handle other types of errors (like network issues, server errors, etc.)
+                        alert("Error al intentar iniciar sesión");
+                    }
+                }
+            );
         }
     }
 }

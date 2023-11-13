@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {AdminService} from "../../services/admin/admin.service";
+import {UserEntity} from "../../model/user/user";
 
 @Component({
   selector: 'app-admin-log-in',
@@ -13,26 +14,32 @@ export class AdminLogInComponent {
   constructor(private router: Router, private adminService: AdminService) {}
 
   onSubmit(): void {
-    const idCardAdmin = (<HTMLInputElement>document.getElementById('idCardAdmin')).value;
+    const idCardAdmin = +(<HTMLInputElement>document.getElementById('idCardAdmin')).value;
     const passwordAdmin = (<HTMLInputElement>document.getElementById('passwordAdmin')).value;
 
-    if (idCardAdmin === '' || passwordAdmin === '') {
+    if (!idCardAdmin  || passwordAdmin === '') {
       alert('Por favor llena todos los campos.');
       return;
     }
 
-    this.adminService.login(parseInt(idCardAdmin), passwordAdmin).subscribe(
-      (response) => {
-        if (response) {
-          this.router.navigate(['/admin/dashboard']);
-        } else {
-          alert('Credenciales incorrectas.');
-        }
-      },
-      (error) => {
-        alert('Error en el servidor.');
-      }
-    );
+    let user = {username: idCardAdmin, password: passwordAdmin} as UserEntity;
 
+    this.adminService.login(user).subscribe(
+        (data) => {
+          localStorage.setItem('token', String(data));
+          this.router.navigate(['/admin/dashboard']);
+
+        },
+        (error) => {
+          // Handle errors here
+          if (error.status === 401 || error.status === 400) {
+            // Handle incorrect credentials
+            alert("La cédula o la contraseña son incorrectas");
+          } else {
+            // Handle other types of errors (like network issues, server errors, etc.)
+            alert("Error al intentar iniciar sesión");
+          }
+        }
+    );
   }
 }

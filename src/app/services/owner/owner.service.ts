@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Owner} from "../../model/owner/owner";
 import {Observable} from "rxjs/internal/Observable";
+import {UserEntity} from "../../model/user/user";
 
 @Injectable({
   providedIn: 'root'
@@ -37,8 +38,11 @@ export class OwnerService {
     this.http.delete("http://localhost:8090/owner/" + id).subscribe();
   }
 
-  login(idCard: number): Observable<Owner> {
-    return this.http.get<Owner>("http://localhost:8090/login/owner/" + idCard);
+  login(user: UserEntity): Observable<String> {
+    return this.http.post<String>("http://localhost:8090/login/owner", user,
+        {
+          responseType: 'text' as 'json'
+        });
   }
 
   ownerExistsByIdCard(idCard: number): Observable<boolean> {
