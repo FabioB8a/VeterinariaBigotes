@@ -1,0 +1,49 @@
+<div class="content" [ngClass]="userType === 'admin' ? 'adminStyles' : 'vetStyles'">
+<div class="form-content">
+    <h2>FORMULARIO DUEÑO </h2>
+
+    <form>
+      <div class="form-fields">
+        <div class="first-form">
+          <div>
+            <label for="name">Nombre</label>
+            <input type="text" id="name" name="name" [(ngModel)]="formOwner.firstName">
+          </div>
+          <div>
+            <label for="cardId">Cedula</label>
+            <input [ngClass]="{'border-red': isIdCardRepeated}" [(ngModel)]="formOwner.idCard" name="idCard" type="text" id="cardId" placeholder=" "/>
+            <!-- Display the message if the ID card is repeated -->
+            <div *ngIf="isIdCardRepeated" class="error-message">
+              Cedula repetida.
+            </div>
+          </div>
+          <div>
+            <label for="firstLastName">Apellido 1</label>
+            <input type="text" id="firstLastName" name="firstLastName" [(ngModel)]="formOwner.firstLastName">
+          </div>
+          <div>
+            <label for="phone">Celular</label>
+            <input type="tel" id="phone" name="phone" [(ngModel)]="formOwner.phone">
+          </div>
+          <div>
+            <label for="secondLastName">Apellido 2</label>
+            <input type="text" id="secondLastName" name="secondLastName" [(ngModel)]="formOwner.secondLastName">
+
+          </div>
+          <div>
+            <label for="email">Correo</label>
+            <input type="email" id="email" name="email" [(ngModel)]="formOwner.email">
+          </div>
+        </div>
+      </div>
+    </form>
+
+
+    <div class="buttons">
+      <button (click)="closeModal()" class="cancel">CANCELAR</button>
+      <button (click)="saveOwner()" class="save">GUARDAR</button>
+    </div>
+  </div>
+
+
+</div>
