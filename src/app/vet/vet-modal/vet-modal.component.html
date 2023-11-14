@@ -1,0 +1,55 @@
+<div class="content">
+    <div class="form-content">
+            <h2>FORMULARIO VETERINARIO </h2>
+
+        <form>
+            <div class="form-fields">
+                <div class="first-form">
+                    <div>
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" [(ngModel)]="formVet.firstName">
+                    </div>
+                    <div>
+                        <label for="cardId">Cedula</label>
+                        <input [ngClass]="{'border-red': isIdCardRepeated}" [(ngModel)]="formVet.idCard" name="idCard" type="text" id="cardId" placeholder=" "/>
+                        <!-- Display the message if the ID card is repeated -->
+                        <div *ngIf="isIdCardRepeated" class="error-message">
+                            Cedula repetida.
+                        </div>
+                    </div>
+                    <div>
+                        <label for="firstLastName">Apellido 1</label>
+                        <input type="text" id="firstLastName" name="firstLastName" [(ngModel)]="formVet.firstLastName">
+                    </div>
+                    <div>
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" name="password" [(ngModel)]="formVet.password">
+                    </div>
+                    <div>
+                        <label for="secondLastName">Apellido 2</label>
+                        <input type="text" id="secondLastName" name="secondLastName" [(ngModel)]="formVet.secondLastName">
+
+                    </div>
+                    <div>
+                        <label for="speciality">Especialidad</label>
+                        <input type="text" id="speciality" name="speciality" [(ngModel)]="formVet.speciality">
+                    </div>
+                </div>
+                <div class="second-form">
+                    <div>
+                        <label for="imgUrl">Imagen</label>
+                        <input type="url" id="imgUrl" name="imgUrl" [(ngModel)]="formVet.imgUrl">
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+        <div class="buttons">
+            <button (click)="closeModal()" class="cancel">CANCELAR</button>
+            <button (click)="saveVet()" class="save">GUARDAR</button>
+        </div>
+    </div>
+
+
+</div>

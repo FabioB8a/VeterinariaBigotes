@@ -21,14 +21,14 @@
     <div *ngIf="userType==='vet'">
       <h4>Adicionales</h4>
       <div class="addSection">
-        <a id="btnsaveOwner" [routerLink]="['/owner/save']" [queryParams]="{id:vetId, type: userType}">Agregar dueño</a>
+        <a id="btnsaveOwner" (click)="openModal()">Agregar dueño</a>
         <a id="btnAllPets" [routerLink]="['/pet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
       </div>
     </div>
     <div *ngIf="userType==='admin'">
       <h4>Adicionales</h4>
       <div class="addSection">
-        <a [routerLink]="['/owner/save']" [queryParams]="{id:vetId, type: userType}">Agregar dueño</a>
+        <a (click)="openModal()">Agregar dueño</a>
         <a [routerLink]="['/vet/all']" [queryParams]="{id:vetId, type: userType}">Mostrar veterinarios</a>
         <a [routerLink]="['/admin/dashboard']" [queryParams]="{id:vetId, type: userType}">Mostrar dashboard</a>
         <a [routerLink]="['/pet/all'] " [queryParams]="{id:vetId, type: userType}">Mostrar mascotas</a>
@@ -89,3 +89,7 @@
 
   </div>
 </div>
+<div *ngIf="modalSwitch === true">
+  <app-owner-modal [userType]="userType"></app-owner-modal>
+</div>
+
