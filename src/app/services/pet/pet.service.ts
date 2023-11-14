@@ -63,4 +63,9 @@ export class PetService {
   showAllPetsDischarged(): Observable<Pet[]>{
     return this.http.get<Pet[]>('http://localhost:8090/pet/all/discharge');
   }
+
+  petExists(pet:Pet): Observable<boolean> {
+    //Se envian como parametros el nombre, la raza, el peso y la fecha de nacimiento
+    return this.http.get<boolean>("http://localhost:8090/pet/exists/" + pet.name + "/" + pet.breed + "/" + pet.weight + "/" + pet.birthdate + "/" + pet.disease);
+  }
 }
