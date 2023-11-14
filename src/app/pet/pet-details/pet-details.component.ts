@@ -70,7 +70,8 @@ export class PetDetailsComponent {
                 pet: this.pet,
                 drug: this.selectedDrug,
                 veterinarian: this.veterinarian,
-                description: this.description
+                description: this.description,
+                treatedDisease: this.pet.disease
             };
 
             // Actualiza las cantidades de la droga
