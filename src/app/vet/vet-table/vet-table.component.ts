@@ -35,6 +35,7 @@ export class VetTableComponent {
     this.vetService.findAllActiveVeterinarians().subscribe(
       data => {
         this.vetList = data.map(x => Object.assign(new Veterinarian(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.password, x.speciality, x.imgUrl, x.status, x.entryDate), x));
+        console.log("la lista de veteriarios es ", this.vetList);
       }
     );
   }
@@ -52,7 +53,7 @@ export class VetTableComponent {
     const index = this.vetList.indexOf(vet);
     this.vetList.splice(index,1);
     vet.status = 'Inactivo';
-    this.vetService.updateVet(vet);
+    this.vetService.makeInactive(vet.id);
   }
   openModal(){
     this.modalSwitch = true;

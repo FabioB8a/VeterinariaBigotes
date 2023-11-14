@@ -68,4 +68,8 @@ export class VetService {
     return this.http.get<Veterinarian[]>('http://localhost:8090/vet/inactive');
   }
 
+  makeInactive(id: number) {
+    this.http.get("http://localhost:8090/vet/inactive/" + id).subscribe();
+  }
+
 }
