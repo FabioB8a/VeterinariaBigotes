@@ -22,7 +22,6 @@ import { AdminLogInComponent } from './admin/admin-log-in/admin-log-in.component
 import { PetDetailsComponent } from './pet/pet-details/pet-details.component';
 import { OwnerDetailsComponent } from './owner/owner-details/owner-details.component';
 import { VetDetailsComponent } from './vet/vet-details/vet-details.component';
-import { ModalGenericComponent } from './modal-generic/modal-generic.component';
 import { VetModalComponent } from './vet/vet-modal/vet-modal.component';
 import { OwnerModalComponent } from './owner/owner-modal/owner-modal.component';
 
@@ -45,7 +44,6 @@ import { OwnerModalComponent } from './owner/owner-modal/owner-modal.component';
     PetDetailsComponent,
     OwnerDetailsComponent,
     VetDetailsComponent,
-    ModalGenericComponent,
     VetModalComponent,
     OwnerModalComponent
   ],

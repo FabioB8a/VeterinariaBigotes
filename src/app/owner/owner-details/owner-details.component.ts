@@ -4,6 +4,7 @@ import {Pet} from "../../model/pet/pet";
 import {OwnerService} from "../../services/owner/owner.service";
 import {PetService} from "../../services/pet/pet.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {map} from "rxjs";
 
 @Component({
   selector: 'app-owner-details',
@@ -44,6 +45,7 @@ export class OwnerDetailsComponent {
     if ('id' in this.route.snapshot.queryParams) {
       this.vetId = this.route.snapshot.queryParams['id'].toString();
     }
+    this.formPet.id = 0;
 
   }
 
@@ -72,18 +74,13 @@ export class OwnerDetailsComponent {
       this.readonlyEditMode = true;
     }
     this.formPet = new Pet(pet.id, pet.name, pet.breed, pet.birthdate, pet.weight, pet.disease, pet.imgUrl, pet.owner);
-    console.log("Estamos por aqupi ");
   }
 
-  actualizarMascota(): void {
+  updateOrInsertPet(): void {
     console.log("El formPet es ", this.formPet);
     if (!this.verifyForm()) {
       return;
     }
-
-    console.log("El formPet es ", this.formPet);
-    console.log("El status es ", this.formPet.status);
-    console.log("El disease es ", this.formPet.disease);
 
     if (this.formPet.status === 'Alta' || this.formPet.disease === 'ninguna') {
       alert("Debe modificar la enfermedad de la mascota");
@@ -91,28 +88,27 @@ export class OwnerDetailsComponent {
     }
 
     this.formPet.status = 'En tratamiento';
-    console.log("El usuario actual es ", this.userType);
 
     // Verificar si sendPet.id es 0 y la mascota no existe
-    if (this.sendPet && (this.sendPet.id === undefined || this.sendPet.id === 0)) {
-      console.log("El sendPet es ", this.sendPet);
-      this.petService.petExists(this.formPet).subscribe(existingPet => {
-        if (existingPet) {
-          // La mascota no existe, puedes crearla
-          console.log("Creando mascota");
-          this.petService.addPet(this.formPet);
-          this.loadPetList();
-          this.readonlyEditMode = false;
-        } else {
-          alert("La mascota ya existe");
+    if (this.formPet.id === 0) {
+      this.sendPet = Object.assign({}, this.formPet);
+      console.log("Creando mascota");
+
+      this.ownerService.findByIDCard(this.owner.idCard).subscribe(
+        data => {
+          if (data) {
+            this.sendPet.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
+              console.log("El sendPet es ", this.sendPet);
+              this.petService.addPet(this.sendPet);
+              this.loadPetList();
+              this.readonlyEditMode = false;
+              this.eraseInfo();
+          }
         }
-      });
+      );
     } else {
-      console.log("Estamos por aqui ");
       // La mascota ya tiene un ID, por lo tanto, actualízala
       this.sendPet = Object.assign({}, this.formPet);
-      console.log("El sendPet es ", this.sendPet);
-      console.log("Actualizando mascota");
       this.petService.updatePet(this.sendPet);
       this.readonlyEditMode = false;
       this.loadPetList();
@@ -132,8 +128,8 @@ export class OwnerDetailsComponent {
         alert("El campo raza es obligatorio.");
         return false;
       }
-      if (!this.formPet.birthdate) {
-        alert("El campo fecha de nacimiento es obligatorio.");
+      if (!this.formPet.birthdate || !this.isDateValid()) {
+        alert("El campo fecha de nacimiento es obligatorio y debe ser menor a la fecha actual.");
         return false;
       }
       if (!this.formPet.weight || this.formPet.weight <= 0 || isNaN(this.formPet.weight)) {
@@ -167,9 +163,16 @@ export class OwnerDetailsComponent {
     ;
   }
 
-    eraseInfo()
-    {
-      this.formPet = {};
+  eraseInfo()
+  {
+    this.formPet = {};
+    this.formPet.id = 0;
+  }
+
+    isDateValid() {
+        let date = new Date(this.formPet.birthdate);
+        let today = new Date();
+        return date < today;
     }
 
   }
