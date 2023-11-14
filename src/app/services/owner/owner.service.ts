@@ -60,4 +60,8 @@ export class OwnerService {
   findByIDCard(idCard: number): Observable<Owner> {
     return this.http.get<Owner>("http://localhost:8090/owner/idCard/" + idCard);
   }
+
+  ownerExists(idCard: number): Observable<boolean> {
+    return this.http.get<boolean>("http://localhost:8090/owner/exists/idCard/" + idCard);
+  }
 }

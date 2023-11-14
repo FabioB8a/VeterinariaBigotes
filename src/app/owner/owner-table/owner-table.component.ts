@@ -3,6 +3,7 @@ import {Owner} from "../../model/owner/owner";
 import {OwnerService} from "../../services/owner/owner.service";
 import {ActivatedRoute, Router} from "@angular/router";
 import {query} from "@angular/animations";
+import {SwitchService} from "../../services/switch.service";
 
 
 @Component({
@@ -16,11 +17,13 @@ export class OwnerTableComponent {
   ownerList!: Owner[];
   @Input() userType: string = '';
   @Input() vetId: string = '';
+  modalSwitch: boolean = false;
 
   constructor(
     private ownerService: OwnerService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private modalOS:SwitchService
   ) {
   }
 
@@ -28,6 +31,12 @@ export class OwnerTableComponent {
   isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
+    this.modalOS.$ownerModal.subscribe((value) => {
+      this.modalSwitch = value;
+      if (value === false) {
+        this.ngOnInit();
+      }
+    });
     this.route.queryParams.subscribe(params => {
       if ('id' in params) {
         this.vetId = params['id'].toString();
@@ -66,5 +75,10 @@ export class OwnerTableComponent {
     this.vetId = '';
     this.router.navigate(['/login/show']);
   }
+
+  openModal() {
+    this.modalSwitch = true;
+  }
+
   protected readonly query = query;
 }
