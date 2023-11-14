@@ -20,19 +20,19 @@
         <div class="pet-fields">
           <div>
             <label for="name">Nombre</label>
-            <input type="text" name="name" id="name" [(ngModel)]="formPet.name">
+            <input type="text" name="name" id="name" [(ngModel)]="formPet.name" [readonly]="readonlyEditMode" [ngStyle]="{'background-color': readonlyEditMode ? '#f0f0f0' : 'inherit'}">
           </div>
           <div>
             <label for="birthday">Cumpleaños</label>
-            <input type="date" name="birthday" id="birthday" [(ngModel)]="formPet.birthdate">
+            <input type="date" name="birthday" id="birthday" [(ngModel)]="formPet.birthdate" [readonly]="readonlyEditMode" [ngStyle]="{'background-color': readonlyEditMode ? '#f0f0f0' : 'inherit'}">
           </div>
           <div>
             <label for="disease">Enfermedad</label>
-            <input type="text" name="disease" id="disease" [(ngModel)]="formPet.disease">
+            <input type="text" name="disease" id="disease" [(ngModel)]="formPet.disease" >
           </div>
           <div>
             <label for="breed">Raza</label>
-            <input type="text" name="breed" id="breed" [(ngModel)]="formPet.breed">
+            <input type="text" name="breed" id="breed" [(ngModel)]="formPet.breed" [readonly]="readonlyEditMode" [ngStyle]="{'background-color': readonlyEditMode ? '#f0f0f0' : 'inherit'}">
           </div>
          <div>
            <label for="weight">Peso</label>
@@ -40,7 +40,7 @@
          </div>
          <div>
            <label for="imgUrl">Imagen</label>
-           <input type="text" name="imgUrl" id="imgUrl" [(ngModel)]="formPet.imgUrl">
+           <input type="text" name="imgUrl" id="imgUrl" [(ngModel)]="formPet.imgUrl" [readonly]="readonlyEditMode" [ngStyle]="{'background-color': readonlyEditMode ? '#f0f0f0' : 'inherit'}">
          </div>
 
         </div>
