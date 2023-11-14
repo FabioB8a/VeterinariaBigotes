@@ -11,7 +11,7 @@
             <div class="vet-details">
                 <p><strong>Cedula:</strong> {{vet.idCard}}</p>
                 <p><strong>Especialidad:</strong> {{vet.speciality}}</p>
-                <p><strong>Fecha ingreso:</strong> </p>
+                <p><strong>Fecha ingreso:</strong>{{vet.entryDate}} </p>
             </div>
         </div>
         <div>
@@ -34,7 +34,7 @@
             <tbody>
             <tr *ngFor="let treatment of treatmentList">
                 <td>{{ treatment.pet.id }}</td>
-                <td class="td-treatment-disease">{{ treatment.pet.disease }}</td>
+                <td class="td-treatment-disease">{{ treatment.treatedDisease }}</td>
                 <td>{{ treatment.description }}</td>
                 <td>{{ treatment.date }}</td>
                 <td>{{ treatment.drug.name }}</td>

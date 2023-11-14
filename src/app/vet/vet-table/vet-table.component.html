@@ -17,7 +17,7 @@
         </div>
         <h4>Adicionales</h4>
         <div class="addSection">
-          <a [routerLink]="['/vet/save']" [queryParams]="{type:'admin'}">Agregar veterinario</a>
+          <a (click)="openModal()">Agregar veterinario</a>
           <a [routerLink]="['/admin/dashboard']" [queryParams]="{type:'admin'}">Mostrar dashboard</a>
           <a [routerLink]="['/owner/all']" [queryParams]="{type:'admin'}">Mostrar dueños</a>
           <a [routerLink]="['/pet/all']" [queryParams]="{type:'admin'}">Mostrar mascotas</a>
@@ -69,3 +69,7 @@
 
     </div>
 </div>
+<div *ngIf="modalSwitch === true">
+    <app-vet-modal></app-vet-modal>
+</div>
+
