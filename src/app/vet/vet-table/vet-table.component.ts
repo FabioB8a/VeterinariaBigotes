@@ -2,6 +2,7 @@ import {Component, Input} from '@angular/core';
 import { Veterinarian } from 'src/app/model/veterinarian/veterinarian';
 import { VetService } from 'src/app/services/vet/vet.service';
 import {ActivatedRoute} from "@angular/router";
+import {SwitchService} from "../../services/switch.service";
 
 @Component({
   selector: 'app-vet-table',
@@ -12,20 +13,28 @@ export class VetTableComponent {
 
   vetList!: Veterinarian[];
   userType: string = '';
+  modalSwitch: boolean = false;
 
   constructor(
     private vetService: VetService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalSS: SwitchService
   ) {}
 
   filterText: string = '';
   isNameFilterActive: boolean = false;
 
   ngOnInit(): void {
+    this.modalSS.$modal.subscribe((value) => {
+        this.modalSwitch = value;
+        if (value === false) {
+            this.ngOnInit();
+        }
+    });
     this.userType="admin";
     this.vetService.findAllActiveVeterinarians().subscribe(
       data => {
-        this.vetList = data.map(x => Object.assign(new Veterinarian(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.password, x.speciality, x.imgUrl, x.status), x));
+        this.vetList = data.map(x => Object.assign(new Veterinarian(x.id, x.idCard, x.firstName, x.firstLastName, x.secondLastName, x.password, x.speciality, x.imgUrl, x.status, x.entryDate), x));
       }
     );
   }
@@ -45,5 +54,9 @@ export class VetTableComponent {
     vet.status = 'Inactivo';
     this.vetService.updateVet(vet);
   }
+  openModal(){
+    this.modalSwitch = true;
+  }
 
+  protected readonly open = open;
 }

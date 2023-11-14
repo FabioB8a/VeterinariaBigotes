@@ -11,6 +11,7 @@ export class Veterinarian {
     imgUrl: string;
     status: string;
     treatments?: Treatment[];
+    entryDate: Date;
 
 
     constructor(
@@ -22,7 +23,8 @@ export class Veterinarian {
       password: string,
       speciality: string,
       imgUrl: string,
-      status: string
+      status: string,
+      entryDate: Date
     ) {
       this.id = id;
       this.idCard = idCard;
@@ -33,5 +35,6 @@ export class Veterinarian {
       this.speciality = speciality;
       this.imgUrl = imgUrl;
       this.status = "Activo";
+      this.entryDate = entryDate;
     }
   }

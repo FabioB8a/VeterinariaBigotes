@@ -9,6 +9,7 @@ export class Treatment {
     drug!: Drug;
     veterinarian!: Veterinarian;
     description?: string;
+    treatedDisease?: string;
 
     constructor(date: Date, description?: string) {
       this.date = date;

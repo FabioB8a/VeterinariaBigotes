@@ -16,7 +16,7 @@ export class VetFormComponent {
 
   sendVet!: Veterinarian;
 
-  formVet: Veterinarian = {id: 0, idCard: 0, firstName: '', firstLastName: '', secondLastName: '', password: '', speciality: '', imgUrl: '', status: 'Activo'};
+  formVet: Veterinarian = {id: 0, idCard: 0, firstName: '', firstLastName: '', secondLastName: '', password: '', speciality: '', imgUrl: '', status: 'Activo', entryDate: new Date()};
 
 
   ngOnInit() {
@@ -28,7 +28,7 @@ export class VetFormComponent {
       if ('vetId' in params) {
         const vetId = Number(params['vetId']);
         this.vetService.findById(vetId).subscribe(
-          data => this.formVet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl, data.status)
+          data => this.formVet = new Veterinarian(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.password, data.speciality, data.imgUrl, data.status, data.entryDate)
         );
       }
     });
