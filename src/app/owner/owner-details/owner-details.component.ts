@@ -74,68 +74,102 @@ export class OwnerDetailsComponent {
     this.formPet = new Pet(pet.id, pet.name, pet.breed, pet.birthdate, pet.weight, pet.disease, pet.imgUrl, pet.owner);
     console.log("Estamos por aqupi ");
   }
+
   actualizarMascota(): void {
-   if (!this.verifyForm()) {
+    console.log("El formPet es ", this.formPet);
+    if (!this.verifyForm()) {
       return;
     }
-   console.log("El formPet es ", this.formPet);
-   console.log("El status es ", this.formPet.status);
+
+    console.log("El formPet es ", this.formPet);
+    console.log("El status es ", this.formPet.status);
     console.log("El disease es ", this.formPet.disease);
-   if (this.formPet.status === 'Alta' || this.formPet.disease === 'ninguna'){
-       alert("Debe modificar la enfermedad de la mascota");
-       return;
 
-   }
-   this.formPet.status = 'En tratamiento';
-   console.log("El usuario actual es ", this.userType);
-   this.sendPet = Object.assign({}, this.formPet);
-   console.log("El sendPet es ", this.sendPet);
-   this.petService.updatePet(this.sendPet);
-   this.readonlyEditMode = false;
-   //eliminar los datos del formulario
-    this.formPet = {};
-    //actualizar la lista de mascotas
-   this.loadPetList();
-
-  }
-
-  private verifyForm() {
-      if (!this.formPet.name) {
-          alert("El campo nombre es obligatorio.");
-          return false;
-      }
-      if (!this.formPet.breed) {
-          alert("El campo raza es obligatorio.");
-          return false;
-      }
-      if (!this.formPet.birthdate) {
-          alert("El campo fecha de nacimiento es obligatorio.");
-          return false;
-      }
-      if (!this.formPet.weight || this.formPet.weight <= 0 || isNaN(this.formPet.weight)) {
-          alert("El campo peso es obligatorio y debe ser mayor a 0.");
-          return false;
-      }
-      if (!this.formPet.disease) {
-          alert("El campo enfermedad es obligatorio.");
-          return false;
-      }
-      if (!this.formPet.imgUrl) {
-          alert("El campo imagen es obligatorio.");
-          return false;
-      }
-      return true;
-  }
-    private loadPetList(): void {
-        // Espera 500ms para asegurarte de que la actualización en la base de datos se haya completado
-        setTimeout(() => {
-            this.petService.findByOwner(this.owner.idCard).subscribe(
-                data => {
-                    this.petlist = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
-                        .filter(pet => this.showAllPets ? pet.status === 'En tratamiento' : pet.status === 'Alta');
-                }
-            );
-        }, 500);
+    if (this.formPet.status === 'Alta' || this.formPet.disease === 'ninguna') {
+      alert("Debe modificar la enfermedad de la mascota");
+      return;
     }
 
-}
+    this.formPet.status = 'En tratamiento';
+    console.log("El usuario actual es ", this.userType);
+
+    // Verificar si sendPet.id es 0 y la mascota no existe
+    if (this.sendPet && (this.sendPet.id === undefined || this.sendPet.id === 0)) {
+      console.log("El sendPet es ", this.sendPet);
+      this.petService.petExists(this.formPet).subscribe(existingPet => {
+        if (existingPet) {
+          // La mascota no existe, puedes crearla
+          console.log("Creando mascota");
+          this.petService.addPet(this.formPet);
+          this.loadPetList();
+          this.readonlyEditMode = false;
+        } else {
+          alert("La mascota ya existe");
+        }
+      });
+    } else {
+      console.log("Estamos por aqui ");
+      // La mascota ya tiene un ID, por lo tanto, actualízala
+      this.sendPet = Object.assign({}, this.formPet);
+      console.log("El sendPet es ", this.sendPet);
+      console.log("Actualizando mascota");
+      this.petService.updatePet(this.sendPet);
+      this.readonlyEditMode = false;
+      this.loadPetList();
+
+      // Eliminar los datos del formulario
+      this.eraseInfo();
+    }
+  }
+
+  private verifyForm()
+    {
+      if (!this.formPet.name) {
+        alert("El campo nombre es obligatorio.");
+        return false;
+      }
+      if (!this.formPet.breed) {
+        alert("El campo raza es obligatorio.");
+        return false;
+      }
+      if (!this.formPet.birthdate) {
+        alert("El campo fecha de nacimiento es obligatorio.");
+        return false;
+      }
+      if (!this.formPet.weight || this.formPet.weight <= 0 || isNaN(this.formPet.weight)) {
+        alert("El campo peso es obligatorio y debe ser mayor a 0.");
+        return false;
+      }
+      if (!this.formPet.disease) {
+        alert("El campo enfermedad es obligatorio.");
+        return false;
+      }
+      if (!this.formPet.imgUrl) {
+        alert("El campo imagen es obligatorio.");
+        return false;
+      }
+      return true;
+    }
+  private loadPetList(): void {
+      // Espera 500ms para asegurarte de que la actualización en la base de datos se haya completado
+      setTimeout(() =>
+    {
+      this.petService.findByOwner(this.owner.idCard).subscribe(
+        data => {
+          this.petlist = data.map(x => Object.assign(new Pet(x.id, x.name, x.breed, x.birthdate, x.weight, x.disease, x.imgUrl, x.owner), x))
+            .filter(pet => this.showAllPets ? pet.status === 'En tratamiento' : pet.status === 'Alta');
+        }
+      );
+    }
+  ,
+    500
+  )
+    ;
+  }
+
+    eraseInfo()
+    {
+      this.formPet = {};
+    }
+
+  }
