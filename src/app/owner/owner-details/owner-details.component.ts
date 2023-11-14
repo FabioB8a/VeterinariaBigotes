@@ -20,6 +20,8 @@ export class OwnerDetailsComponent {
   pet?: Pet | undefined;
   formPet: any = {};
   sendPet!: Pet;
+  readonlyEditMode: boolean = false;
+
   constructor(
     private ownerService: OwnerService,
     private petService: PetService,
@@ -28,6 +30,7 @@ export class OwnerDetailsComponent {
   }
 
   ngOnInit(): void {
+
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.ownerService.findById(this.id).subscribe((data) => {
       this.owner = new Owner(data.id, data.idCard, data.firstName, data.firstLastName, data.secondLastName, data.phone, data.email);
@@ -65,6 +68,9 @@ export class OwnerDetailsComponent {
   }
 
   editPet(pet: Pet): void {
+    if (pet.status === 'Alta') {
+      this.readonlyEditMode = true;
+    }
     this.formPet = new Pet(pet.id, pet.name, pet.breed, pet.birthdate, pet.weight, pet.disease, pet.imgUrl, pet.owner);
     console.log("Estamos por aqupi ");
   }
@@ -72,10 +78,20 @@ export class OwnerDetailsComponent {
    if (!this.verifyForm()) {
       return;
     }
+   console.log("El formPet es ", this.formPet);
+   console.log("El status es ", this.formPet.status);
+    console.log("El disease es ", this.formPet.disease);
+   if (this.formPet.status === 'Alta' || this.formPet.disease === 'ninguna'){
+       alert("Debe modificar la enfermedad de la mascota");
+       return;
+
+   }
+   this.formPet.status = 'En tratamiento';
    console.log("El usuario actual es ", this.userType);
    this.sendPet = Object.assign({}, this.formPet);
    console.log("El sendPet es ", this.sendPet);
    this.petService.updatePet(this.sendPet);
+   this.readonlyEditMode = false;
    //eliminar los datos del formulario
     this.formPet = {};
     //actualizar la lista de mascotas
