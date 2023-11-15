@@ -14,6 +14,7 @@ export class VetTableComponent {
   vetList!: Veterinarian[];
   userType: string = '';
   modalSwitch: boolean = false;
+  vetSelected!: Veterinarian;
 
   constructor(
     private vetService: VetService,
@@ -31,6 +32,7 @@ export class VetTableComponent {
             this.ngOnInit();
         }
     });
+    this.vetSelected = undefined!;
     this.userType="admin";
     this.vetService.findAllActiveVeterinarians().subscribe(
       data => {
@@ -54,6 +56,17 @@ export class VetTableComponent {
     this.vetList.splice(index,1);
     vet.status = 'Inactivo';
     this.vetService.makeInactive(vet.id);
+  }
+
+  editVet(vetId: number){
+    this.vetService.findById(vetId).subscribe(
+      data => {
+        this.vetSelected = data;
+        this.openModal();
+      }
+    );
+    this.vetSelected = null!;
+
   }
   openModal(){
     this.modalSwitch = true;
