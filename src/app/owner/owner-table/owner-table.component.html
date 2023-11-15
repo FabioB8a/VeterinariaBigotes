@@ -75,7 +75,7 @@
           <a (click)="deleteById(owner)">
             <img src="assets/images/vet/deleteIcon.png">
           </a>
-          <a [routerLink]="['/owner/save']" [queryParams]="{ ownerId: owner.id , id:vetId, type: userType}"> <img
+          <a  (click)="editOwner(owner.idCard)"> <img
             src="assets/images/vet/editIcon.png"> </a>
 
           <a [routerLink]="['/owner/detail', owner.id]" [queryParams]="{id:vetId, type: userType}">
@@ -90,6 +90,6 @@
   </div>
 </div>
 <div *ngIf="modalSwitch === true">
-  <app-owner-modal [userType]="userType"></app-owner-modal>
+  <app-owner-modal [userType]="userType" [owner]="selectedOwner"></app-owner-modal>
 </div>
 

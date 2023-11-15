@@ -10,6 +10,7 @@ import {OwnerService} from "../../services/owner/owner.service";
 })
 export class OwnerModalComponent {
   @Input() userType: string = '';
+  @Input() owner!: Owner;
   formOwner: Owner = {id: 0, idCard: 0, firstName: '', firstLastName: '', secondLastName: '', phone: '', email: '', pets: []};
   sendOwner!: Owner;
 
@@ -21,7 +22,9 @@ export class OwnerModalComponent {
   ) {
   }
   ngOnInit(): void {
-    console.log("el user type es", this.userType);
+    if (this.owner) {
+      this.formOwner = Object.assign({}, this.owner);
+    }
 
   }
   closeModal() {
@@ -38,7 +41,6 @@ export class OwnerModalComponent {
           if (exists) {
             this.isIdCardRepeated = true;
           } else {
-            console.log("Entramos por aqui")
             this.isIdCardRepeated = false;
             //poner tiempo para que se pueda reflejar que se guardo en el componente de vet table
             this.ownerService.addOwner(this.sendOwner);
@@ -51,6 +53,13 @@ export class OwnerModalComponent {
         // Clear the error when ID card is empty
         this.isIdCardRepeated = false;
       }
+    }else{
+      //Poner la información del owner en el formulario
+      this.ownerService.updateOwner(this.sendOwner);
+      setTimeout(() => {
+        this.closeModal();
+      }, 1000);
+
     }
   }
 

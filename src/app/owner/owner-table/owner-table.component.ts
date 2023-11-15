@@ -81,4 +81,9 @@ export class OwnerTableComponent {
   }
 
   protected readonly query = query;
+
+  editOwner(idCard: number) {
+    this.selectedOwner = this.ownerList.find(owner => owner.idCard == idCard)!;
+    this.openModal();
+  }
 }
