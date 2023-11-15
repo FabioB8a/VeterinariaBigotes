@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {SwitchService} from "../../services/switch.service";
 import {VetService} from "../../services/vet/vet.service";
 import {Veterinarian} from "../../model/veterinarian/veterinarian";
@@ -12,6 +12,7 @@ export class VetModalComponent implements OnInit {
 
     formVet: Veterinarian = {id: 0, idCard: 0, firstName: '', firstLastName: '', secondLastName: '', password: '', speciality: '', imgUrl: '', status: 'Activo', entryDate: new Date()};
     sendVet!: Veterinarian;
+    @Input() vet!: Veterinarian;
 
     isIdCardRepeated: boolean = false;
 
@@ -22,6 +23,9 @@ export class VetModalComponent implements OnInit {
     }
 
     ngOnInit(): void {
+        if (this.vet) {
+            this.formVet = Object.assign({}, this.vet);
+        }
     }
 
     closeModal() {
@@ -43,6 +47,7 @@ export class VetModalComponent implements OnInit {
                         //poner tiempo para que se pueda reflejar que se guardo en el componente de vet table
 
                         this.vetService.addVet(this.sendVet);
+                        //Eliminar la información guardada en el formulario
                         setTimeout(() => {
                             this.closeModal();
                         }, 1000);
@@ -52,6 +57,13 @@ export class VetModalComponent implements OnInit {
                 // Clear the error when ID card is empty
                 this.isIdCardRepeated = false;
             }
+        }else{
+            this.vetService.updateVet(this.sendVet);
+            //Eliminar la información guardada en el formulario
+            this.sendVet = {id: 0, idCard: 0, firstName: '', firstLastName: '', secondLastName: '', password: '', speciality: '', imgUrl: '', status: 'Activo', entryDate: new Date()};
+            setTimeout(() => {
+                this.closeModal();
+            }, 1000);
         }
     }
 
