@@ -59,7 +59,7 @@ export class VetTableComponent {
   }
 
   editVet(vetId: number){
-    this.vetService.findById(vetId).subscribe(
+    this.vetService.getCompleteInfo(vetId).subscribe(
       data => {
         this.vetSelected = data;
         this.openModal();
