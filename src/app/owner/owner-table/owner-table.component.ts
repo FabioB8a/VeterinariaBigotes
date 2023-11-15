@@ -37,6 +37,7 @@ export class OwnerTableComponent {
         this.ngOnInit();
       }
     });
+    this.selectedOwner = undefined!;
     this.route.queryParams.subscribe(params => {
       if ('id' in params) {
         this.vetId = params['id'].toString();
@@ -86,4 +87,5 @@ export class OwnerTableComponent {
     this.selectedOwner = this.ownerList.find(owner => owner.idCard == idCard)!;
     this.openModal();
   }
+
 }
