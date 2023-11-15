@@ -72,4 +72,8 @@ export class VetService {
     this.http.get("http://localhost:8090/vet/inactive/" + id).subscribe();
   }
 
+  getCompleteInfo(id: number): Observable<Veterinarian> {
+    return this.http.get<Veterinarian>("http://localhost:8090/vet/complete/" + id);
+  }
+
 }

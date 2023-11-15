@@ -33,7 +33,6 @@ export class LogInComponent {
         if (this.authService.isAuthenticated()) {
             this.authService.userType(localStorage.getItem('token') as string).subscribe(
                 (data) => {
-                    console.log(data);
                     this.idCard = data.idCard;
                     this.userType = data.role;
                     localStorage.setItem('userType', this.userType);
