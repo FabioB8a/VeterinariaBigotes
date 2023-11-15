@@ -15,6 +15,7 @@ export class VetModalComponent implements OnInit {
     @Input() vet!: Veterinarian;
 
     isIdCardRepeated: boolean = false;
+  readonlyEditMode: boolean = false;
 
     constructor(
         private modalSS: SwitchService,
@@ -24,6 +25,7 @@ export class VetModalComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.vet) {
+          this.readonlyEditMode = true;
           this.vetService.getCompleteInfo(this.vet.id).subscribe(data => {
             this.formVet = data;
           });

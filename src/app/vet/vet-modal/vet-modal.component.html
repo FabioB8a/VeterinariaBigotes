@@ -11,7 +11,7 @@
                     </div>
                     <div>
                         <label for="cardId">Cedula</label>
-                        <input [ngClass]="{'border-red': isIdCardRepeated}" [(ngModel)]="formVet.idCard" name="idCard" type="text" id="cardId" placeholder=" "/>
+                        <input [ngClass]="{'border-red': isIdCardRepeated}" [(ngModel)]="formVet.idCard" name="idCard" type="text" id="cardId" placeholder=" " [readonly]="readonlyEditMode" [ngStyle]="{'background-color': readonlyEditMode ? '#f0f0f0' : 'inherit'}"/>
                         <!-- Display the message if the ID card is repeated -->
                         <div *ngIf="isIdCardRepeated" class="error-message">
                             Cedula repetida.
@@ -23,7 +23,7 @@
                     </div>
                     <div>
                         <label for="password">Contraseña</label>
-                        <input type="password" id="password" name="password" [(ngModel)]="formVet.password">
+                        <input type="password" id="password" name="password" [(ngModel)]="formVet.password" [readonly]="readonlyEditMode" [ngStyle]="{'background-color': readonlyEditMode ? '#f0f0f0' : 'inherit'}">
                     </div>
                     <div>
                         <label for="secondLastName">Apellido 2</label>
