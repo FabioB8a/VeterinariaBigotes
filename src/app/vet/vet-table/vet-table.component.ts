@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import { Veterinarian } from 'src/app/model/veterinarian/veterinarian';
 import { VetService } from 'src/app/services/vet/vet.service';
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Route, Router} from "@angular/router";
 import {SwitchService} from "../../services/switch.service";
 
 @Component({
@@ -19,7 +19,8 @@ export class VetTableComponent {
   constructor(
     private vetService: VetService,
     private route: ActivatedRoute,
-    private modalSS: SwitchService
+    private modalSS: SwitchService,
+    private router: Router
   ) {}
 
   filterText: string = '';
@@ -70,6 +71,13 @@ export class VetTableComponent {
   }
   openModal(){
     this.modalSwitch = true;
+  }
+
+  logOut(): void {
+    localStorage.removeItem('token');
+    localStorage.removeItem('userType');
+    this.userType = '';
+    this.router.navigate(['/login/show']);
   }
 
   protected readonly open = open;

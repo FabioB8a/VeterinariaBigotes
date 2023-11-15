@@ -24,7 +24,9 @@ export class VetModalComponent implements OnInit {
 
     ngOnInit(): void {
         if (this.vet) {
-            this.formVet = Object.assign({}, this.vet);
+          this.vetService.getCompleteInfo(this.vet.id).subscribe(data => {
+            this.formVet = data;
+          });
         }
     }
 

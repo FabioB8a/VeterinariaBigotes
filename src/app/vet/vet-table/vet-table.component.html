@@ -22,7 +22,7 @@
           <a [routerLink]="['/owner/all']" [queryParams]="{type:'admin'}">Mostrar dueños</a>
           <a [routerLink]="['/pet/all']" [queryParams]="{type:'admin'}">Mostrar mascotas</a>
         </div>
-      <a id="cerrar-sesion" [routerLink]="['/home']">
+      <a id="cerrar-sesion" (click)="logOut()">
         Cerrar sesión
       </a>
 
